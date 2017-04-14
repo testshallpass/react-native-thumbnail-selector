@@ -1,0 +1,16 @@
+{
+  "name": "react-native-thumbnail-selector",
+  "version": "1.0.0",
+  "description": "A simple thumbnail selector that opens and closes from the bottom of the screen.",
+  "main": "ThumbnailSelector.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "thumbnail",
+    "selector",
+    "react-native"
+  ],
+  "author": "Brian Sinnicke",
+  "license": "MIT"
+}
