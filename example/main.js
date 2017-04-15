@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import {
   StyleSheet,
   Button,
-  Text,
-  ScrollView,
-  StatusBar,
-  Dimensions,
   Image,
   View,
 } from 'react-native';
@@ -67,22 +63,20 @@ export default class main extends Component {
     super(props);
     this.state = {
       items: items,
-      visible: false,
+      visible: true,
       imageUri: 'https://facebook.github.io/react/img/logo_og.png'
     };
   }
   showAction() {
     const {visible} = this.state
-    console.log(visible);
     this.setState({
       visible: !visible
     })
   }
-  onSelectedItem(data) {
-    console.log(data);
+  onSelectedItem(item) {
     this.setState({
       visible: false,
-      imageUri: data.imageUri
+      imageUri: item.imageUri
     })
   }
   render() {
@@ -96,11 +90,9 @@ export default class main extends Component {
           accessibilityLabel={"Toggle"}
         />
         <ThumbnailSelector
-          ref={ref => this.thumbnailSelector = ref}
-          opacity={0.5}
           visible={this.state.visible}
           items={this.state.items}
-          onSelectedItem={(data) => this.onSelectedItem(data)}
+          onSelectedItem={(item) => this.onSelectedItem(item)}
         />
       </View>
     );

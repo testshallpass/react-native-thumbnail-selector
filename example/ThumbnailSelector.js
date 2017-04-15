@@ -1,14 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {
-  StyleSheet,
   Text,
-  ListView,
   FlatList,
   Image,
   TouchableOpacity,
   Animated,
   Dimensions,
-  Modal,
   View,
 } from 'react-native';
 const {height, width} = Dimensions.get('window');
@@ -70,27 +67,17 @@ export default class ThumbnailSelector extends Component {
   };
   constructor(props) {
     super(props);
+    if (props.items && props.items.length === 0) {
+      console.warn('ThumbnailSelector Items prop: Requires least one item.');
+    }
     this.state = {
       fadeAnim: new Animated.Value(0),
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2,
-      }),
       items: props.items,
       visible: false,
       startDelta: WINDOW.height + 155,
       endDelta: 0,
       duration: 600,
     };
-  }
-  componentWillMount() {
-    const {items} = this.props
-    if (items && items.length === 0) {
-      console.warn('ThumbnailSelector: Need at least one item.');
-    }
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(this.props.items),
-      items: this.props.items,
-    });
   }
   componentDidMount() {
     const {visible} = this.props
@@ -236,7 +223,3 @@ export default class ThumbnailSelector extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-
-});
