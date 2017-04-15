@@ -19,38 +19,41 @@ export default class ThumbnailSelector extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
     opacity: PropTypes.number,
-    fontSize: PropTypes.number,
-    textColor: PropTypes.string,
     backgroundColor: PropTypes.string,
-    fontFamily: PropTypes.string,
-    imageHeight: PropTypes.number,
-    imageWidth: PropTypes.number,
-    imageBorderWidth: PropTypes.number,
-    imageBorderRadius: PropTypes.number,
     onSelectedData: PropTypes.func,
     closeOnSelect: PropTypes.bool,
     zIndex: PropTypes.number,
     closeOnSelectInterval: PropTypes.number,
     numberOfLines: PropTypes.number,
     visible: PropTypes.bool,
+    captionTextStyle: Text.propTypes.style,
+    thumbnailImageStyle: Image.propTypes.style,
+    flatlistProps: PropTypes.func,
   };
   static defaultProps = {
     items: null,
-    fontSize: 16,
-    textColor: 'white',
     opacity: 0.8,
     backgroundColor: 'dimgray',
-    fontFamily: 'Avenir',
-    imageHeight: 125,
-    imageWidth: 125,
-    imageBorderWidth: 2,
-    imageBorderRadius: 2,
     onSelectedData: null,
     closeOnSelect: true,
     zIndex: 1000,
     closeOnSelectInterval: 200,
     numberOfLines: 2,
-    visible: true,
+    visible: false,
+    captionTextStyle: {
+      color: 'white',
+      fontFamily: 'Avenir',
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    thumbnailImageStyle: {
+      width: 125,
+      height: 125,
+      borderWidth: 2,
+      borderRadius: 2,
+      borderColor: 'white'
+    },
+    flatlistProps: null
   };
   constructor(props) {
     super(props);
@@ -69,8 +72,13 @@ export default class ThumbnailSelector extends Component {
     this.hide = this.hide.bind(this);
     this.animateToValue = this.animateToValue.bind(this);
     this.timeOutForisVisible = this.timeOutForisVisible.bind(this);
+    this.scrollToSelected = this.scrollToSelected.bind(this);
   }
   componentWillMount() {
+    const {items} = this.props
+    if (items && items.length === 0) {
+      console.warn('ThumbnailSelector: Need at least one item.');
+    }
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this.props.items),
       items: this.props.items,
@@ -94,6 +102,7 @@ export default class ThumbnailSelector extends Component {
   }
   show() {
     this.animateToValue(1);
+    this.scrollToSelected()
   }
   hide() {
     this.timeOutForisVisible(false);
@@ -114,6 +123,20 @@ export default class ThumbnailSelector extends Component {
       }.bind(this),
       this.state.duration,
     );
+  }
+  scrollToSelected() {
+    var index = 0
+    const {items} = this.state
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i]
+      if (item.selected) {
+        index = i
+        break
+      }
+    }
+    if (index > 0) {
+      this.flatList.scrollToIndex({index: index})
+    }
   }
   onLayoutEvent(event) {
     const {x, y, width, height} = event.nativeEvent.layout;
@@ -143,44 +166,33 @@ export default class ThumbnailSelector extends Component {
       );
     }
   };
-  renderItem = item => {
+  renderItem = (item) => {
     const index = item.index;
     item = item.item;
+    const {captionTextStyle, thumbnailImageStyle, numberOfLines, opacity} = this.props
     return (
       <TouchableOpacity onPress={() => this.itemAction(item, index)}>
         <View
           style={[
             styles.column,
-            {opacity: item.selected ? 1 : this.props.opacity},
-          ]}
-        >
-          <Image
-            style={{
-              borderColor: item.selected ? item.borderColor : 'transparent',
-              width: this.props.imageWidth,
-              height: this.props.imageHeight,
-              borderRadius: this.props.imageBorderRadius,
-              borderWidth: this.props.imageBorderWidth,
-            }}
-            source={{uri: item.imageUri}}
-          />
-          <Text
-            style={{
-              color: this.props.textColor,
-              fontSize: this.props.fontSize,
-              fontFamily: this.props.fontFamily,
-              fontWeight: item.selected ? 'bold' : 'normal',
-              maxWidth: this.props.imageWidth,
-              textAlign: 'center',
-            }}
-            numberOfLines={this.props.numberOfLines}
-          >
-            {item.title}
-          </Text>
+            {opacity: item.selected ? 1 : opacity},
+          ]}>
+          {this.renderImage(item.imageUri, thumbnailImageStyle, item.selected)}
+          {this.renderText(item.title, captionTextStyle, numberOfLines, item.selected)}
         </View>
       </TouchableOpacity>
     );
   };
+  renderImage(imageUri, style, selected) {
+    return (
+      <Image style={[style, {borderColor: selected ? style.borderColor : 'transparent'}]} source={{uri: imageUri}} />
+    )
+  }
+  renderText(text, style, numberOfLines, selected) {
+    return (
+      <Text style={[style, {fontWeight: selected ? 'bold' : 'normal'}]} numberOfLines={numberOfLines}>{text}</Text>
+    )
+  }
   render() {
     const {
       startDelta,
@@ -189,7 +201,7 @@ export default class ThumbnailSelector extends Component {
       dataSource,
       items,
     } = this.state;
-    const {zIndex, backgroundColor} = this.props;
+    const {zIndex, backgroundColor, flatlistProps} = this.props;
     return (
       <Animated.View
         style={{
@@ -212,6 +224,7 @@ export default class ThumbnailSelector extends Component {
           data={items}
           horizontal={true}
           renderItem={this.renderItem}
+          {...flatlistProps}
         />
       </Animated.View>
     );
