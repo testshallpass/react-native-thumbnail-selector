@@ -76,14 +76,23 @@ export default class ThumbnailSelector extends Component {
       items: this.props.items,
     });
   }
-  show() {
-    if (this.state.visible == true) {
-      this.hide();
-      return;
+  componentDidMount() {
+    const {visible} = this.props
+    if (visible) {
+      this.show()
     }
-    this.setState({
-      visible: true,
-    });
+  }
+  componentWillReceiveProps(nextProps) {
+    const {visible} = this.props
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible) {
+        this.show()
+      } else {
+        this.hide()
+      }
+    }
+  }
+  show() {
     this.animateToValue(1);
   }
   hide() {
@@ -179,37 +188,33 @@ export default class ThumbnailSelector extends Component {
       fadeAnim,
       dataSource,
       items,
-      visible,
     } = this.state;
     const {zIndex, backgroundColor} = this.props;
-    if (visible) {
-      return (
-        <Animated.View
-          style={{
-            zIndex: zIndex,
-            transform: [
-              {
-                translateY: fadeAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [startDelta, endDelta],
-                }),
-              },
-            ],
-            position: 'absolute',
-            bottom: 0,
-          }}
-        >
-          <FlatList
-            ref={ref => this.flatList = ref}
-            style={{backgroundColor: backgroundColor, flex: 1}}
-            data={items}
-            horizontal={true}
-            renderItem={this.renderItem}
-          />
-        </Animated.View>
-      );
-    }
-    return null;
+    return (
+      <Animated.View
+        style={{
+          zIndex: zIndex,
+          transform: [
+            {
+              translateY: fadeAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [startDelta, endDelta],
+              }),
+            },
+          ],
+          position: 'absolute',
+          bottom: 0,
+        }}
+      >
+        <FlatList
+          ref={ref => this.flatList = ref}
+          style={{backgroundColor: backgroundColor, flex: 1}}
+          data={items}
+          horizontal={true}
+          renderItem={this.renderItem}
+        />
+      </Animated.View>
+    );
   }
 }
 

@@ -66,18 +66,29 @@ export default class main extends Component {
     ];
     super(props);
     this.state = {
-      items: items
+      items: items,
+      visible: false,
+      imageUri: 'https://facebook.github.io/react/img/logo_og.png'
     };
   }
   showAction() {
-    this.thumbnailSelector.show();
+    const {visible} = this.state
+    console.log(visible);
+    this.setState({
+      visible: !visible
+    })
   }
   onSelectedItem(data) {
     console.log(data);
+    this.setState({
+      visible: false,
+      imageUri: data.imageUri
+    })
   }
   render() {
     return (
       <View style={styles.container}>
+        <Image style={{width: 125, height: 125}} source={{uri: this.state.imageUri}}/>
         <Button
           onPress={() => this.showAction()}
           title={"Toggle ThumbnailSelector"}
@@ -87,6 +98,7 @@ export default class main extends Component {
         <ThumbnailSelector
           ref={ref => this.thumbnailSelector = ref}
           opacity={0.5}
+          visible={this.state.visible}
           items={this.state.items}
           onSelectedItem={(data) => this.onSelectedItem(data)}
         />
@@ -100,5 +112,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     justifyContent: 'center',
+    alignItems: 'center'
   },
 });
