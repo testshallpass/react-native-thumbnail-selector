@@ -1,6 +1,7 @@
-## react-native-thumbnail-selector: Work-In-Progress
-
+## react-native-thumbnail-selector
 [![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
+
+Project to experiment with the new Flatlist in React-Native. **Requires >v0.43.0**
 
 ### Installation
 ```coming soon```
@@ -11,27 +12,37 @@ import ThumbnailSelector from 'react-native-thumbnail-selector'
 //...
 render() {
   const items = [
-    { title: 'Lorem ipsum dolor sit amet',
+    { key: 0,
+      title: 'Lorem ipsum dolor sit amet',
       borderColor: 'white',
-      imageUri: 'https://unsplash.it/125?random',
+      imageUri: 'https://placeimg.com/125/125/any',
       selected: true
     },
-    { title: 'Brian',
+    { key: 1,
+      title: 'Brian',
       borderColor: 'white',
       imageUri: 'https://facebook.github.io/react/img/logo_og.png',
       selected: false
     }
   ]
   return (
-    <ThumbnailSelector visible={this.state.showThumbnail} opacity={0.5} items={items} />
+    <ThumbnailSelector
+      visible={this.state.visible}
+      items={items}
+      onSelectedItem={(item) => this.onSelectedItem(item)} />
   )
 }
 // ...
-buttonAction() {
+toggleAction() {
   this.setState({
-    showThumbnail: true
+    visible: !this.state.visible
   })
 }
+// ...
+onSelectedItem(item) {
+	// ...
+}
+// ...
 ```
 
 ### Demo
@@ -42,17 +53,17 @@ buttonAction() {
 
 | Name | Type | Description | Default |
 | --- | :---: | --- | --- |
-| ```items``` | Array  | Array of thumbnail items (i.e.`{title: 'Brian', borderColor: 'white',imageUri: 'https://facebook.github.io/react/img/logo_og.png', selected: false}`) | []
+| ```items``` | **Required** Array  | Array of items (i.e.`[{key: 0, title: 'Brian', borderColor: 'white', imageUri: 'https://facebook.github.io/react/img/logo_og.png', selected: false}]`) | []
+| ```visible``` | Bool  | show or hide selector | false
+| ```backgroundColor``` | String  | backgroundColor of Flatlist | false
+| ```flatlistProps``` | Func  | `<Flatlist />` props | null
 | ```opacity``` | Number  | unselected items opacity | 0.8
-| ```fontSize``` | Number  | caption title font size| 16
-| ```fontFamily``` | String  | caption title font family| Avenir
-| ```textColor``` | String  | caption title color | 1
-| ```imageHeight``` | String  | thumbnail width | 125
-| ```imageWidth``` | String  | thumbnail height | 125
-| ```imageBorderWidth``` | Number | border width of thumbnail | 2
-| ```imageBorderRadius``` | Number  | thumbnail border radius | 2
-| ```onSelectedItem``` | Func  | fired when user selects thumbnail | null
-| ```closeOnSelect``` | Bool  | whether or not to close after selection | true
-| ```zIndex``` | Number  | zIndex | 0
+| ```onSelectedItem``` | Func  | Invoked when user selects an item | null
+| ```closeOnSelect``` | Bool  | whether or not to close after item is selected | true
+| ```zIndex``` | Number  | zIndex | 1000
 | ```closeOnSelectInterval``` | Number  | duration of close animation | 200
-| ```numberOfLines``` | Number  | caption title numberOfLines | 2
+| ```numberOfLines``` | Number  | numberOfLines for caption | 2
+| ```captionTextStyle``` | Text.proptypes.style | caption text style | `{color: 'white', fontFamily: 'Avenir', fontSize: 16, textAlign: 'center'}`
+| ```thumbnailImageStyle``` | Image.proptypes.style | thumbnail image style | `{width: 125, height: 125, borderWidth: 2, borderRadius: 2}`
+| ```containerStyle``` | View.proptypes.style | animated view style | `{position: 'absolute', bottom: 0}`
+| ```itemContainerStyle``` | View.proptypes.style | item view style | `{flexDirection: 'column', paddingLeft: 8, paddingRight: 8, paddingTop: 8, alignItems: 'center}`
