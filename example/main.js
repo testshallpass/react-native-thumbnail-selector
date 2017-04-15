@@ -14,7 +14,7 @@ export default class main extends Component {
         key: 0,
         title: 'Paul',
         borderColor: 'white',
-        imageUri: 'https://unsplash.it/125?random',
+        imageUri: 'https://placeimg.com/125/125/any',
         selected: true,
       },
       {
@@ -28,7 +28,7 @@ export default class main extends Component {
         key: 2,
         title: 'Gene',
         borderColor: 'white',
-        imageUri: 'https://unsplash.it/125?random',
+        imageUri: 'https://placeimg.com/125/125/tech',
         selected: false,
       },
       {
@@ -42,7 +42,7 @@ export default class main extends Component {
         key: 4,
         title: 'Jon',
         borderColor: 'white',
-        imageUri: 'https://unsplash.it/125?random',
+        imageUri: 'https://placeimg.com/125/125/nature',
         selected: false,
       },
       {
@@ -56,7 +56,7 @@ export default class main extends Component {
         key: 6,
         title: 'Sean',
         borderColor: 'white',
-        imageUri: 'https://unsplash.it/125?random',
+        imageUri: 'https://placeimg.com/125/125/people',
         selected: false,
       },
     ];
