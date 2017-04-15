@@ -3,8 +3,9 @@ import {
   StyleSheet,
   Text,
   ListView,
+  FlatList,
   Image,
-  TouchableHighlight,
+  TouchableOpacity,
   Animated,
   Dimensions,
   Modal,
@@ -46,7 +47,7 @@ export default class ThumbnailSelector extends Component {
     imageBorderRadius: 2,
     onSelectedData: null,
     closeOnSelect: true,
-    zIndex: 0,
+    zIndex: 1000,
     closeOnSelectInterval: 200,
     numberOfLines: 2,
     visible: true,
@@ -59,30 +60,33 @@ export default class ThumbnailSelector extends Component {
         rowHasChanged: (r1, r2) => r1 !== r2,
       }),
       items: props.items,
-      isVisible: props.visible,
+      visible: false,
       startDelta: WINDOW.height + 155,
       endDelta: 0,
       duration: 600,
     };
-    this.showSelector = this.showSelector.bind(this);
-    this.hideSelector = this.hideSelector.bind(this);
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
     this.animateToValue = this.animateToValue.bind(this);
     this.timeOutForisVisible = this.timeOutForisVisible.bind(this);
   }
   componentWillMount() {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this.props.items),
-      items: this.props.items
+      items: this.props.items,
     });
   }
-  showSelector() {
-    if (this.props.visible == true) {
-      this.hideSelector();
+  show() {
+    if (this.state.visible == true) {
+      this.hide();
       return;
     }
+    this.setState({
+      visible: true,
+    });
     this.animateToValue(1);
   }
-  hideSelector() {
+  hide() {
     this.timeOutForisVisible(false);
     this.animateToValue(0);
   }
@@ -92,11 +96,11 @@ export default class ThumbnailSelector extends Component {
       duration: this.state.duration,
     }).start();
   }
-  timeOutForisVisible(isVisible) {
+  timeOutForisVisible(visible) {
     timeOutId = setTimeout(
       function() {
         this.setState({
-          isVisible: isVisible,
+          visible: visible,
         });
       }.bind(this),
       this.state.duration,
@@ -109,78 +113,76 @@ export default class ThumbnailSelector extends Component {
       endDelta: 0,
     });
   }
-  rowAction(rowData, sectionID, rowID) {
+  itemAction = (item, index) => {
     var items = this.state.items;
-    items[rowID].selected = true;
-    for (var i = 0; i < items.length; i++) {
-      var item = items[i];
-      if (item.selected && i != rowID) {
-        item.selected = false;
-      }
+    for (const value of items) {
+      value.selected = false;
     }
+    item.selected = true;
     this.setState({
       items: items,
     });
-    if (this.props.onSelectedData) {
-      this.props.onSelectedData(items[rowID]);
+    if (this.props.onSelectedItem) {
+      this.props.onSelectedItem(item);
     }
     if (this.props.closeOnSelect == true) {
       setTimeout(
         function() {
-          this.hideSelector();
+          this.hide();
         }.bind(this),
         this.props.closeOnSelectInterval,
       );
     }
-  }
-  renderRow(rowData, sectionID, rowID) {
-    if (rowData.imageUri.length === 0) {
-      console.warn('QuickSelector: imageUri is missing at index: ' + rowID);
-    }
+  };
+  renderItem = item => {
+    const index = item.index;
+    item = item.item;
     return (
-      <TouchableHighlight
-        underlayColor="darkgray"
-        onPress={() => this.rowAction(rowData, sectionID, rowID)}
-      >
+      <TouchableOpacity onPress={() => this.itemAction(item, index)}>
         <View
           style={[
             styles.column,
-            {opacity: rowData.selected ? 1 : this.props.opacity},
+            {opacity: item.selected ? 1 : this.props.opacity},
           ]}
         >
           <Image
             style={{
-              borderColor: rowData.selected
-                ? rowData.borderColor
-                : 'transparent',
+              borderColor: item.selected ? item.borderColor : 'transparent',
               width: this.props.imageWidth,
               height: this.props.imageHeight,
               borderRadius: this.props.imageBorderRadius,
               borderWidth: this.props.imageBorderWidth,
             }}
-            source={{uri: rowData.imageUri}}
+            source={{uri: item.imageUri}}
           />
           <Text
             style={{
               color: this.props.textColor,
               fontSize: this.props.fontSize,
               fontFamily: this.props.fontFamily,
-              fontWeight: rowData.selected ? 'bold' : 'normal',
+              fontWeight: item.selected ? 'bold' : 'normal',
               maxWidth: this.props.imageWidth,
               textAlign: 'center',
             }}
             numberOfLines={this.props.numberOfLines}
           >
-            {rowData.title}
+            {item.title}
           </Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
-  }
+  };
   render() {
-    if (this.state.isVisible) {
-      const {startDelta, endDelta, fadeAnim, dataSource, items} = this.state
-      const {zIndex, backgroundColor} = this.props
+    const {
+      startDelta,
+      endDelta,
+      fadeAnim,
+      dataSource,
+      items,
+      visible,
+    } = this.state;
+    const {zIndex, backgroundColor} = this.props;
+    if (visible) {
       return (
         <Animated.View
           style={{
@@ -195,18 +197,14 @@ export default class ThumbnailSelector extends Component {
             ],
             position: 'absolute',
             bottom: 0,
-            left: 0,
-            right: 0,
           }}
         >
-          <ListView
-            onLayout={(event) => this.onLayoutEvent(event)}
-            style={{backgroundColor: backgroundColor}}
+          <FlatList
+            ref={ref => this.flatList = ref}
+            style={{backgroundColor: backgroundColor, flex: 1}}
+            data={items}
             horizontal={true}
-            dataSource={dataSource}
-            renderRow={() => this.renderRow(rowData, sectionID, rowID)}
-            initialListSize={items.length}
-            pageSize={items.length}
+            renderItem={this.renderItem}
           />
         </Animated.View>
       );
