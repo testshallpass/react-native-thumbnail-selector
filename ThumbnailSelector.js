@@ -76,14 +76,23 @@ export default class ThumbnailSelector extends Component {
       items: this.props.items,
     });
   }
-  show() {
-    if (this.state.visible == true) {
-      this.hide();
-      return;
+  componentDidMount() {
+    const {visible} = this.props
+    if (visible) {
+      this.show()
     }
-    this.setState({
-      visible: true
-    })
+  }
+  componentWillReceiveProps(nextProps) {
+    const {visible} = this.props
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible) {
+        this.show()
+      } else {
+        this.hide()
+      }
+    }
+  }
+  show() {
     this.animateToValue(1);
   }
   hide() {
@@ -116,9 +125,9 @@ export default class ThumbnailSelector extends Component {
   itemAction = (item, index) => {
     var items = this.state.items;
     for (const value of items) {
-      value.selected = false
+      value.selected = false;
     }
-    item.selected = true
+    item.selected = true;
     this.setState({
       items: items,
     });
@@ -133,18 +142,18 @@ export default class ThumbnailSelector extends Component {
         this.props.closeOnSelectInterval,
       );
     }
-  }
-  renderItem = (item) => {
-    const index = item.index
-    item = item.item
+  };
+  renderItem = item => {
+    const index = item.index;
+    item = item.item;
     return (
-      <TouchableOpacity
-        onPress={() => this.itemAction(item, index)}>
+      <TouchableOpacity onPress={() => this.itemAction(item, index)}>
         <View
           style={[
             styles.column,
             {opacity: item.selected ? 1 : this.props.opacity},
-          ]}>
+          ]}
+        >
           <Image
             style={{
               borderColor: item.selected ? item.borderColor : 'transparent',
@@ -171,37 +180,41 @@ export default class ThumbnailSelector extends Component {
         </View>
       </TouchableOpacity>
     );
-  }
+  };
   render() {
-    const {startDelta, endDelta, fadeAnim, dataSource, items, visible} = this.state;
+    const {
+      startDelta,
+      endDelta,
+      fadeAnim,
+      dataSource,
+      items,
+    } = this.state;
     const {zIndex, backgroundColor} = this.props;
-    if (visible) {
-      return (
-        <Animated.View
-          style={{
-            zIndex: zIndex,
-            transform: [
-              {
-                translateY: fadeAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [startDelta, endDelta],
-                }),
-              },
-            ],
-            position: 'absolute',
-            bottom: 0,
-          }}>
-          <FlatList
-            ref={ref => this.flatList = ref}
-            style={{backgroundColor: backgroundColor, flex: 1}}
-            data={items}
-            horizontal={true}
-            renderItem={this.renderItem}
-           />
-        </Animated.View>
-      );
-    }
-    return null
+    return (
+      <Animated.View
+        style={{
+          zIndex: zIndex,
+          transform: [
+            {
+              translateY: fadeAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [startDelta, endDelta],
+              }),
+            },
+          ],
+          position: 'absolute',
+          bottom: 0,
+        }}
+      >
+        <FlatList
+          ref={ref => this.flatList = ref}
+          style={{backgroundColor: backgroundColor, flex: 1}}
+          data={items}
+          horizontal={true}
+          renderItem={this.renderItem}
+        />
+      </Animated.View>
+    );
   }
 }
 

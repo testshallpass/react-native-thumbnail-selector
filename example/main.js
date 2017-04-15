@@ -91,9 +91,9 @@ export default class main extends Component {
         <Image style={{width: 125, height: 125}} source={{uri: this.state.imageUri}}/>
         <Button
           onPress={() => this.showAction()}
-          title={"Toggle ThumbnailSelector"}
+          title={"Toggle"}
           color={"steelblue"}
-          accessibilityLabel={"Toggle ThumbnailSelector"}
+          accessibilityLabel={"Toggle"}
         />
         <ThumbnailSelector
           ref={ref => this.thumbnailSelector = ref}
@@ -110,7 +110,7 @@ export default class main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#E9EEEF',
     justifyContent: 'center',
     alignItems: 'center'
   },
