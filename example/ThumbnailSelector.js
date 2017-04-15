@@ -29,6 +29,8 @@ export default class ThumbnailSelector extends Component {
     captionTextStyle: Text.propTypes.style,
     thumbnailImageStyle: Image.propTypes.style,
     flatlistProps: PropTypes.func,
+    containerStyle: View.propTypes.style,
+    itemContainerStyle: View.propTypes.style,
   };
   static defaultProps = {
     items: null,
@@ -40,6 +42,17 @@ export default class ThumbnailSelector extends Component {
     closeOnSelectInterval: 200,
     numberOfLines: 2,
     visible: false,
+    containerStyle: {
+      position: 'absolute',
+      bottom: 0,
+    },
+    itemContainerStyle: {
+      flexDirection: 'column',
+      paddingLeft: 8,
+      paddingRight: 8,
+      paddingTop: 8,
+      alignItems: 'center',
+    },
     captionTextStyle: {
       color: 'white',
       fontFamily: 'Avenir',
@@ -53,7 +66,7 @@ export default class ThumbnailSelector extends Component {
       borderRadius: 2,
       borderColor: 'white'
     },
-    flatlistProps: null
+    flatlistProps: null,
   };
   constructor(props) {
     super(props);
@@ -68,11 +81,6 @@ export default class ThumbnailSelector extends Component {
       endDelta: 0,
       duration: 600,
     };
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
-    this.animateToValue = this.animateToValue.bind(this);
-    this.timeOutForisVisible = this.timeOutForisVisible.bind(this);
-    this.scrollToSelected = this.scrollToSelected.bind(this);
   }
   componentWillMount() {
     const {items} = this.props
@@ -100,21 +108,21 @@ export default class ThumbnailSelector extends Component {
       }
     }
   }
-  show() {
+  show = () => {
     this.animateToValue(1);
     this.scrollToSelected()
   }
-  hide() {
+  hide = () => {
     this.timeOutForisVisible(false);
     this.animateToValue(0);
   }
-  animateToValue(toValue) {
+  animateToValue = (toValue) => {
     Animated.timing(this.state.fadeAnim, {
       toValue: toValue,
       duration: this.state.duration,
     }).start();
   }
-  timeOutForisVisible(visible) {
+  timeOutForisVisible = (visible) => {
     timeOutId = setTimeout(
       function() {
         this.setState({
@@ -124,7 +132,7 @@ export default class ThumbnailSelector extends Component {
       this.state.duration,
     );
   }
-  scrollToSelected() {
+  scrollToSelected = () => {
     var index = 0
     const {items} = this.state
     for (var i = 0; i < items.length; i++) {
@@ -138,7 +146,7 @@ export default class ThumbnailSelector extends Component {
       this.flatList.scrollToIndex({index: index})
     }
   }
-  onLayoutEvent(event) {
+  onLayoutEvent = (event) => {
     const {x, y, width, height} = event.nativeEvent.layout;
     this.setState({
       startDelta: WINDOW.height + height,
@@ -169,12 +177,12 @@ export default class ThumbnailSelector extends Component {
   renderItem = (item) => {
     const index = item.index;
     item = item.item;
-    const {captionTextStyle, thumbnailImageStyle, numberOfLines, opacity} = this.props
+    const {itemContainerStyle, captionTextStyle, thumbnailImageStyle, numberOfLines, opacity} = this.props
     return (
       <TouchableOpacity onPress={() => this.itemAction(item, index)}>
         <View
           style={[
-            styles.column,
+            itemContainerStyle,
             {opacity: item.selected ? 1 : opacity},
           ]}>
           {this.renderImage(item.imageUri, thumbnailImageStyle, item.selected)}
@@ -201,10 +209,10 @@ export default class ThumbnailSelector extends Component {
       dataSource,
       items,
     } = this.state;
-    const {zIndex, backgroundColor, flatlistProps} = this.props;
+    const {zIndex, backgroundColor, flatlistProps, containerStyle} = this.props;
     return (
       <Animated.View
-        style={{
+        style={[containerStyle, {
           zIndex: zIndex,
           transform: [
             {
@@ -214,9 +222,7 @@ export default class ThumbnailSelector extends Component {
               }),
             },
           ],
-          position: 'absolute',
-          bottom: 0,
-        }}
+        }]}
       >
         <FlatList
           ref={ref => this.flatList = ref}
@@ -232,16 +238,5 @@ export default class ThumbnailSelector extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  column: {
-    flexDirection: 'column',
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 8,
-    alignItems: 'center',
-  },
+
 });
