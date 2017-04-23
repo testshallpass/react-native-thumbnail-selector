@@ -1,17 +1,19 @@
 ## react-native-thumbnail-selector
-[![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
+[![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/) [![npm version](http://img.shields.io/npm/v//react-native-thumbnail-selector.svg)](https://www.npmjs.com/package/react-native-thumbnail-selector) [![npm version](http://img.shields.io/npm/dm//react-native-thumbnail-selector.svg)](https://www.npmjs.com/package/react-native-thumbnail-selector) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.com/testshallpass/react-native-thumbnail-selector/master/LICENSE)
 
-Project to experiment with the new Flatlist in React-Native. **Requires >v0.43.0**
+ **Requires React-Native v0.43.0 or higher**
+
+ Project began as an experiment with the new Flatlist in React-Native and shifted to a easy-to-use thumbnail selector module. Dedicated to OGs.
 
 ### Installation
-```coming soon```
+```npm i react-native-thumbnail-selector --save```
 
 ### Usage
 ```javascript
 import ThumbnailSelector from 'react-native-thumbnail-selector'
 //...
 render() {
-  const items = [
+  const items = [ // !!! Unique keys are required for Flatlist.
     { key: 0,
       title: 'Lorem ipsum dolor sit amet',
       borderColor: 'white',
@@ -52,7 +54,7 @@ onSelectedItem(item) {
 ### Props
 
 | Name | Type | Description | Default |
-| --- | :---: | --- | --- |
+| --- | --- | --- | --- |
 | ```items``` | **Required** Array  | Array of items (i.e.`[{key: 0, title: 'Brian', borderColor: 'white', imageUri: 'https://facebook.github.io/react/img/logo_og.png', selected: false}]`) | []
 | ```visible``` | Bool  | show or hide selector | false
 | ```backgroundColor``` | String  | backgroundColor of Flatlist | false
