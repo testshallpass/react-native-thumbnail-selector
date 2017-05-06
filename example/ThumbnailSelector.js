@@ -1,13 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  Animated,
-  Dimensions,
-  View,
-} from 'react-native';
+import {Text, FlatList, Image, TouchableOpacity, Animated, Dimensions, View} from 'react-native';
 const {height, width} = Dimensions.get('window');
 const WINDOW = Dimensions.get('window');
 var timeOutId;
@@ -28,6 +20,7 @@ export default class ThumbnailSelector extends Component {
     flatlistProps: PropTypes.func,
     containerStyle: View.propTypes.style,
     itemContainerStyle: View.propTypes.style,
+    loadMore: PropTypes.func
   };
   static defaultProps = {
     items: null,
@@ -39,6 +32,7 @@ export default class ThumbnailSelector extends Component {
     closeOnSelectInterval: 200,
     numberOfLines: 2,
     visible: false,
+    loadMore: null,
     containerStyle: {
       position: 'absolute',
       bottom: 0,
@@ -86,13 +80,18 @@ export default class ThumbnailSelector extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const {visible} = this.props
+    const {visible, items} = this.props
     if (nextProps.visible !== visible) {
       if (nextProps.visible) {
         this.show()
       } else {
         this.hide()
       }
+    }
+    if (nextProps.items.length > items.length) {
+      this.setState({
+        items: nextProps.items
+      })
     }
   }
   show = () => {
@@ -160,7 +159,19 @@ export default class ThumbnailSelector extends Component {
         this.props.closeOnSelectInterval,
       );
     }
-  };
+  }
+  onEndReached = () => {
+    const {flatlistProps, loadMore} = this.props
+    if (flatlistProps) {
+      if (flatlistProps.onEndReached) {
+        flatlistProps.onEndReached()
+      }
+      return
+    }
+    if (loadMore) {
+      loadMore()
+    }
+  }
   renderItem = (item) => {
     const index = item.index;
     item = item.item;
@@ -217,6 +228,7 @@ export default class ThumbnailSelector extends Component {
           data={items}
           horizontal={true}
           renderItem={this.renderItem}
+          onEndReached={this.onEndReached}
           {...flatlistProps}
         />
       </Animated.View>
