@@ -12,5 +12,8 @@
     "react-native"
   ],
   "author": "Brian Sinnicke",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
