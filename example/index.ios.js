@@ -1,22 +1,13 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import Main from './main'
+import React, {Component} from 'react';
+import {AppRegistry} from 'react-native';
+import Main from './main';
 
 class ThumbnailSelector extends Component {
   render() {
-    return (
-      <Main />
-    )
+    return <Main />;
   }
 }
-
-const styles = StyleSheet.create({
-
-});
-
-AppRegistry.registerComponent('ThumbnailSelector', () => ThumbnailSelector);
+AppRegistry.registerComponent(
+  'ThumbnailSelectorExample',
+  () => ThumbnailSelector,
+);

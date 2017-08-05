@@ -1,8 +1,17 @@
-import React, {Component, PropTypes} from 'react';
-import {Text, FlatList, Image, TouchableOpacity, Animated, Dimensions, View} from 'react-native';
+import React, {Component} from 'react';
+import {
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Animated,
+  Dimensions,
+  ViewPropTypes,
+  View,
+} from 'react-native';
+import PropTypes from 'prop-types';
 const {height, width} = Dimensions.get('window');
 const WINDOW = Dimensions.get('window');
-var timeOutId;
 
 export default class ThumbnailSelector extends Component {
   static propTypes = {
@@ -18,9 +27,9 @@ export default class ThumbnailSelector extends Component {
     captionTextStyle: Text.propTypes.style,
     thumbnailImageStyle: Image.propTypes.style,
     flatlistProps: PropTypes.func,
-    containerStyle: View.propTypes.style,
-    itemContainerStyle: View.propTypes.style,
-    loadMore: PropTypes.func
+    containerStyle: ViewPropTypes.style,
+    itemContainerStyle: ViewPropTypes.style,
+    loadMore: PropTypes.func,
   };
   static defaultProps = {
     items: null,
@@ -55,7 +64,7 @@ export default class ThumbnailSelector extends Component {
       height: 125,
       borderWidth: 2,
       borderRadius: 2,
-      borderColor: 'white'
+      borderColor: 'white',
     },
     flatlistProps: null,
   };
@@ -74,42 +83,43 @@ export default class ThumbnailSelector extends Component {
     };
   }
   componentDidMount() {
-    const {visible} = this.props
+    const {visible} = this.props;
     if (visible) {
-      this.show()
+      this.show();
     }
   }
   componentWillReceiveProps(nextProps) {
-    const {visible, items} = this.props
+    const {visible, items} = this.props;
     if (nextProps.visible !== visible) {
       if (nextProps.visible) {
-        this.show()
+        this.show();
       } else {
-        this.hide()
+        this.hide();
       }
     }
     if (nextProps.items.length > items.length) {
       this.setState({
-        items: nextProps.items
-      })
+        items: nextProps.items,
+      });
     }
   }
   show = () => {
     this.animateToValue(1);
-    this.scrollToSelected()
-  }
+    this.scrollToSelected();
+  };
   hide = () => {
     this.timeOutForisVisible(false);
     this.animateToValue(0);
-  }
-  animateToValue = (toValue) => {
+  };
+  animateToValue = toValue => {
     Animated.timing(this.state.fadeAnim, {
       toValue: toValue,
       duration: this.state.duration,
+      friction: 7,
     }).start();
-  }
-  timeOutForisVisible = (visible) => {
-    timeOutId = setTimeout(
+  };
+  timeOutForisVisible = visible => {
+    setTimeout(
       function() {
         this.setState({
           visible: visible,
@@ -117,28 +127,28 @@ export default class ThumbnailSelector extends Component {
       }.bind(this),
       this.state.duration,
     );
-  }
+  };
   scrollToSelected = () => {
-    var index = 0
-    const {items} = this.state
+    var index = 0;
+    const {items} = this.state;
     for (var i = 0; i < items.length; i++) {
-      var item = items[i]
+      var item = items[i];
       if (item.selected) {
-        index = i
-        break
+        index = i;
+        break;
       }
     }
     if (index > 0) {
-      this.flatList.scrollToIndex({index: index})
+      this.flatList.scrollToIndex({index: index});
     }
-  }
-  onLayoutEvent = (event) => {
+  };
+  onLayoutEvent = event => {
     const {x, y, width, height} = event.nativeEvent.layout;
     this.setState({
       startDelta: WINDOW.height + height,
       endDelta: 0,
     });
-  }
+  };
   itemAction = (item, index) => {
     var items = this.state.items;
     for (const value of items) {
@@ -159,68 +169,83 @@ export default class ThumbnailSelector extends Component {
         this.props.closeOnSelectInterval,
       );
     }
-  }
+  };
   onEndReached = () => {
-    const {flatlistProps, loadMore} = this.props
+    const {flatlistProps, loadMore} = this.props;
     if (flatlistProps) {
       if (flatlistProps.onEndReached) {
-        flatlistProps.onEndReached()
+        flatlistProps.onEndReached();
       }
-      return
+      return;
     }
     if (loadMore) {
-      loadMore()
+      loadMore();
     }
-  }
-  renderItem = (item) => {
-    const index = item.index;
-    item = item.item;
-    const {itemContainerStyle, captionTextStyle, thumbnailImageStyle, numberOfLines, opacity} = this.props
+  };
+  renderItem = ({item, index}) => {
+    const {
+      itemContainerStyle,
+      captionTextStyle,
+      thumbnailImageStyle,
+      numberOfLines,
+      opacity,
+    } = this.props;
     return (
       <TouchableOpacity onPress={() => this.itemAction(item, index)}>
         <View
-          style={[
-            itemContainerStyle,
-            {opacity: item.selected ? 1 : opacity},
-          ]}>
+          style={[itemContainerStyle, {opacity: item.selected ? 1 : opacity}]}
+        >
           {this.renderImage(item.imageUri, thumbnailImageStyle, item.selected)}
-          {this.renderText(item.title, captionTextStyle, numberOfLines, item.selected)}
+          {this.renderText(
+            item.title,
+            captionTextStyle,
+            numberOfLines,
+            item.selected,
+          )}
         </View>
       </TouchableOpacity>
     );
   };
   renderImage(imageUri, style, selected) {
     return (
-      <Image style={[style, {borderColor: selected ? style.borderColor : 'transparent'}]} source={{uri: imageUri}} />
-    )
+      <Image
+        style={[
+          style,
+          {borderColor: selected ? style.borderColor : 'transparent'},
+        ]}
+        source={{uri: imageUri}}
+      />
+    );
   }
   renderText(text, style, numberOfLines, selected) {
     return (
-      <Text style={[style, {fontWeight: selected ? 'bold' : 'normal'}]} numberOfLines={numberOfLines}>{text}</Text>
-    )
+      <Text
+        style={[style, {fontWeight: selected ? 'bold' : 'normal'}]}
+        numberOfLines={numberOfLines}
+      >
+        {text}
+      </Text>
+    );
   }
   render() {
-    const {
-      startDelta,
-      endDelta,
-      fadeAnim,
-      dataSource,
-      items,
-    } = this.state;
+    const {startDelta, endDelta, fadeAnim, dataSource, items} = this.state;
     const {zIndex, backgroundColor, flatlistProps, containerStyle} = this.props;
     return (
       <Animated.View
-        style={[containerStyle, {
-          zIndex: zIndex,
-          transform: [
-            {
-              translateY: fadeAnim.interpolate({
-                inputRange: [0, 1],
-                outputRange: [startDelta, endDelta],
-              }),
-            },
-          ],
-        }]}
+        style={[
+          containerStyle,
+          {
+            zIndex: zIndex,
+            transform: [
+              {
+                translateY: fadeAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [startDelta, endDelta],
+                }),
+              },
+            ],
+          },
+        ]}
       >
         <FlatList
           ref={ref => this.flatList = ref}
@@ -229,6 +254,7 @@ export default class ThumbnailSelector extends Component {
           horizontal={true}
           renderItem={this.renderItem}
           onEndReached={this.onEndReached}
+          keyExtractor={item => item.key}
           {...flatlistProps}
         />
       </Animated.View>
