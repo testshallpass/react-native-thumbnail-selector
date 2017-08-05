@@ -27,5 +27,5 @@ A Flatlist thumbnail selector that animates from the bottom by default.
 | ```numberOfLines``` | Number  | numberOfLines for caption | 2
 | ```captionTextStyle``` | Text.proptypes.style | caption text style | `{color: 'white', fontFamily: 'Avenir', fontSize: 16, textAlign: 'center'}`
 | ```thumbnailImageStyle``` | Image.proptypes.style | thumbnail image style | `{width: 125, height: 125, borderWidth: 2, borderRadius: 2}`
-| ```containerStyle``` | View.proptypes.style | animated view style | `{position: 'absolute', bottom: 0}`
-| ```itemContainerStyle``` | View.proptypes.style | item view style | `{flexDirection: 'column', paddingLeft: 8, paddingRight: 8, paddingTop: 8, alignItems: 'center}`
+| ```containerStyle``` | ViewPropTypes.style | animated view style | `{position: 'absolute', bottom: 0}`
+| ```itemContainerStyle``` | ViewPropTypes.style | item view style | `{flexDirection: 'column', paddingLeft: 8, paddingRight: 8, paddingTop: 8, alignItems: 'center}`
