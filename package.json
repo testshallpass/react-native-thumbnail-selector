@@ -1,6 +1,6 @@
 {
   "name": "react-native-thumbnail-selector",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A Flatlist thumbnail selector that animates from the bottom by default.",
   "main": "ThumbnailSelector.js",
   "scripts": {
