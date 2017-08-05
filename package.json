@@ -1,11 +1,19 @@
 {
   "name": "react-native-thumbnail-selector",
   "version": "1.3.0",
-  "description": "A simple thumbnail selector that opens and closes from the bottom of the screen.",
+  "description": "A Flatlist thumbnail selector that animates from the bottom by default.",
   "main": "ThumbnailSelector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testshallpass/react-native-thumbnail-selector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/testshallpass/react-native-thumbnail-selector/issues"
+  },
+  "homepage": "https://github.com/testshallpass/react-native-thumbnail-selector#readme",
   "keywords": [
     "thumbnail",
     "selector",
