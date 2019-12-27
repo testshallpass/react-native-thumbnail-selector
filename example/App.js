@@ -8,9 +8,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       items: ITEMS,
-      visible: true,
-      imageUri: REACT_NATIVE_LOGO,
-      title: ITEMS[0].title + ' #' + ITEMS[0].key
+      visible: false,
+      selected: ITEMS[0],
     };
   }
   _onOpen = () => {
@@ -20,11 +19,7 @@ export default class App extends Component {
     this.setState({ visible: false });
   };
   _onSelect = item => {
-    this.setState({
-      visible: false,
-      imageUri: item.imageUri,
-      title: item.title + ' #' + item.key
-    });
+    this.setState({ selected: item });
   };
   _onLoadMore = () => {
     let items = this.state.items;
@@ -49,11 +44,13 @@ export default class App extends Component {
     this.setState({ items });
   };
   render() {
-    const { visible, items, imageUri, title } = this.state;
+    const { visible, items, selected } = this.state;
+    const { key, imageUri, title } = selected;
+    const text = `${title} #${key}`;
     return (
       <View style={styles.container}>
         <Image style={styles.image} resizeMode={'contain'} source={{ uri: imageUri }}/>
-        <Text style={styles.text}>{title}</Text>
+        <Text style={styles.text}>{text}</Text>
         <Button
           onPress={this._onOpen}
           title={'Open'}
