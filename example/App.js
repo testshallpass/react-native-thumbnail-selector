@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Button, Image, Text, View } from 'react-native';
-import ThumbnailSelector from './ThumbnailSelector';
 import { ITEMS, IMAGE_SIZE } from './constants';
+// import ThumbnailSelector from './src/ThumbnailSelector';
+import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 export default class App extends Component {
   constructor(props) {
