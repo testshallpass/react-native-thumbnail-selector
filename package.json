@@ -1,7 +1,7 @@
 {
   "name": "react-native-thumbnail-selector",
   "version": "1.5.0",
-  "description": "A Flatlist thumbnail selector that animates from the bottom by default.",
+  "description": "A thumbnail selector that internally uses Flatlist component so it requires react-native 0.43.0 or higher",
   "main": "ThumbnailSelector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,11 +17,14 @@
   "keywords": [
     "thumbnail",
     "selector",
-    "react-native"
+    "react-native",
+    "flatlist",
+    "horizontal",
+    "react-native-thumbnail-selector"
   ],
   "author": "Brian Sinnicke",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "15.5.10"
   }
 }
