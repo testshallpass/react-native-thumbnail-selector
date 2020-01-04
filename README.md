@@ -1,8 +1,8 @@
 # react-native-thumbnail-selector
 
 [![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
-![npm](https://img.shields.io/npm/v/react-native-thumbnail-selector)
-![npm](https://img.shields.io/npm/dm/react-native-thumbnail-selector)
+[![npm](https://img.shields.io/npm/v/react-native-thumbnail-selector)](https://www.npmjs.com/package/react-native-thumbnail-selector)
+[![npm](https://img.shields.io/npm/dm/react-native-thumbnail-selector)](https://www.npmjs.com/package/react-native-thumbnail-selector)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.github.com/testshallpass/react-native-thumbnail-selector/master/LICENSE)
 
 A thumbnail selector that internally uses Flatlist component so it requires react-native 0.43.0 or higher.
@@ -25,7 +25,7 @@ export default class App extends Component {
   _hide = () => {
     this.thumbnailSelectorRef.hide();
   };
-  _onSelect = item => {
+  _onSelect = (item, index) => {
     this._hide();
   };
   render() {
