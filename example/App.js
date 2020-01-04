@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native';
-import { ITEMS, IMAGE_SIZE } from './constants';
+import React, {Component} from 'react';
+import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
+import {ITEMS, IMAGE_SIZE} from './constants';
 // import ThumbnailSelector from './src/ThumbnailSelector';
 import ThumbnailSelector from 'react-native-thumbnail-selector';
 
@@ -21,18 +21,18 @@ export default class App extends Component {
     this.thumbnailSelectorRef.hide();
   };
   _onSelect = (item, index) => {
-    this.setState({ selectedIndex: index });
+    this.setState({selectedIndex: index});
   };
   render() {
-    const { selectedIndex } = this.state;
-    const { image, caption } = ITEMS[selectedIndex];
+    const {selectedIndex} = this.state;
+    const {image, caption} = ITEMS[selectedIndex];
     const text = `${caption} #${selectedIndex}`;
     return (
       <View style={styles.container}>
-        <Image 
-          style={styles.image} 
-          resizeMode={'contain'} 
-          source={{ uri: image }}
+        <Image
+          style={styles.image}
+          resizeMode={'contain'}
+          source={{uri: image}}
         />
         <Text style={styles.text}>{text}</Text>
         <TouchableOpacity style={styles.button} onPress={this._show}>
@@ -42,7 +42,7 @@ export default class App extends Component {
           <Text style={styles.text}>{'Hide'}</Text>
         </TouchableOpacity>
         <ThumbnailSelector
-          ref={ref => this.thumbnailSelectorRef = ref}
+          ref={ref => (this.thumbnailSelectorRef = ref)}
           selectedIndex={selectedIndex}
           thumbnails={ITEMS}
           onSelect={this._onSelect}
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   image: {
-    width: IMAGE_SIZE, 
+    width: IMAGE_SIZE,
     height: IMAGE_SIZE,
     margin: 8,
     alignSelf: 'center',
@@ -77,5 +77,5 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1,
     alignContent: 'center',
-  }
+  },
 });

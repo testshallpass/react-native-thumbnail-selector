@@ -1,4 +1,5 @@
-export const REACT_NATIVE_LOGO = 'https://facebook.github.io/react-native/docs/assets/favicon.png';
+export const REACT_NATIVE_LOGO =
+  'https://facebook.github.io/react-native/docs/assets/favicon.png';
 export const IMAGE_SIZE = 125;
 const getPlaceholderImage = (category = '') => {
   const placeholderPrefix = `https://placeimg.com/${IMAGE_SIZE}/${IMAGE_SIZE}`;
