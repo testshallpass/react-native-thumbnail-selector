@@ -14,15 +14,12 @@ A thumbnail selector that internally uses Flatlist component so it requires reac
 
 ```javascript
 import ThumbnailSelector from 'react-native-thumbnail-selector';
-const REACT_NATIVE_LOGO = 'https://facebook.github.io/react-native/docs/assets/favicon.png';
 export default class App extends Component {
   componentDidMount() {
     this._show();
   }
   _show = () => {
-    // thumbnail objects must adhere to having image and caption properties.
-    const thumbnails = [{ image: REACT_NATIVE_LOGO, caption: 'Logo' }];
-    this.thumbnailSelectorRef.show(thumbnails);
+    this.thumbnailSelectorRef.show();
   };
   _hide = () => {
     this.thumbnailSelectorRef.hide();
@@ -31,9 +28,13 @@ export default class App extends Component {
     this._hide();
   };
   render() {
+    const reactNativeImage = 'https://facebook.github.io/react-native/docs/assets/favicon.png';
+    // thumbnail objects are require to have image and caption properties.
+    const thumbnails = [{ image: reactNativeImage, caption: 'Logo' }];
     return (
       <ThumbnailSelector
         ref={ref => this.thumbnailSelectorRef = ref}
+        thumbnails={thumbnails}
         onSelect={this._onSelect}
       />
     );
@@ -45,13 +46,16 @@ export default class App extends Component {
 
 | Name | Type | Description | Default |
 | --- | :---: | --- | --- |
-| ```containerStyle``` | Object | animated view style | `{ backgroundColor: 'gray' }`
+| ```thumbnails``` | Array | thumbnails for the Flatlist | `[]`
+| ```containerStyle``` | Object | animated view style | `{ elevation: 1, zIndex: 1, position: 'absolute', top: 0, right: 0, left: 0  }`
 | ```thumbnailStyle``` | Object | thumbnail style | `{ flexDirection: 'column', margin: 8, alignItems: 'center' }`
 | ```imageStyle``` | Object | image style | `{ width: 125, height: 125, borderWidth: 2 }`
-| ```captionStyle``` | Object | caption text style | `{ color: 'white', fontSize: 16, textAlign: 'center', fontWeight: 'bold' }`
+| ```captionStyle``` | Object | caption text style | `{ fontSize: 16, textAlign: 'center', fontWeight: 'bold' }`
 | ```animationDuration``` | Number  | how long it animates show and hide | 600
-| ```onSelect``` | Func  | invoked at thumbnail selection | `() => {}`
+| ```onSelect``` | Function  | invoked at thumbnail selection | `() => {}`
 | ```activeOpacity``` | Number  | selected thumbnails opacity | 1
 | ```inactiveOpacity``` | Number  | unselected thumbnails opacity | 0.5
 | ```activeBorderColor``` | String  | selected thumbnails borderColor | transparent
-| ```inactiveBorderColor``` | String  | unselected thumbnails borderColor | white
+| ```inactiveBorderColor``` | String  | unselected thumbnails borderColor | black
+| ```selectedIndex``` | Number  | selected index of thumbnail | -1
+| ```viewHeight``` | Number  | thumbnail container view height | 0

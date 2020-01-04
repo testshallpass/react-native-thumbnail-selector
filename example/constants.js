@@ -1,10 +1,17 @@
 export const REACT_NATIVE_LOGO = 'https://facebook.github.io/react-native/docs/assets/favicon.png';
-export const IMAGE_SIZE = 150;
-export const PLACEHOLDER = `https://placeimg.com/${IMAGE_SIZE}/${IMAGE_SIZE}/any`;
+export const IMAGE_SIZE = 125;
+const getPlaceholderImage = (category = '') => {
+  const placeholderPrefix = `https://placeimg.com/${IMAGE_SIZE}/${IMAGE_SIZE}`;
+  const categories = ['animals', 'arch', 'nature', 'people', 'tech', 'any'];
+  if (categories.includes(category)) {
+    return `${placeholderPrefix}/${category}`;
+  }
+  return `${placeholderPrefix}/any`;
+};
 export const ITEMS = [
   {
-    caption: 'Deserunt',
-    image: PLACEHOLDER,
+    caption: 'David',
+    image: getPlaceholderImage('tech'),
   },
   {
     caption: 'Brian',
@@ -12,7 +19,7 @@ export const ITEMS = [
   },
   {
     caption: 'Gene',
-    image: PLACEHOLDER,
+    image: getPlaceholderImage('arch'),
   },
   {
     caption: 'Jose',
@@ -20,7 +27,7 @@ export const ITEMS = [
   },
   {
     caption: 'Jon',
-    image: PLACEHOLDER,
+    image: getPlaceholderImage('animals'),
   },
   {
     caption: 'Craig',
@@ -28,6 +35,6 @@ export const ITEMS = [
   },
   {
     caption: 'Sean',
-    image: PLACEHOLDER,
+    image: getPlaceholderImage('people'),
   },
 ];
