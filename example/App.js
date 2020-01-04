@@ -26,7 +26,7 @@ export default class App extends Component {
   render() {
     const { selectedIndex } = this.state;
     const { image, caption } = ITEMS[selectedIndex];
-    const text = `${caption}`;
+    const text = `${caption} #${selectedIndex}`;
     return (
       <View style={styles.container}>
         <Image 

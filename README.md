@@ -11,6 +11,10 @@ A thumbnail selector that internally uses Flatlist component so it requires reac
 
 ```npm i react-native-thumbnail-selector --save```
 
+## Demo
+
+![screenshot](https://raw.github.com/testshallpass/react-native-thumbnail-selector/master/assets/demo.gif)
+
 ## Usage
 
 ```javascript
