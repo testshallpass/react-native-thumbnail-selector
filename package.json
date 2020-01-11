@@ -1,6 +1,6 @@
 {
   "name": "react-native-thumbnail-selector",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A thumbnail selector that internally uses Flatlist component so it requires react-native 0.43.0 or higher",
   "main": "ThumbnailSelector.js",
   "scripts": {
