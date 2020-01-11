@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
@@ -71,7 +71,7 @@ export default class ThumbnailSelector extends Component {
   show = () => {
     this._animate(1);
   };
-  hide = () => { 
+  hide = () => {
     this._animate(0);
   };
   _animate = (toValue, onComplete = () => {}) => {
@@ -82,30 +82,36 @@ export default class ThumbnailSelector extends Component {
     }).start(onComplete);
   };
   _onLayout = event => {
-    const { height } = event.nativeEvent.layout;
+    const {height} = event.nativeEvent.layout;
     const stateHeight = this.state.height;
-    if (stateHeight != height) {
-      this.setState({ height });
+    if (stateHeight !== height) {
+      this.setState({height});
     }
   };
   _onSelect = (item, index) => {
-    if (index != this.state.selectedIndex) {
-      this.setState({ selectedIndex: index });
+    if (index !== this.state.selectedIndex) {
+      this.setState({selectedIndex: index});
       this.props.onSelect(item, index);
     }
   };
-  _renderItem = ({ item, index }) => {
-    const { selectedIndex } = this.state;
-    const { thumbnailStyle, captionStyle, imageStyle, activeOpacity, inactiveOpacity, activeBorderColor, inactiveBorderColor } = this.props;
-    const selected = selectedIndex == index;
+  _renderItem = ({item, index}) => {
+    const {selectedIndex} = this.state;
+    const {
+      thumbnailStyle,
+      captionStyle,
+      imageStyle,
+      activeOpacity,
+      inactiveOpacity,
+      activeBorderColor,
+      inactiveBorderColor,
+    } = this.props;
+    const selected = selectedIndex === index;
     const opacity = selected ? activeOpacity : inactiveOpacity;
     const borderColor = selected ? activeBorderColor : inactiveBorderColor;
-    const { image, caption } = item;
+    const {image, caption} = item;
     return (
       <TouchableOpacity onPress={() => this._onSelect(item, index)}>
-        <View
-          style={[thumbnailStyle, { opacity }]}
-        >
+        <View style={[thumbnailStyle, {opacity}]}>
           {image && this._renderImage(image, imageStyle, borderColor)}
           {caption && this._renderText(caption, captionStyle, selected)}
         </View>
@@ -115,8 +121,8 @@ export default class ThumbnailSelector extends Component {
   _renderImage = (uri, style, borderColor) => {
     return (
       <Image
-        style={[ style, { borderColor } ]}
-        source={{ uri }}
+        style={[style, {borderColor}]}
+        source={{uri}}
         resizeMode={'contain'}
       />
     );
@@ -126,11 +132,7 @@ export default class ThumbnailSelector extends Component {
     if (selected && style.fontWeight) {
       fontWeight = style.fontWeight;
     }
-    return (
-      <Text style={ [style, { fontWeight }] }>
-        {text}
-      </Text>
-    );
+    return <Text style={[style, {fontWeight}]}>{text}</Text>;
   };
   _getOutputRange = height => {
     const WINDOW = Dimensions.get('window');
@@ -155,14 +157,14 @@ export default class ThumbnailSelector extends Component {
     ];
   };
   render() {
-    const { height, animationValue } = this.state;
-    const { containerStyle, thumbnails } = this.props;
+    const {height, animationValue} = this.state;
+    const {containerStyle, thumbnails} = this.props;
     return (
       <Animated.View
         onLayout={this._onLayout}
         style={this._getAnimViewStyle(containerStyle, animationValue, height)}>
         <FlatList
-          ref={ref => this.flatList = ref}
+          ref={ref => (this.flatList = ref)}
           data={thumbnails}
           extraData={this.state}
           horizontal={true}
