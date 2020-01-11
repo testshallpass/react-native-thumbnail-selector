@@ -5072,10 +5072,10 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
-react-native-thumbnail-selector@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-2.1.0.tgz#528f63b72896a2520b41f9c8cee908a09527d12a"
-  integrity sha512-uVjeuXF64Io/gnQiggNbYVmeoTj4vWoGg6l1h8yjVQdckdN5gryLFSEnQOSkEanigDYZS2uH+HbqifgslDOeXQ==
+react-native-thumbnail-selector@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-2.1.2.tgz#46ca3a1806998f6a4828dd15c797460e077db8af"
+  integrity sha512-kzEIOmV33xBeZ8uCxDdO9aILevvrso2k1sFp37nUe69PYUsTqd1V+iWwRlmkalA27lJbIti833gzuUbJiYvACw==
   dependencies:
     prop-types "15.5.10"
 
