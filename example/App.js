@@ -1,56 +1,58 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
 import {ITEMS, IMAGE_SIZE} from './constants';
-// import ThumbnailSelector from './src/ThumbnailSelector';
 import ThumbnailSelector from 'react-native-thumbnail-selector';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedIndex: 0,
-    };
-  }
-  componentDidMount() {
-    this._show();
-  }
-  _show = () => {
-    this.thumbnailSelectorRef.show();
-  };
-  _hide = () => {
-    this.thumbnailSelectorRef.hide();
-  };
-  _onSelect = (item, index) => {
-    this.setState({selectedIndex: index});
-  };
-  render() {
-    const {selectedIndex} = this.state;
-    const {image, caption} = ITEMS[selectedIndex];
-    const text = `${caption} #${selectedIndex}`;
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          resizeMode={'contain'}
-          source={{uri: image}}
-        />
-        <Text style={styles.text}>{text}</Text>
-        <TouchableOpacity style={styles.button} onPress={this._show}>
-          <Text style={styles.text}>{'Show'}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this._hide}>
-          <Text style={styles.text}>{'Hide'}</Text>
-        </TouchableOpacity>
-        <ThumbnailSelector
-          ref={ref => (this.thumbnailSelectorRef = ref)}
-          selectedIndex={selectedIndex}
-          thumbnails={ITEMS}
-          onSelect={this._onSelect}
-        />
-      </View>
-    );
-  }
-}
+const Label = (props) => {
+  return <Text style={styles.text}>{props.text}</Text>;
+};
+
+const Button = (props) => {
+  return (
+    <TouchableOpacity style={styles.button} onPress={props.onPress}>
+      <Label text={props.text} />
+    </TouchableOpacity>
+  );
+};
+
+const Item = (props) => {
+  return (
+    <View>
+      <Image
+        style={styles.image}
+        resizeMode={'contain'}
+        source={{uri: props.uri}}
+      />
+      <Label text={props.text} />
+    </View>
+  );
+};
+
+const App = () => {
+  const [selected, setSelected] = useState(ITEMS[0]);
+  const {id, image, caption} = selected;
+  const text = `${caption} #${id}`;
+  let thumbnailSelectorRef;
+  return (
+    <View style={styles.container}>
+      <Item uri={image} text={text} />
+      <Button
+        text={'Show'}
+        onPress={() => thumbnailSelectorRef.show()}
+      />
+      <Button
+        text={'Hide'}
+        onPress={() => thumbnailSelectorRef.hide()}
+      />
+      <ThumbnailSelector
+        ref={(ref) => (thumbnailSelectorRef = ref)}
+        selectedIndex={id}
+        thumbnails={ITEMS}
+        onSelect={(item) => setSelected(item)}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -79,3 +81,5 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
 });
+
+export default App;
