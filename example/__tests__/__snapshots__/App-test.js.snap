@@ -1,0 +1,795 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#E9EEEF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View>
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "uri": "https://placeimg.com/125/125/tech",
+        }
+      }
+      style={
+        Object {
+          "alignSelf": "center",
+          "height": 125,
+          "margin": 8,
+          "width": 125,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#202020",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      David
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#202020",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      https://placeimg.com/125/125/tech
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignContent": "center",
+        "borderColor": "#202020",
+        "borderRadius": 2,
+        "borderWidth": 1,
+        "margin": 8,
+        "padding": 8,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#202020",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      Show
+    </Text>
+  </View>
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "elevation": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+        "zIndex": 1,
+      }
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "caption": "David",
+            "image": "https://placeimg.com/125/125/tech",
+          },
+          Object {
+            "caption": "Brian",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Gene",
+            "image": "https://placeimg.com/125/125/arch",
+          },
+          Object {
+            "caption": "Jose",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Jon",
+            "image": "https://placeimg.com/125/125/animals",
+          },
+          Object {
+            "caption": "Craig",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Sean",
+            "image": "https://placeimg.com/125/125/people",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      extraData={
+        Array [
+          Object {
+            "caption": "David",
+            "image": "https://placeimg.com/125/125/tech",
+          },
+          Object {
+            "caption": "Brian",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Gene",
+            "image": "https://placeimg.com/125/125/arch",
+          },
+          Object {
+            "caption": "Jose",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Jon",
+            "image": "https://placeimg.com/125/125/animals",
+          },
+          Object {
+            "caption": "Craig",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Sean",
+            "image": "https://placeimg.com/125/125/people",
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={true}
+      initialNumToRender={7}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      onSelect={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      selectedIndex={0}
+      stickyHeaderIndices={Array []}
+      thumbnails={
+        Array [
+          Object {
+            "caption": "David",
+            "image": "https://placeimg.com/125/125/tech",
+          },
+          Object {
+            "caption": "Brian",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Gene",
+            "image": "https://placeimg.com/125/125/arch",
+          },
+          Object {
+            "caption": "Jose",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Jon",
+            "image": "https://placeimg.com/125/125/animals",
+          },
+          Object {
+            "caption": "Craig",
+            "image": "https://reactnative.dev/docs/assets/favicon.png",
+          },
+          Object {
+            "caption": "Sean",
+            "image": "https://placeimg.com/125/125/people",
+          },
+        ]
+      }
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 1,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://placeimg.com/125/125/tech",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "black",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "bold",
+                    },
+                  ]
+                }
+              >
+                David
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Brian
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://placeimg.com/125/125/arch",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Gene
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Jose
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://placeimg.com/125/125/animals",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Jon
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Craig
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "margin": 8,
+                  },
+                  Object {
+                    "opacity": 0.5,
+                  },
+                ]
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "https://placeimg.com/125/125/people",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderWidth": 2,
+                      "height": 125,
+                      "width": 125,
+                    },
+                    Object {
+                      "borderColor": "transparent",
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                Sean
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;
