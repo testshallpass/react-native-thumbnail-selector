@@ -11,10 +11,11 @@
 
 1. Navigate to example directory (```cd ~/example```).
 2. Install dependencies: ```yarn```.
-3. Install iOS cocoapods: ```cd ios && pod install```
-4. Start Metro Bundler: ```yarn start```.
-5. For iOS, ```yarn run ios```.
-6. For Android, start an emulator then, do  ```yarn run android```.
+3. Examine your environment: ```yarn doctor```. Fix any errors before proceeding.
+4. Install iOS cocoapods: ```yarn ios:pod```
+5. Start Metro Bundler: ```yarn start```.
+6. For iOS, ```yarn ios```.
+7. For Android,  ```yarn android```.
 
 ## References
 

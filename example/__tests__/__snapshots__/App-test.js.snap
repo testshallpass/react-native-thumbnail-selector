@@ -4,7 +4,7 @@ exports[`renders 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#E9EEEF",
+      "backgroundColor": "beige",
       "flex": 1,
       "justifyContent": "center",
     }
