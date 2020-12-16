@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {StyleSheet, Pressable, Image, Text, View} from 'react-native';
 import {thumbnails, imageSize} from './constants';
-import ThumbnailSelector from './src/ThumbnailSelector';
+import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const Label = ({text = ''}) => {
   return <Text style={styles.text}>{text}</Text>;
