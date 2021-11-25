@@ -20,15 +20,13 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Image
-          style={styles.image}
-          resizeMode={'contain'}
-          source={{uri: thumbnail.image}}
-        />
-        <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
-        <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
-      </View>
+      <Image
+        style={styles.image}
+        resizeMode={'contain'}
+        source={{uri: thumbnail.image}}
+      />
+      <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
+      <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
       <Switch value={isVisible} onValueChange={_onValueChange} />
       <ThumbnailSelector
         ref={thumbnailSelectorRef}
