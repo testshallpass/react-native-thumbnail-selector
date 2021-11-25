@@ -54,6 +54,7 @@ exports[`renders 1`] = `
   </View>
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -89,6 +90,8 @@ exports[`renders 1`] = `
     </Text>
   </View>
   <View
+    collapsable={false}
+    nativeID="animatedComponent"
     onLayout={[Function]}
     style={
       Object {
@@ -139,7 +142,6 @@ exports[`renders 1`] = `
           },
         ]
       }
-      disableVirtualization={false}
       extraData={
         Array [
           Object {
@@ -177,10 +179,9 @@ exports[`renders 1`] = `
       horizontal={true}
       initialNumToRender={7}
       keyExtractor={[Function]}
-      maxToRenderPerBatch={10}
       onContentSizeChange={[Function]}
-      onEndReachedThreshold={2}
       onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
       onMomentumScrollEnd={[Function]}
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
@@ -223,9 +224,7 @@ exports[`renders 1`] = `
           },
         ]
       }
-      updateCellsBatchingPeriod={50}
       viewabilityConfigCallbackPairs={Array []}
-      windowSize={21}
     >
       <View>
         <View
@@ -241,7 +240,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -321,7 +322,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -401,7 +404,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -481,7 +486,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -561,7 +568,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -641,7 +650,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -721,7 +732,9 @@ exports[`renders 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

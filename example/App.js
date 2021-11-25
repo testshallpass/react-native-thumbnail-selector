@@ -1,33 +1,7 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Pressable, Image, Text, View} from 'react-native';
+import {StyleSheet, Switch, Image, Text, View} from 'react-native';
 import {thumbnails, imageSize} from './constants';
-import ThumbnailSelector from 'react-native-thumbnail-selector';
-
-const Label = ({text = ''}) => {
-  return <Text style={styles.text}>{text}</Text>;
-};
-
-const Button = ({text = '', onPress = () => {}}) => {
-  return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Label text={text} />
-    </Pressable>
-  );
-};
-
-const Thumbnail = ({thumbnail = {caption: '', image: ''}}) => {
-  return (
-    <View>
-      <Image
-        style={styles.image}
-        resizeMode={'contain'}
-        source={{uri: thumbnail.image}}
-      />
-      <Label text={thumbnail.caption} />
-      <Label text={thumbnail.image} />
-    </View>
-  );
-};
+import ThumbnailSelector from './src/ThumbnailSelector';
 
 const App = () => {
   const [selected, setSelected] = useState(0);
@@ -35,20 +9,27 @@ const App = () => {
   const thumbnail = thumbnails[selected];
   let thumbnailSelectorRef = useRef(null);
 
-  const _onPress = () => {
-    if (isVisible) {
-      thumbnailSelectorRef.current.hide();
-      setIsVisible(false);
-    } else {
+  const _onValueChange = value => {
+    if (value) {
       thumbnailSelectorRef.current.show();
-      setIsVisible(true);
+    } else {
+      thumbnailSelectorRef.current.hide();
     }
+    setIsVisible(value);
   };
 
   return (
     <View style={styles.container}>
-      <Thumbnail thumbnail={thumbnail} />
-      <Button text={isVisible ? 'Hide' : 'Show'} onPress={_onPress} />
+      <View>
+        <Image
+          style={styles.image}
+          resizeMode={'contain'}
+          source={{uri: thumbnail.image}}
+        />
+        <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
+        <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
+      </View>
+      <Switch value={isVisible} onValueChange={_onValueChange} />
       <ThumbnailSelector
         ref={thumbnailSelectorRef}
         thumbnails={thumbnails}
@@ -62,28 +43,20 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'beige',
+    backgroundColor: 'whitesmoke',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     color: '#202020',
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
+    marginVertical: 4,
   },
   image: {
     width: imageSize,
     height: imageSize,
-    margin: 8,
     alignSelf: 'center',
-  },
-  button: {
-    margin: 8,
-    padding: 8,
-    borderColor: '#202020',
-    borderRadius: 2,
-    borderWidth: 1,
-    alignContent: 'center',
   },
 });
 
