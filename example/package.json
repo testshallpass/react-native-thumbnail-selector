@@ -9,6 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "ios:pod": "cd ios && pod install && cd ..",
+    "android:clean": "cd android && ./gradlew clean && cd ..",
     "doctor": "npx react-native doctor"
   },
   "dependencies": {

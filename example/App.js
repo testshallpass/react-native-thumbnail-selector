@@ -1,38 +1,79 @@
 import React, {useRef, useState} from 'react';
 import {StyleSheet, Switch, Image, Text, View} from 'react-native';
-import {thumbnails, imageSize} from './constants';
 import ThumbnailSelector from './src/ThumbnailSelector';
 
 const App = () => {
-  const [selected, setSelected] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const thumbnail = thumbnails[selected];
-  let thumbnailSelectorRef = useRef(null);
+  const _getPlaceholderImage = (category = '') => {
+    const placeholderPrefix = `https://placeimg.com/${imageSize}/${imageSize}`;
+    const categories = ['animals', 'arch', 'nature', 'people', 'tech', 'any'];
+    if (categories.includes(category)) {
+      return `${placeholderPrefix}/${category}`;
+    }
+    return `${placeholderPrefix}/any`;
+  };
+
+  const reactNativeLogo = 'https://reactjs.org/logo-og.png';
+  const imageSize = 125;
+  const thumbnails = [
+    {
+      caption: 'David',
+      image: _getPlaceholderImage('tech'),
+    },
+    {
+      caption: 'Brian',
+      image: reactNativeLogo,
+    },
+    {
+      caption: 'Gene',
+      image: _getPlaceholderImage('arch'),
+    },
+    {
+      caption: 'Jose',
+      image: reactNativeLogo,
+    },
+    {
+      caption: 'Jon',
+      image: _getPlaceholderImage('animals'),
+    },
+    {
+      caption: 'Craig',
+      image: reactNativeLogo,
+    },
+    {
+      caption: 'Sean',
+      image: _getPlaceholderImage('people'),
+    },
+  ];
+  let selected = 0;
+  const [thumbnail, setThumbnail] = useState(thumbnails[selected]);
+  const [isOpen, setIsOpen] = useState(false);
+  let thumbnailSelectorRef = useRef();
 
   const _onValueChange = value => {
-    if (value) {
-      thumbnailSelectorRef.current.show();
-    } else {
-      thumbnailSelectorRef.current.hide();
-    }
-    setIsVisible(value);
+    thumbnailSelectorRef.current.animate();
+    setIsOpen(value);
   };
+
+  if (thumbnail) {
+    selected = thumbnails.indexOf(thumbnail);
+  }
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        resizeMode={'contain'}
-        source={{uri: thumbnail.image}}
-      />
-      <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
-      <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
-      <Switch value={isVisible} onValueChange={_onValueChange} />
+      <Image style={styles.image} source={{uri: thumbnail.image}} />
+      <Text style={styles.text}>{`Caption is ${thumbnail.caption}`}</Text>
+      <Text style={styles.text}>{`Image is ${thumbnail.image}`}</Text>
+      <View style={styles.switch}>
+        <Switch value={isOpen} onValueChange={_onValueChange} />
+        <Text style={styles.text}>{`ThumbnailSelector is ${
+          isOpen ? 'open' : 'closed'
+        }`}</Text>
+      </View>
       <ThumbnailSelector
         ref={thumbnailSelectorRef}
         thumbnails={thumbnails}
-        selectedIndex={selected}
-        onSelect={({item, index}) => setSelected(index)}
+        initialIndex={selected}
+        onSelect={({item}) => setThumbnail(item)}
       />
     </View>
   );
@@ -41,19 +82,20 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'whitesmoke',
     justifyContent: 'center',
+    margin: 8,
+  },
+  switch: {
+    flexDirection: 'row',
     alignItems: 'center',
   },
   text: {
-    color: '#202020',
     fontSize: 16,
-    fontWeight: 'bold',
-    marginVertical: 4,
+    padding: 4,
   },
   image: {
-    width: imageSize,
-    height: imageSize,
+    width: 125,
+    height: 125,
     alignSelf: 'center',
   },
 });
