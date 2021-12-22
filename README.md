@@ -1,7 +1,7 @@
 # react-native-thumbnail-selector
 
 [![Platform](https://img.shields.io/badge/react-v17.0.2-lightgrey?style=flat-square)](https://reactjs.org/)
-[![Platform](https://img.shields.io/badge/react--native-v0.66.3-blue?style=flat-square)](https://github.com/facebook/react-native)
+[![Platform](https://img.shields.io/badge/react--native-v0.66.4-blue?style=flat-square)](https://github.com/facebook/react-native)
 [![npm](https://img.shields.io/npm/v/react-native-thumbnail-selector?style=flat-square)](https://www.npmjs.com/package/react-native-thumbnail-selector)
 [![npm](https://img.shields.io/npm/dm/react-native-thumbnail-selector?style=flat-square)](https://www.npmjs.com/package/react-native-thumbnail-selector)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.github.com/testshallpass/react-native-thumbnail-selector/master/LICENSE)

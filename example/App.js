@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {StyleSheet, Switch, Image, Text, View} from 'react-native';
-import ThumbnailSelector from './src/ThumbnailSelector';
+import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const App = () => {
   const _getPlaceholderImage = (category = '') => {
