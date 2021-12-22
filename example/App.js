@@ -61,10 +61,10 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{uri: thumbnail.image}} />
+      <Switch value={isOpen} onValueChange={_onValueChange} />
       <Text style={styles.text}>{`Caption is ${thumbnail.caption}`}</Text>
       <Text style={styles.text}>{`Image is ${thumbnail.image}`}</Text>
       <View style={styles.switch}>
-        <Switch value={isOpen} onValueChange={_onValueChange} />
         <Text style={styles.text}>{`ThumbnailSelector is ${
           isOpen ? 'open' : 'closed'
         }`}</Text>
@@ -73,7 +73,7 @@ const App = () => {
         ref={thumbnailSelectorRef}
         thumbnails={thumbnails}
         initialIndex={selected}
-        onSelect={({item}) => setThumbnail(item)}
+        onThumbnailSelect={({item}) => setThumbnail(item)}
       />
     </View>
   );

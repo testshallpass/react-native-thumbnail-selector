@@ -11,9 +11,9 @@ import {
 const ThumbnailSelector = (
   {
     thumbnails = [],
-    onSelect = () => {},
+    renderThumbnail = undefined,
+    onThumbnailSelect = () => {},
     initialIndex = -1,
-    viewHeight = 0,
     horizontal = true,
     active = {
       opacity: 1,
@@ -34,7 +34,7 @@ const ThumbnailSelector = (
       style: {fontSize: 16, textAlign: 'center'},
     },
     buttonProps = {
-      style: {flexDirection: 'column', margin: 8, alignItems: 'center'},
+      style: {flexDirection: 'column', padding: 8},
     },
     animatedViewStyle = {
       elevation: 1,
@@ -53,7 +53,7 @@ const ThumbnailSelector = (
   },
   ref,
 ) => {
-  const [animViewHeight, setViewHeight] = useState(viewHeight);
+  const [animViewHeight, setAnimViewHeight] = useState(0);
   const [itemIndex, setItemIndex] = useState(initialIndex);
   const animationValue = useRef(new Animated.Value(0)).current;
   const windowHeight = useWindowDimensions().height;
@@ -72,6 +72,9 @@ const ThumbnailSelector = (
   useImperativeHandle(ref, () => ({animate: () => _animate()}));
 
   const _renderItem = ({item, index}) => {
+    if (renderThumbnail) {
+      return renderThumbnail({item, index, onThumbnailSelect});
+    }
     const selected = itemIndex === index;
     const styles = selected ? active : inactive;
     if (thumbnailProps.style) {
@@ -84,7 +87,7 @@ const ThumbnailSelector = (
         {...buttonProps}
         onPress={() => {
           setItemIndex(index);
-          onSelect({item, index});
+          onThumbnailSelect({item, index});
         }}>
         {item.image && <Image {...thumbnailProps} source={{uri: item.image}} />}
         {item.caption && <Text {...captionProps}>{item.caption}</Text>}
@@ -95,7 +98,7 @@ const ThumbnailSelector = (
   const _onLayout = event => {
     const {height} = event.nativeEvent.layout;
     if (animViewHeight !== height) {
-      setViewHeight(height);
+      setAnimViewHeight(height);
     }
   };
 
