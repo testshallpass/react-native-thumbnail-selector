@@ -55,17 +55,17 @@
 
 ## Props
 
-| Name                |   Type   | Description                                              | Default                                                                       |
-| :------------------ | :------: | -------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `thumbnails`        |  Array   | thumbnails for the Flatlist                              | `[]`                                                                          |
-| `renderThumbnail`   | Function | render the thumbnails                                    | undefined                                                                     |
-| `onThumbnailSelect` | Function | invoked at thumbnail selection                           | `() => {}`                                                                    |
-| `initialIndex`      |  Number  | the index that is selected initially                     | -1                                                                            |
-| `horizontal`        | Boolean  | thumbnail stack position                                 | true                                                                          |
-| `active`            |  Object  | opacity and border color for thumbnail when selected     | `{ opacity: 1, borderColor: 'black' }`                                        |
-| `inactive`          |  Object  | opacity and border color for thumbnail when not selected | `{ opacity: 0.5, borderColor: 'transparent' }`                                |
-| `thumbnailProps`    |  Object  | props passed to Image component                          | `{ style: { width: 125, height: 125, borderWidth: 2 } }`                      |
-| `captionProps`      |  Object  | props passed to Text component                           | `{style: {fontSize: 16, textAlign: 'center'}}`                                |
-| `buttonProps`       |  Object  | props passed to TouchableOpacity component               | `{style: {flexDirection: 'column', padding: 8}}`                              |
-| `animatedViewStyle` |  Object  | style for Animated.View                                  | `{ elevation: 1, zIndex: 1,position: 'absolute', top: 0, left: 0, right: 0 }` |
-| `animationConfig`   |  Object  | style for Animated.SpringAnimationConfig                 | `{ toValue: 0, duration: 600, friction: 9, useNativeDriver: true }`           |
+| Name                |   Type   | Description                                                                              | Default                                                                       |
+| :------------------ | :------: | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `thumbnails`        |  Array   | thumbnails for the Flatlist                                                              | `[]`                                                                          |
+| `renderThumbnail`   | Function | render the thumbnails                                                                    | undefined                                                                     |
+| `onThumbnailSelect` | Function | invoked at thumbnail selection                                                           | `() => {}`                                                                    |
+| `initialIndex`      |  Number  | the index that is selected initially                                                     | -1                                                                            |
+| `horizontal`        | Boolean  | thumbnail stack position                                                                 | true                                                                          |
+| `active`            |  Object  | opacity and border color for thumbnail when selected                                     | `{ opacity: 1, borderColor: 'black' }`                                        |
+| `inactive`          |  Object  | opacity and border color for thumbnail when not selected                                 | `{ opacity: 0.5, borderColor: 'transparent' }`                                |
+| `thumbnailProps`    |  Object  | props passed to Image component                                                          | `{ style: { width: 125, height: 125, borderWidth: 2 } }`                      |
+| `captionProps`      |  Object  | props passed to Text component                                                           | `{style: {fontSize: 16, textAlign: 'center'}}`                                |
+| `buttonProps`       |  Object  | props passed to TouchableOpacity component                                               | `{style: {flexDirection: 'column', padding: 8}}`                              |
+| `animatedViewStyle` |  Object  | style for Animated.View                                                                  | `{ elevation: 1, zIndex: 1,position: 'absolute', top: 0, left: 0, right: 0 }` |
+| `animationConfig`   |  Object  | style for [Animated.SpringAnimationConfig](https://reactnative.dev/docs/animated#spring) | `{ toValue: 0, duration: 600, friction: 9, useNativeDriver: false }`           |
