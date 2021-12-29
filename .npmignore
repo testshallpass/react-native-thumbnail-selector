@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+Example/
+example/
+screenshots/
+npm-debug.log
+.travis.yml
+README.md
+ISSUE_TEMPLATE.md
+.babelrc
+babelrc
+test/
+__tests__/
+coverage/
+.gitattributes
+setupTests.js

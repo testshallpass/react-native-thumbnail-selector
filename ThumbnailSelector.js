@@ -48,7 +48,7 @@ const ThumbnailSelector = (
       toValue: 0,
       duration: 600,
       friction: 9,
-      useNativeDriver: true,
+      useNativeDriver: false,
     },
   },
   ref,
@@ -95,7 +95,7 @@ const ThumbnailSelector = (
     );
   };
 
-  const _onLayout = event => {
+  const _onLayout = (event) => {
     const {height} = event.nativeEvent.layout;
     if (animViewHeight !== height) {
       setAnimViewHeight(height);
