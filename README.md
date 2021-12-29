@@ -1,7 +1,6 @@
 # react-native-thumbnail-selector
 
-[![Platform](https://img.shields.io/badge/react-v17.0.2-lightgrey?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Platform](https://img.shields.io/badge/react--native-v0.66.4-lightgrey?style=for-the-badge&logo=react)](https://github.com/facebook/react-native)
+[![Platform](https://img.shields.io/badge/-react--native-grey?style=for-the-badge&logo=react)](https://github.com/facebook/react-native)
 [![npm](https://img.shields.io/npm/v/react-native-thumbnail-selector?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/react-native-thumbnail-selector)
 [![npm](https://img.shields.io/npm/dm/react-native-thumbnail-selector?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/react-native-thumbnail-selector)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.github.com/testshallpass/react-native-thumbnail-selector/master/LICENSE)
@@ -10,6 +9,7 @@
 ## Table of contents
 
 - [Installation](#installation)
+- [Support](#support)
 - [Demo](#demo)
 - [Usage](#usage)
 - [Props](#props)
@@ -19,7 +19,11 @@
 - `yarn add react-native-thumbnail-selector`
 - `npm install react-native-thumbnail-selector --save`
 
-This depends on React hooks introduced in React v16.8.0 and uses `useWindowDimensions` introduced in react-native v0.61.0.
+## Support
+
+| react version | react-native version | package version |                     reason                     |
+| :-----------: | :------------------: | :-------------: | :--------------------------------------------: |
+|    v16.8.0    |       v0.61.0        |     >=3.0.0     | React hooks and usage of `useWindowDimensions` |
 
 ## Demo
 
