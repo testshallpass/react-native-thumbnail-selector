@@ -14,7 +14,7 @@
 
 Pre-requisite: Installation
 
-1. Navigate to example directory (`cd ~/Example`).
+1. Navigate to example directory (`cd ~/example`).
 2. Install dependencies: `yarn`.
 3. Examine your development environment: `yarn doctor`. Fix any errors before proceeding to next step.
 4. Install iOS dependencies: `yarn ios:pod`.
