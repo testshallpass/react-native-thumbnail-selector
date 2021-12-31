@@ -3,19 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "npx react-native run-android",
-    "ios": "npx react-native run-ios",
+    "test": "npx jest",
     "start": "npx react-native start",
-    "test": "jest",
+    "ios": "npx react-native run-ios",
+    "android": "npx react-native run-android",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "ios:pod": "cd ios && pod install && cd ..",
     "android:clean": "cd android && ./gradlew clean && cd ..",
-    "doctor": "npx react-native doctor"
+    "doctor": "npx react-native doctor",
+    "prettier": "npx prettier --check ."
   },
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.66.4",
-    "react-native-thumbnail-selector": "4.0.0"
+    "react-native-thumbnail-selector": "4.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
