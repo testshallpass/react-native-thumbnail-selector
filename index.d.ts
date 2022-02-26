@@ -2,7 +2,7 @@ export interface ThumbnailSelectorProps {
   thumbnails?: object[];
   renderThumbnail?(thumbnail: ThumbnailData): undefined;
   onThumbnailSelect?(thumbnail: Thumbnail): void;
-  thumbnailSelectorRef?(): object;
+  thumbnailSelectorRef?(): ThumbnailSelectorObj;
   initialIndex?: number;
   horizontal?: boolean;
   active?: object;
@@ -23,4 +23,8 @@ export type ThumbnailData = {
 export type Thumbnail = {
   item: object;
   index: number;
+};
+
+export type ThumbnailSelectorObj = {
+  animate: void;
 };
