@@ -70,7 +70,9 @@ const App = () => {
         }`}</Text>
       </View>
       <ThumbnailSelector
-        ref={thumbnailSelectorRef}
+        thumbnailSelectorRef={ref => {
+          thumbnailSelectorRef.current = ref;
+        }}
         thumbnails={thumbnails}
         initialIndex={selected}
         onThumbnailSelect={({item}) => setThumbnail(item)}

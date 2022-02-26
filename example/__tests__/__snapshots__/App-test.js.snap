@@ -4,94 +4,80 @@ exports[`renders 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "beige",
       "flex": 1,
       "justifyContent": "center",
+      "margin": 8,
     }
   }
 >
-  <View>
-    <Image
-      resizeMode="contain"
-      source={
-        Object {
-          "uri": "https://placeimg.com/125/125/tech",
-        }
+  <Image
+    source={
+      Object {
+        "uri": "https://placeimg.com/125/125/tech",
       }
-      style={
-        Object {
-          "alignSelf": "center",
-          "height": 125,
-          "margin": 8,
-          "width": 125,
-        }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 125,
+        "width": 125,
       }
-    />
-    <Text
-      style={
-        Object {
-          "color": "#202020",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        }
-      }
-    >
-      David
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#202020",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        }
-      }
-    >
-      https://placeimg.com/125/125/tech
-    </Text>
-  </View>
-  <View
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
+    }
+  />
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "alignContent": "center",
-        "borderColor": "#202020",
-        "borderRadius": 2,
-        "borderWidth": 1,
-        "margin": 8,
-        "padding": 8,
+        "height": 31,
+        "width": 51,
+      }
+    }
+    value={false}
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 16,
+        "padding": 4,
+      }
+    }
+  >
+    Caption is David
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 16,
+        "padding": 4,
+      }
+    }
+  >
+    Image is https://placeimg.com/125/125/tech
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
       }
     }
   >
     <Text
       style={
         Object {
-          "color": "#202020",
           "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
+          "padding": 4,
         }
       }
     >
-      Show
+      ThumbnailSelector is closed
     </Text>
   </View>
   <View
     collapsable={false}
-    nativeID="animatedComponent"
     onLayout={[Function]}
     style={
       Object {
@@ -118,7 +104,7 @@ exports[`renders 1`] = `
           },
           Object {
             "caption": "Brian",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
+            "image": "https://reactjs.org/logo-og.png",
           },
           Object {
             "caption": "Gene",
@@ -126,7 +112,7 @@ exports[`renders 1`] = `
           },
           Object {
             "caption": "Jose",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
+            "image": "https://reactjs.org/logo-og.png",
           },
           Object {
             "caption": "Jon",
@@ -134,7 +120,7 @@ exports[`renders 1`] = `
           },
           Object {
             "caption": "Craig",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
+            "image": "https://reactjs.org/logo-og.png",
           },
           Object {
             "caption": "Sean",
@@ -142,38 +128,7 @@ exports[`renders 1`] = `
           },
         ]
       }
-      extraData={
-        Array [
-          Object {
-            "caption": "David",
-            "image": "https://placeimg.com/125/125/tech",
-          },
-          Object {
-            "caption": "Brian",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Gene",
-            "image": "https://placeimg.com/125/125/arch",
-          },
-          Object {
-            "caption": "Jose",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Jon",
-            "image": "https://placeimg.com/125/125/animals",
-          },
-          Object {
-            "caption": "Craig",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Sean",
-            "image": "https://placeimg.com/125/125/people",
-          },
-        ]
-      }
+      extraData={0}
       getItem={[Function]}
       getItemCount={[Function]}
       horizontal={true}
@@ -186,44 +141,10 @@ exports[`renders 1`] = `
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
       onScrollEndDrag={[Function]}
-      onSelect={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={50}
-      selectedIndex={0}
       stickyHeaderIndices={Array []}
-      thumbnails={
-        Array [
-          Object {
-            "caption": "David",
-            "image": "https://placeimg.com/125/125/tech",
-          },
-          Object {
-            "caption": "Brian",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Gene",
-            "image": "https://placeimg.com/125/125/arch",
-          },
-          Object {
-            "caption": "Jose",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Jon",
-            "image": "https://placeimg.com/125/125/animals",
-          },
-          Object {
-            "caption": "Craig",
-            "image": "https://reactnative.dev/docs/assets/favicon.png",
-          },
-          Object {
-            "caption": "Sean",
-            "image": "https://placeimg.com/125/125/people",
-          },
-        ]
-      }
       viewabilityConfigCallbackPairs={Array []}
     >
       <View>
@@ -242,7 +163,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -252,61 +172,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://placeimg.com/125/125/tech",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 1,
-                  },
-                ]
+                Object {
+                  "borderColor": "black",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 1,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://placeimg.com/125/125/tech",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "black",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "bold",
-                    },
-                  ]
-                }
-              >
-                David
-              </Text>
-            </View>
+              David
+            </Text>
           </View>
         </View>
         <View
@@ -324,7 +221,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -334,61 +230,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://reactjs.org/logo-og.png",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Brian
-              </Text>
-            </View>
+              Brian
+            </Text>
           </View>
         </View>
         <View
@@ -406,7 +279,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -416,61 +288,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://placeimg.com/125/125/arch",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://placeimg.com/125/125/arch",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Gene
-              </Text>
-            </View>
+              Gene
+            </Text>
           </View>
         </View>
         <View
@@ -488,7 +337,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -498,61 +346,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://reactjs.org/logo-og.png",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Jose
-              </Text>
-            </View>
+              Jose
+            </Text>
           </View>
         </View>
         <View
@@ -570,7 +395,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -580,61 +404,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://placeimg.com/125/125/animals",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://placeimg.com/125/125/animals",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Jon
-              </Text>
-            </View>
+              Jon
+            </Text>
           </View>
         </View>
         <View
@@ -652,7 +453,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -662,61 +462,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://reactjs.org/logo-og.png",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://reactnative.dev/docs/assets/favicon.png",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Craig
-              </Text>
-            </View>
+              Craig
+            </Text>
           </View>
         </View>
         <View
@@ -734,7 +511,6 @@ exports[`renders 1`] = `
             accessible={true}
             collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -744,61 +520,38 @@ exports[`renders 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
+                "flexDirection": "column",
                 "opacity": 1,
+                "padding": 8,
               }
             }
           >
-            <View
+            <Image
+              source={
+                Object {
+                  "uri": "https://placeimg.com/125/125/people",
+                }
+              }
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "margin": 8,
-                  },
-                  Object {
-                    "opacity": 0.5,
-                  },
-                ]
+                Object {
+                  "borderColor": "transparent",
+                  "borderWidth": 2,
+                  "height": 125,
+                  "opacity": 0.5,
+                  "width": 125,
+                }
+              }
+            />
+            <Text
+              style={
+                Object {
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
               }
             >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "https://placeimg.com/125/125/people",
-                  }
-                }
-                style={
-                  Array [
-                    Object {
-                      "borderWidth": 2,
-                      "height": 125,
-                      "width": 125,
-                    },
-                    Object {
-                      "borderColor": "transparent",
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "fontSize": 16,
-                      "fontWeight": "bold",
-                      "textAlign": "center",
-                    },
-                    Object {
-                      "fontWeight": "normal",
-                    },
-                  ]
-                }
-              >
-                Sean
-              </Text>
-            </View>
+              Sean
+            </Text>
           </View>
         </View>
       </View>
