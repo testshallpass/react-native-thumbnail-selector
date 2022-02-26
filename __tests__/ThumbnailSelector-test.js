@@ -5,28 +5,28 @@ import renderer from 'react-test-renderer';
 
 describe('ThumbnailSelector', () => {
   test('open', () => {
-    let thumbRef;
+    let thumbRef = {current: ''};
     let tree = renderer.create(
       <ThumbnailSelector
-        ref={(ref) => {
-          thumbRef = ref;
+        thumbnailSelectorRef={(obj) => {
+          thumbRef.current = obj;
         }}
       />,
     );
-    thumbRef.animate();
+    thumbRef.current.animate();
     expect(tree.toJSON()).toMatchSnapshot();
   });
   test('open then close', () => {
-    let thumbRef;
+    let thumbRef = {current: ''};
     let tree = renderer.create(
       <ThumbnailSelector
-        ref={(ref) => {
-          thumbRef = ref;
+        thumbnailSelectorRef={(obj) => {
+          thumbRef.current = obj;
         }}
       />,
     );
-    thumbRef.animate(); // open
-    thumbRef.animate(); // close
+    thumbRef.current.animate(); // open
+    thumbRef.current.animate(); // close
     expect(tree.toJSON()).toMatchSnapshot();
   });
   test('renders', () => {

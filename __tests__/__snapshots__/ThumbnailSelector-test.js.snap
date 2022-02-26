@@ -2,6 +2,7 @@
 
 exports[`ThumbnailSelector open 1`] = `
 <View
+  collapsable={false}
   onLayout={[Function]}
   style={
     Object {
@@ -47,6 +48,7 @@ exports[`ThumbnailSelector open 1`] = `
 
 exports[`ThumbnailSelector open then close 1`] = `
 <View
+  collapsable={false}
   onLayout={[Function]}
   style={
     Object {
@@ -93,7 +95,6 @@ exports[`ThumbnailSelector open then close 1`] = `
 exports[`ThumbnailSelector renders 1`] = `
 <View
   collapsable={false}
-  nativeID="animatedComponent"
   onLayout={[Function]}
   style={
     Object {

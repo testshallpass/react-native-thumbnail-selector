@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {StyleSheet, Switch, Image, Text, View} from 'react-native';
-import ThumbnailSelector from 'react-native-thumbnail-selector';
+import ThumbnailSelector from './src/ThumbnailSelector';
 
 const App = () => {
   const _getPlaceholderImage = (category = '') => {
@@ -70,8 +70,8 @@ const App = () => {
         }`}</Text>
       </View>
       <ThumbnailSelector
-        thumbnailSelectorRef={ref => {
-          thumbnailSelectorRef.current = ref;
+        thumbnailSelectorRef={obj => {
+          thumbnailSelectorRef.current = obj;
         }}
         thumbnails={thumbnails}
         initialIndex={selected}
