@@ -1,4 +1,4 @@
-import React, {useRef, useState, forwardRef, useImperativeHandle} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Text,
   FlatList,
@@ -8,51 +8,49 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-const ThumbnailSelector = (
-  {
-    thumbnails = [],
-    renderThumbnail = undefined,
-    onThumbnailSelect = () => {},
-    initialIndex = -1,
-    horizontal = true,
-    active = {
-      opacity: 1,
-      borderColor: 'black',
-    },
-    inactive = {
-      opacity: 0.5,
-      borderColor: 'transparent',
-    },
-    thumbnailProps = {
-      style: {
-        width: 125,
-        height: 125,
-        borderWidth: 2,
-      },
-    },
-    captionProps = {
-      style: {fontSize: 16, textAlign: 'center'},
-    },
-    buttonProps = {
-      style: {flexDirection: 'column', padding: 8},
-    },
-    animatedViewStyle = {
-      elevation: 1,
-      zIndex: 1,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-    },
-    animationConfig = {
-      toValue: 0,
-      duration: 600,
-      friction: 9,
-      useNativeDriver: false,
+const ThumbnailSelector = ({
+  thumbnails = [],
+  renderThumbnail = undefined,
+  onThumbnailSelect = () => {},
+  thumbnailSelectorRef = () => {},
+  initialIndex = -1,
+  horizontal = true,
+  active = {
+    opacity: 1,
+    borderColor: 'black',
+  },
+  inactive = {
+    opacity: 0.5,
+    borderColor: 'transparent',
+  },
+  thumbnailProps = {
+    style: {
+      width: 125,
+      height: 125,
+      borderWidth: 2,
     },
   },
-  ref,
-) => {
+  captionProps = {
+    style: {fontSize: 16, textAlign: 'center'},
+  },
+  buttonProps = {
+    style: {flexDirection: 'column', padding: 8},
+  },
+  animatedViewStyle = {
+    elevation: 1,
+    zIndex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  animationConfig = {
+    toValue: 0,
+    duration: 600,
+    friction: 9,
+    useNativeDriver: false,
+  },
+}) => {
   const [animViewHeight, setAnimViewHeight] = useState(0);
   const [itemIndex, setItemIndex] = useState(initialIndex);
   const animationValue = useRef(new Animated.Value(0)).current;
@@ -69,7 +67,7 @@ const ThumbnailSelector = (
     Animated.spring(animationValue, animationConfig).start(onComplete);
   };
 
-  useImperativeHandle(ref, () => ({animate: () => _animate()}));
+  thumbnailSelectorRef({animate: _animate});
 
   const _renderItem = ({item, index}) => {
     if (renderThumbnail) {
@@ -125,7 +123,6 @@ const ThumbnailSelector = (
   return (
     <Animated.View style={viewStyle} onLayout={_onLayout}>
       <FlatList
-        ref={ref}
         data={thumbnails}
         initialNumToRender={thumbnails.length}
         extraData={itemIndex}
@@ -137,4 +134,4 @@ const ThumbnailSelector = (
   );
 };
 
-export default forwardRef(ThumbnailSelector);
+export default ThumbnailSelector;
