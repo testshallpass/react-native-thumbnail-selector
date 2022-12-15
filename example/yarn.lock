@@ -5562,10 +5562,10 @@ react-native-codegen@^0.0.8:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-thumbnail-selector@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-4.1.0.tgz#a0a29b03a99a66879f6617169e5c5754b1abac98"
-  integrity sha512-hIfGfkappDRls4TbgOVc68v1z9sZICQsRKR9DSi/8J+6yanoEKCsQ9mkNBVZwCdTZtCBoIt6/Edvc0L3gQ8p6g==
+react-native-thumbnail-selector@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-4.2.0.tgz#f3b10381e1f047b13ebac48d56f0e242eb08de60"
+  integrity sha512-7Xh6uzeWP6NhczWtpl4UEXYu4SUa0wsq/F7vlqhIdTceopARWz6frsJ2nExEeOG3toOdPC5I8qQTukVKkUz+Dg==
 
 react-native@0.67.3:
   version "0.67.3"
