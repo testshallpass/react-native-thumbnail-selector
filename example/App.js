@@ -1,57 +1,44 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Switch, Image, Text, View} from 'react-native';
-import ThumbnailSelector from './src/ThumbnailSelector';
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  Pressable,
+  View,
+  ImageBackground,
+  useWindowDimensions,
+} from 'react-native';
+import ThumbnailSelector from 'react-native-thumbnail-selector';
+
+const getPlaceholderImage = () => {
+  const low = 1;
+  const high = 99;
+  const random = Math.floor(Math.random() * (high - low) + low);
+  if (random % 2 === 0) {
+    return 'https://reactjs.org/logo-og.png';
+  }
+  return `https://randomuser.me/api/portraits/women/${random}.jpg`;
+};
+const generateThumbnails = () => {
+  return ['David', 'Brian', 'Gene', 'Jose', 'Jon', 'Craig', 'Sean'].map(
+    caption => {
+      const image = getPlaceholderImage();
+      return {caption, image};
+    },
+  );
+};
+const thumbnails = generateThumbnails();
 
 const App = () => {
-  const _getPlaceholderImage = (category = '') => {
-    const placeholderPrefix = `https://placeimg.com/${imageSize}/${imageSize}`;
-    const categories = ['animals', 'arch', 'nature', 'people', 'tech', 'any'];
-    if (categories.includes(category)) {
-      return `${placeholderPrefix}/${category}`;
-    }
-    return `${placeholderPrefix}/any`;
-  };
-
-  const reactNativeLogo = 'https://reactjs.org/logo-og.png';
-  const imageSize = 125;
-  const thumbnails = [
-    {
-      caption: 'David',
-      image: _getPlaceholderImage('tech'),
-    },
-    {
-      caption: 'Brian',
-      image: reactNativeLogo,
-    },
-    {
-      caption: 'Gene',
-      image: _getPlaceholderImage('arch'),
-    },
-    {
-      caption: 'Jose',
-      image: reactNativeLogo,
-    },
-    {
-      caption: 'Jon',
-      image: _getPlaceholderImage('animals'),
-    },
-    {
-      caption: 'Craig',
-      image: reactNativeLogo,
-    },
-    {
-      caption: 'Sean',
-      image: _getPlaceholderImage('people'),
-    },
-  ];
+  const {height, width} = useWindowDimensions();
   let selected = 0;
   const [thumbnail, setThumbnail] = useState(thumbnails[selected]);
   const [isOpen, setIsOpen] = useState(false);
   let thumbnailSelectorRef = useRef();
 
-  const _onValueChange = value => {
+  const _onPress = () => {
     thumbnailSelectorRef.current.animate();
-    setIsOpen(value);
+    setIsOpen(!isOpen);
   };
 
   if (thumbnail) {
@@ -59,16 +46,23 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={{uri: thumbnail.image}} />
-      <Switch value={isOpen} onValueChange={_onValueChange} />
-      <Text style={styles.text}>{`Caption is ${thumbnail.caption}`}</Text>
-      <Text style={styles.text}>{`Image is ${thumbnail.image}`}</Text>
-      <View style={styles.switch}>
-        <Text style={styles.text}>{`ThumbnailSelector is ${
-          isOpen ? 'open' : 'closed'
-        }`}</Text>
-      </View>
+    <View>
+      <SafeAreaView>
+        <ImageBackground
+          style={[styles.imageBackground, {width, height}]}
+          source={{uri: thumbnail.image}}
+          resizeMode={'contain'}>
+          <View style={styles.row}>
+            <Pressable style={styles.button} onPress={_onPress}>
+              <Text style={styles.text}>{isOpen ? 'open' : 'close'}</Text>
+            </Pressable>
+            <View>
+              <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
+              <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
+            </View>
+          </View>
+        </ImageBackground>
+      </SafeAreaView>
       <ThumbnailSelector
         thumbnailSelectorRef={obj => {
           thumbnailSelectorRef.current = obj;
@@ -82,23 +76,27 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    margin: 8,
-  },
-  switch: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  imageBackground: {
+    justifyContent: 'flex-start',
+    backgroundColor: '#1F1F1F',
   },
   text: {
     fontSize: 16,
-    padding: 4,
+    color: 'white',
   },
-  image: {
-    width: 125,
-    height: 125,
-    alignSelf: 'center',
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    backgroundColor: '#1F1F1F',
+  },
+  button: {
+    borderColor: '#3AD4F8',
+    borderWidth: 1,
+    borderRadius: 3,
+    margin: 8,
+    padding: 8,
   },
 });
 
