@@ -30,11 +30,12 @@ const generateThumbnails = () => {
 const thumbnails = generateThumbnails();
 
 const App = () => {
-  const {height, width} = useWindowDimensions();
   let selected = 0;
+  let thumbnailSelectorRef = useRef();
+
+  const {height, width} = useWindowDimensions();
   const [thumbnail, setThumbnail] = useState(thumbnails[selected]);
   const [isOpen, setIsOpen] = useState(false);
-  let thumbnailSelectorRef = useRef();
 
   const _onPress = () => {
     thumbnailSelectorRef.current.animate();
@@ -54,7 +55,7 @@ const App = () => {
           resizeMode={'contain'}>
           <View style={styles.row}>
             <Pressable style={styles.button} onPress={_onPress}>
-              <Text style={styles.text}>{isOpen ? 'open' : 'close'}</Text>
+              <Text style={styles.text}>{isOpen ? 'close' : 'open'}</Text>
             </Pressable>
             <View>
               <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
