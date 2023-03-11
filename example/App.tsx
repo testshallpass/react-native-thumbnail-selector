@@ -1,105 +1,178 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   Text,
+  Switch,
   View,
-  Pressable,
-  ImageBackground,
-  useWindowDimensions,
+  FlatList,
+  Image,
 } from 'react-native';
-import ThumbnailSelector from './src/ThumbnailSelector';
+import ThumbnailSelector, {ThumbnailItem} from './src/ThumbnailSelector';
 
-function getPlaceholderImage(): string {
+const captions = [
+  'David',
+  'Brian',
+  'Gene',
+  'Jose',
+  'Jon',
+  'Craig',
+  'Sean',
+  'Anim cillum voluptate mollit esse reprehenderit anim enim elit veniam duis cupidatat irure.',
+  'Enim incididunt',
+  undefined,
+  '',
+];
+
+function getRandomRemoteImageSrc(): object {
   const low = 1;
   const high = 99;
   const random = Math.floor(Math.random() * (high - low) + low);
   if (random % 2 === 0) {
-    return 'https://reactjs.org/logo-og.png';
+    return {uri: 'https://reactjs.org/logo-og.png'};
   }
-  return `https://randomuser.me/api/portraits/women/${random}.jpg`;
+  return {uri: `https://randomuser.me/api/portraits/women/${random}.jpg`};
 }
 
-function generateThumbnails() {
-  return ['David', 'Brian', 'Gene', 'Jose', 'Jon', 'Craig', 'Sean'].map(
-    caption => {
-      const image = getPlaceholderImage();
-      return {caption, image};
-    },
-  );
+const locals = [
+  {caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png')},
+  {caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png')},
+  {caption: 'New York Mets', imageSrc: require('./assets/nym.png')},
+  {caption: 'New York Yankees', imageSrc: require('./assets/nyy.png')},
+  {caption: "Oakland A's", imageSrc: require('./assets/oa.png')},
+  {caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png')},
+];
+
+function getThumbnails(): ThumbnailItem[] {
+  const remotes = captions.map(caption => {
+    return {caption, imageSrc: getRandomRemoteImageSrc()};
+  });
+  return remotes.concat(locals);
 }
 
-const thumbnails = generateThumbnails();
+const thumbnails = getThumbnails();
+
+type Detail = {
+  item: {
+    key: string;
+    value: string | undefined;
+  };
+  index: number;
+};
 
 function App(): JSX.Element {
-  let selected = 0;
-  let thumbnailSelectorRef = useRef({animate: () => {}});
+  const initialIndex = 0;
+  const [index, setIndex] = useState(initialIndex);
+  const [thumbnail, setThumbnail] = useState(thumbnails[initialIndex]);
+  const [value, setValue] = useState(false);
+  let toggle = () => {};
 
-  const {height, width} = useWindowDimensions();
-  const [thumbnail, setThumbnail] = useState(thumbnails[selected]);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const _onPress = () => {
-    thumbnailSelectorRef.current.animate();
-    setIsOpen(!isOpen);
-  };
-
-  if (thumbnail) {
-    selected = thumbnails.indexOf(thumbnail);
+  let src = thumbnail.imageSrc.toString();
+  if (typeof thumbnail.imageSrc == 'object') {
+    src = JSON.stringify(thumbnail.imageSrc);
   }
 
+  const _renderDetail = (detail: Detail) => {
+    const {item} = detail;
+    const {key, value} = item;
+    return (
+      <View style={styles.item}>
+        <Text style={styles.key}>{key}</Text>
+        <Text style={styles.value}>{value}</Text>
+      </View>
+    );
+  };
+
+  const _renderSwitch = () => {
+    return (
+      <View style={styles.switch}>
+        <Text style={styles.status}>{value ? 'ON' : 'OFF'}</Text>
+        <Switch
+          value={value}
+          onChange={() => {
+            toggle();
+            setValue(!value);
+          }}
+        />
+      </View>
+    );
+  };
+
+  const items = [
+    {key: 'index', value: `${index}`},
+    {key: 'caption', value: thumbnail.caption},
+    {key: 'imageSrc', value: src},
+  ];
+
   return (
-    <View>
-      <SafeAreaView>
-        <ImageBackground
-          style={[styles.imageBackground, {width, height}]}
-          source={{uri: thumbnail.image}}
-          resizeMode={'contain'}>
-          <View style={styles.row}>
-            <Pressable style={styles.button} onPress={_onPress}>
-              <Text style={styles.text}>{isOpen ? 'close' : 'open'}</Text>
-            </Pressable>
-            <View>
-              <Text style={styles.text}>{`Caption: ${thumbnail.caption}`}</Text>
-              <Text style={styles.text}>{`Image: ${thumbnail.image}`}</Text>
-            </View>
-          </View>
-        </ImageBackground>
-      </SafeAreaView>
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.card}>
+        <Image style={styles.image} source={thumbnail.imageSrc} />
+        <FlatList
+          style={styles.details}
+          data={items}
+          initialNumToRender={items.length}
+          renderItem={_renderDetail}
+          keyExtractor={(_item, index) => `${index}`}
+          scrollEnabled={false}
+          ListHeaderComponent={_renderSwitch}
+        />
+      </View>
       <ThumbnailSelector
-        thumbnailSelectorRef={ref => (thumbnailSelectorRef.current = ref)}
         thumbnails={thumbnails}
-        initialIndex={selected}
-        onThumbnailSelect={item => setThumbnail(item)}
-        active={{opacity: 1, borderColor: 'white'}}
-        captionProps={{style: {color: 'white', textAlign: 'center'}}}
+        toggle={func => (toggle = func)}
+        initialIndex={initialIndex}
+        onSelect={(item, index) => {
+          setThumbnail(item);
+          setIndex(index);
+        }}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  imageBackground: {
-    justifyContent: 'flex-start',
-    backgroundColor: '#1F1F1F',
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: '#001C34',
+    justifyContent: 'center',
   },
-  text: {
+  image: {
+    width: '100%',
+    height: '50%',
+    borderTopRightRadius: 8,
+    borderTopLeftRadius: 8,
+  },
+  card: {
+    marginHorizontal: 8,
+  },
+  details: {
+    backgroundColor: '#2D2C52',
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+  },
+  item: {
+    flexDirection: 'column',
+    padding: 4,
+  },
+  key: {
     fontSize: 16,
     color: 'white',
+    fontWeight: 'bold',
   },
-  row: {
+  value: {
+    fontSize: 14,
+    color: 'white',
+  },
+  switch: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
-    backgroundColor: '#1F1F1F',
-  },
-  button: {
-    borderColor: '#3AD4F8',
-    borderWidth: 1,
-    borderRadius: 3,
-    margin: 8,
     padding: 8,
+  },
+  status: {
+    color: 'white',
+    fontWeight: '700',
+    marginRight: 4,
   },
 });
 
