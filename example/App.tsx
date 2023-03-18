@@ -29,7 +29,7 @@ function getRandomRemoteImageSrc(): object {
   const high = 99;
   const random = Math.floor(Math.random() * (high - low) + low);
   if (random % 2 === 0) {
-    return {uri: 'https://reactjs.org/logo-og.png'};
+    return {uri: 'https://reactnative.dev/img/tiny_logo.png'};
   }
   return {uri: `https://randomuser.me/api/portraits/women/${random}.jpg`};
 }
@@ -62,13 +62,13 @@ type Detail = {
 
 function App(): JSX.Element {
   const initialIndex = 0;
-  const [index, setIndex] = useState(initialIndex);
+  const [thumbnailIndex, setThumbnailIndex] = useState(initialIndex);
   const [thumbnail, setThumbnail] = useState(thumbnails[initialIndex]);
-  const [value, setValue] = useState(false);
+  const [status, setStatus] = useState(false);
   let toggle = () => {};
 
   let src = thumbnail.imageSrc.toString();
-  if (typeof thumbnail.imageSrc == 'object') {
+  if (typeof thumbnail.imageSrc === 'object') {
     src = JSON.stringify(thumbnail.imageSrc);
   }
 
@@ -86,20 +86,20 @@ function App(): JSX.Element {
   const _renderSwitch = () => {
     return (
       <View style={styles.switch}>
-        <Text style={styles.status}>{value ? 'ON' : 'OFF'}</Text>
+        <Text style={styles.status}>{status ? 'ON' : 'OFF'}</Text>
         <Switch
-          value={value}
+          value={status}
           onChange={() => {
             toggle();
-            setValue(!value);
+            setStatus(!status);
           }}
         />
       </View>
     );
   };
 
-  const items = [
-    {key: 'index', value: `${index}`},
+  const details = [
+    {key: 'index', value: `${thumbnailIndex}`},
     {key: 'caption', value: thumbnail.caption},
     {key: 'imageSrc', value: src},
   ];
@@ -110,8 +110,8 @@ function App(): JSX.Element {
         <Image style={styles.image} source={thumbnail.imageSrc} />
         <FlatList
           style={styles.details}
-          data={items}
-          initialNumToRender={items.length}
+          data={details}
+          initialNumToRender={details.length}
           renderItem={_renderDetail}
           keyExtractor={(_item, index) => `${index}`}
           scrollEnabled={false}
@@ -124,7 +124,7 @@ function App(): JSX.Element {
         initialIndex={initialIndex}
         onSelect={(item, index) => {
           setThumbnail(item);
-          setIndex(index);
+          setThumbnailIndex(index);
         }}
       />
     </SafeAreaView>
