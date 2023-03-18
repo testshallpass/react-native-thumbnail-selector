@@ -8,7 +8,9 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import ThumbnailSelector, {ThumbnailItem} from './src/ThumbnailSelector';
+import ThumbnailSelector, {
+  ThumbnailItem,
+} from 'react-native-thumbnail-selector';
 
 const captions = [
   'David',

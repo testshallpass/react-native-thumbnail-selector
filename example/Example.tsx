@@ -1,5 +1,5 @@
 import React from 'react';
-import ThumbnailSelector from './src/ThumbnailSelector';
+import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const thumbnails = [
   {
