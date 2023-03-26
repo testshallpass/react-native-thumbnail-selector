@@ -10,6 +10,7 @@ coverage/
 .npmignore
 .prettierignore
 .prettierrc.js
+.eslintignore
 .eslintrc.js
 babel.config.js
 jest.config.ts

@@ -5865,10 +5865,10 @@ react-native-gradle-plugin@^0.71.15:
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.15.tgz#9e6b506f30729fe8eb086981702f4e3c891d2b13"
   integrity sha512-7S3pAuPaQJlhax6EZ4JMsDNpj05TfuzX9gPgWLrFfAIWIFLuJ6aDQYAZy2TEI9QJALPoWrj8LWaqP/DGYh14pw==
 
-react-native-thumbnail-selector@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-5.0.0.tgz#ee6523bfdb1a1c777a72c476a17b9ea5acdb8884"
-  integrity sha512-VXILg683Q4AV/JGMZMm1HayWAuOFKKdC+TkB3GFN8zpKFfGy3y7F3wxX+nETYM+uuGN//RyQxn3b4gPwNTLzIw==
+react-native-thumbnail-selector@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-5.0.1.tgz#4d70acee91d49cb88aa494743b6429a6391e912b"
+  integrity sha512-TUwKayR7oXNZb+BhoBCaKLk4mu21/JxV5bfdOev2pGmKFq/Y5V6v4poVreUeblgrH9EtpGkVFY+9Pb17d0X9PQ==
 
 react-native@0.71.3:
   version "0.71.3"
