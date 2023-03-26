@@ -23,8 +23,8 @@
 
 ## Support
 
-| react version | react-native version | package version |                     reason                     |
-| :-----------: | :------------------: | :-------------: | -------------------------------------------- |
+| react version | react-native version | package version | reason                                         |
+| :-----------: | :------------------: | :-------------: | ---------------------------------------------- |
 |    v16.8.0    |       v0.61.0        |     >=3.0.0     | React hooks and usage of `useWindowDimensions` |
 
 ## Demo
@@ -33,29 +33,28 @@
 
 ## Usage
 
-```tsx
-import React from "react";
-import ThumbnailSelector from "react-native-thumbnail-selector";
+```javascript
+import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const thumbnails = [
   {
-    caption: "react-native",
-    imageSrc: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    caption: 'react-native',
+    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
   },
   {
-    caption: "Dolore do magna ullamco nisi quis.",
-    imageSrc: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    caption: 'Dolore do magna ullamco nisi quis.',
+    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
   },
 ];
 
-function Example(): JSX.Element {
+function Example() {
   // use toggle to show and hide ThumbnailSelector
   let toggle = () => {};
 
   return (
     <ThumbnailSelector
       thumbnails={thumbnails}
-      toggle={(func) => (toggle = func)}
+      toggle={func => (toggle = func)}
     />
   );
 }
