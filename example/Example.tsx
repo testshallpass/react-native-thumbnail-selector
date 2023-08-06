@@ -15,7 +15,7 @@ const thumbnails = [
 function Example(): JSX.Element {
   // use toggle to show and hide ThumbnailSelector
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let toggle = () => {};
+  let toggle = () => new Promise<unknown>(res => res);
 
   return (
     <ThumbnailSelector

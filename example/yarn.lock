@@ -5430,10 +5430,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-thumbnail-selector@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-5.0.1.tgz#4d70acee91d49cb88aa494743b6429a6391e912b"
-  integrity sha512-TUwKayR7oXNZb+BhoBCaKLk4mu21/JxV5bfdOev2pGmKFq/Y5V6v4poVreUeblgrH9EtpGkVFY+9Pb17d0X9PQ==
+react-native-thumbnail-selector@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-thumbnail-selector/-/react-native-thumbnail-selector-5.1.0.tgz#5d1720eb0660527b23cd44883737169bd6400b28"
+  integrity sha512-L80jG5sc11asOyFtB65IphcgDoUma45OzlpXpSklQkXIK69PUom+W73sR+Lb4EodfDONLPzPNyuDSCCVnHOLlA==
 
 react-native@0.72.3:
   version "0.72.3"

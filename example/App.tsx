@@ -67,7 +67,7 @@ function App(): JSX.Element {
   const [thumbnailIndex, setThumbnailIndex] = useState(initialIndex);
   const [thumbnail, setThumbnail] = useState(thumbnails[initialIndex]);
   const [status, setStatus] = useState(false);
-  let toggle = () => {};
+  let toggle = () => new Promise<unknown>(res => res);
 
   let src = thumbnail.imageSrc.toString();
   if (typeof thumbnail.imageSrc === 'object') {
