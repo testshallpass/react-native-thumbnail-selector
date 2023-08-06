@@ -49,7 +49,7 @@ const thumbnails = [
 
 function Example() {
   // use toggle to show and hide ThumbnailSelector
-  let toggle = () => {};
+  let toggle = () => new Promise<unknown>(res => res);
 
   return (
     <ThumbnailSelector

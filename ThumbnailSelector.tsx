@@ -25,7 +25,7 @@ export type ThumbnailItemIndex = {
 
 export type ThumbnailSelectorProps = {
   thumbnails: ThumbnailItem[];
-  toggle?: (func: () => void) => void;
+  toggle?: (func: () => Promise<unknown>) => void;
   renderThumbnail?: (
     item: ThumbnailItem,
     index: number,
@@ -45,7 +45,7 @@ export type ThumbnailSelectorProps = {
   flatListViewStyle?: ViewStyle;
 };
 
-const ThumbnailSelector: React.FC<ThumbnailSelectorProps> = ({
+const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   thumbnails = [],
   toggle = undefined,
   renderThumbnail = undefined,
@@ -93,7 +93,9 @@ const ThumbnailSelector: React.FC<ThumbnailSelectorProps> = ({
       animationConfig.toValue = 1;
     }
     toValue.current = animationConfig.toValue;
-    Animated.spring(animatedValue.current, animationConfig).start();
+    return new Promise(resolve =>
+      Animated.spring(animatedValue.current, animationConfig).start(resolve),
+    );
   };
 
   if (toggle) {

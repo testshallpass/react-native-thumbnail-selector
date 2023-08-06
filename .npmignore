@@ -1,11 +1,16 @@
-.DS_Store
+# directories
 node_modules/
-Example/
 example/
-npm-debug.log
-test/
 __tests__/
 coverage/
+.github/
+screenshots/
+assets/
+.vscode/
+
+# files
+.DS_Store
+npm-debug.log
 .gitignore
 .npmignore
 .prettierignore
@@ -14,6 +19,4 @@ coverage/
 .eslintrc.js
 babel.config.js
 jest.config.ts
-.github/
 tsconfig.json
-assets/
