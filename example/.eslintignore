@@ -1,11 +1,10 @@
 node_modules/
 yarn.lock
 .gitignore
-.gitattributes
-.flowconfig
-.buckconfig
 .prettierignore
 .watchmanconfig
+Gemfile
 android/
 ios/
-assets/
+coverage/
+_bundle/
