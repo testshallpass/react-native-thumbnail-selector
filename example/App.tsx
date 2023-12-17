@@ -62,7 +62,7 @@ type Detail = {
   index: number;
 };
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   const initialIndex = 0;
   const [thumbnailIndex, setThumbnailIndex] = useState(initialIndex);
   const [thumbnail, setThumbnail] = useState(thumbnails[initialIndex]);
@@ -74,7 +74,7 @@ function App(): JSX.Element {
     src = JSON.stringify(thumbnail.imageSrc);
   }
 
-  const _renderDetail = (detail: Detail) => {
+  function _renderDetail(detail: Detail): React.JSX.Element {
     const {item} = detail;
     const {key, value} = item;
     return (
@@ -83,9 +83,9 @@ function App(): JSX.Element {
         <Text style={styles.value}>{value}</Text>
       </View>
     );
-  };
+  }
 
-  const _renderSwitch = () => {
+  function _renderSwitch(): React.JSX.Element {
     return (
       <View style={styles.switch}>
         <Text style={styles.status}>{status ? 'ON' : 'OFF'}</Text>
@@ -98,7 +98,7 @@ function App(): JSX.Element {
         />
       </View>
     );
-  };
+  }
 
   const details = [
     {key: 'index', value: `${thumbnailIndex}`},

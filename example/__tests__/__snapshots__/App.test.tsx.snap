@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
     <Image
       source={
         {
-          "uri": "https://randomuser.me/api/portraits/women/41.jpg",
+          "uri": "https://reactnative.dev/img/tiny_logo.png",
         }
       }
       style={
@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
           },
           {
             "key": "imageSrc",
-            "value": "{"uri":"https://randomuser.me/api/portraits/women/41.jpg"}",
+            "value": "{"uri":"https://reactnative.dev/img/tiny_logo.png"}",
           },
         ]
       }
@@ -64,7 +64,7 @@ exports[`renders correctly 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEnabled={false}
-      scrollEventThrottle={50}
+      scrollEventThrottle={0.0001}
       stickyHeaderIndices={[]}
       style={
         {
@@ -219,7 +219,7 @@ exports[`renders correctly 1`] = `
                 }
               }
             >
-              {"uri":"https://randomuser.me/api/portraits/women/41.jpg"}
+              {"uri":"https://reactnative.dev/img/tiny_logo.png"}
             </Text>
           </View>
         </View>
@@ -234,13 +234,13 @@ exports[`renders correctly 1`] = `
         {
           "caption": "David",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/41.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
           "caption": "Brian",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/67.jpg",
           },
         },
         {
@@ -252,13 +252,13 @@ exports[`renders correctly 1`] = `
         {
           "caption": "Jose",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/81.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
           "caption": "Jon",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/57.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
@@ -270,13 +270,13 @@ exports[`renders correctly 1`] = `
         {
           "caption": "Sean",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/13.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
           "caption": "Anim cillum voluptate mollit esse reprehenderit anim enim elit veniam duis cupidatat irure.",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/91.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
@@ -288,13 +288,13 @@ exports[`renders correctly 1`] = `
         {
           "caption": undefined,
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/33.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
           "caption": "",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/15.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
