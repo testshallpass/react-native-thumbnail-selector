@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
     <Image
       source={
         {
-          "uri": "https://reactnative.dev/img/tiny_logo.png",
+          "uri": "https://randomuser.me/api/portraits/women/41.jpg",
         }
       }
       style={
@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
           },
           {
             "key": "imageSrc",
-            "value": "{"uri":"https://reactnative.dev/img/tiny_logo.png"}",
+            "value": "{"uri":"https://randomuser.me/api/portraits/women/41.jpg"}",
           },
         ]
       }
@@ -219,7 +219,7 @@ exports[`renders correctly 1`] = `
                 }
               }
             >
-              {"uri":"https://reactnative.dev/img/tiny_logo.png"}
+              {"uri":"https://randomuser.me/api/portraits/women/41.jpg"}
             </Text>
           </View>
         </View>
@@ -234,43 +234,43 @@ exports[`renders correctly 1`] = `
         {
           "caption": "David",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/41.jpg",
           },
         },
         {
           "caption": "Brian",
           "imageSrc": {
-            "uri": "https://randomuser.me/api/portraits/women/67.jpg",
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
           "caption": "Gene",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/87.jpg",
           },
         },
         {
           "caption": "Jose",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/61.jpg",
           },
         },
         {
           "caption": "Jon",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/7.jpg",
           },
         },
         {
           "caption": "Craig",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/25.jpg",
           },
         },
         {
           "caption": "Sean",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/19.jpg",
           },
         },
         {
@@ -288,13 +288,13 @@ exports[`renders correctly 1`] = `
         {
           "caption": undefined,
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/25.jpg",
           },
         },
         {
           "caption": "",
           "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
+            "uri": "https://randomuser.me/api/portraits/women/83.jpg",
           },
         },
         {
