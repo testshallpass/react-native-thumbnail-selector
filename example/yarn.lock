@@ -8284,10 +8284,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-thumbnail-selector@npm:5.1.0":
-  version: 5.1.0
-  resolution: "react-native-thumbnail-selector@npm:5.1.0"
-  checksum: 10c0/5fe6c25d67c309e4927087e5bddd9a346d675e6ce790e2f617dcaa0593409e41b2bfec1ff91e27c2e9f80d6bdcccbf1a42fd6a039446951a5d0740abc77df9a2
+"react-native-thumbnail-selector@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-native-thumbnail-selector@npm:5.2.0"
+  checksum: 10c0/fb57042b677707d5fe2170fd168dc1b2a782b7f4680040e8ac9f02d36e2891950819845b2f56f7b6cd6af29289865fa57258537d0149269b0460c81ae7c052cb
   languageName: node
   linkType: hard
 
@@ -9368,7 +9368,7 @@ __metadata:
     prettier: "npm:3.3.3"
     react: "npm:18.3.1"
     react-native: "npm:0.76.2"
-    react-native-thumbnail-selector: "npm:5.1.0"
+    react-native-thumbnail-selector: "npm:^5.2.0"
     react-test-renderer: "npm:18.3.1"
     typescript: "npm:5.6.3"
   languageName: unknown

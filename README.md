@@ -34,22 +34,24 @@
 ## Usage
 
 ```javascript
+import React from 'react';
+import {Animated} from 'react-native';
 import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const thumbnails = [
   {
     caption: 'react-native',
-    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    imageSrc: {uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png'},
   },
   {
     caption: 'Dolore do magna ullamco nisi quis.',
-    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    imageSrc: {uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png'},
   },
 ];
 
 function Example() {
   // use toggle to show and hide ThumbnailSelector
-  let toggle = () => new Promise<unknown>(res => res);
+  let toggle = () => new Promise<Animated.EndResult>(res => res);
 
   return (
     <ThumbnailSelector
