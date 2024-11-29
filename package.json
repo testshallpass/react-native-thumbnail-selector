@@ -1,6 +1,6 @@
 {
   "name": "react-native-thumbnail-selector",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "A thumbnail selector.",
   "main": "ThumbnailSelector.tsx",
   "scripts": {
