@@ -20,3 +20,4 @@ npm-debug.log
 babel.config.js
 jest.config.ts
 tsconfig.json
+.yarnrc.yml

@@ -57,3 +57,11 @@ jsconfig.json
 example/src
 .vscode/
 coverage/
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

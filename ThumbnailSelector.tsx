@@ -11,6 +11,7 @@ import {
   TextProps,
   TouchableOpacityProps,
   ViewStyle,
+  LayoutChangeEvent,
 } from 'react-native';
 
 export type ThumbnailItem = {
@@ -25,7 +26,7 @@ export type ThumbnailItemIndex = {
 
 export type ThumbnailSelectorProps = {
   thumbnails: ThumbnailItem[];
-  toggle?: (func: () => Promise<unknown>) => void;
+  toggle?: (func: () => Promise<Animated.EndResult>) => void;
   renderThumbnail?: (
     item: ThumbnailItem,
     index: number,
@@ -43,10 +44,11 @@ export type ThumbnailSelectorProps = {
   animatedViewStyle?: ViewStyle;
   animationConfig?: Animated.SpringAnimationConfig;
   flatListViewStyle?: ViewStyle;
+  animatedViewTestID?: string;
 };
 
 const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
-  thumbnails = [],
+  thumbnails,
   toggle = undefined,
   renderThumbnail = undefined,
   onSelect = undefined,
@@ -79,6 +81,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
     useNativeDriver: false,
   },
   flatListViewStyle = {backgroundColor: 'grey', padding: 8},
+  animatedViewTestID = 'ThumbnailSelector',
 }) => {
   const window = useWindowDimensions();
   const [itemIndex, setItemIndex] = useState(initialIndex);
@@ -86,23 +89,23 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   const animatedValue = useRef(new Animated.Value(0));
   const toValue = useRef(animationConfig.toValue);
 
-  const _toggle = () => {
+  function _toggle(): Promise<Animated.EndResult> {
     if (toValue.current) {
       animationConfig.toValue = 0;
     } else {
       animationConfig.toValue = 1;
     }
     toValue.current = animationConfig.toValue;
-    return new Promise(resolve =>
-      Animated.spring(animatedValue.current, animationConfig).start(resolve),
-    );
-  };
+    return new Promise<Animated.EndResult>(resolve => {
+      Animated.spring(animatedValue.current, animationConfig).start(resolve);
+    });
+  }
 
   if (toggle) {
     toggle(_toggle);
   }
 
-  const _renderItem = (obj: ThumbnailItemIndex) => {
+  function _renderItem(obj: ThumbnailItemIndex): React.JSX.Element {
     const {item, index} = obj;
     if (renderThumbnail) {
       return renderThumbnail(item, index, onSelect);
@@ -137,16 +140,16 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
         )}
       </TouchableOpacity>
     );
-  };
+  }
 
-  const _onLayout = ({nativeEvent = {layout: {height: 0}}}) => {
-    const {height} = nativeEvent.layout;
+  function _onLayout(event: LayoutChangeEvent): void {
+    const {height} = event.nativeEvent.layout;
     if (animViewHeight !== height) {
       setAnimViewHeight(height);
     }
-  };
+  }
 
-  const _getAnimViewStyle = () => {
+  function _getAnimViewStyle(): ViewStyle[] {
     const start = window.height;
     const end = window.height - animViewHeight;
     return [
@@ -162,10 +165,13 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
         ],
       },
     ];
-  };
+  }
 
   return (
-    <Animated.View style={_getAnimViewStyle()} onLayout={_onLayout}>
+    <Animated.View
+      testID={animatedViewTestID}
+      style={_getAnimViewStyle()}
+      onLayout={_onLayout}>
       <FlatList
         style={flatListViewStyle}
         data={thumbnails}

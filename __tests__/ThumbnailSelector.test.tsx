@@ -5,71 +5,133 @@ import {
   fireEvent,
   screen,
   cleanup,
+  act,
 } from '@testing-library/react-native';
 import ThumbnailSelector from '../ThumbnailSelector';
-const thumbnails = [
-  {
-    caption: 'react-native',
-    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
-  },
-  {
-    caption: 'Dolore do magna ullamco nisi quis.',
-    imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
-  },
-];
 
-afterEach(cleanup);
+describe('ThumbnailSelector', () => {
+  afterEach(cleanup);
 
-test('it renders', () => {
-  const component = render(<ThumbnailSelector thumbnails={thumbnails} />);
-  expect(component.toJSON()).toMatchSnapshot();
-});
+  function _truncate(
+    value: string,
+    maxLength: number = 15,
+    ellipsis: string = '...',
+  ): string {
+    if (value.length > maxLength) {
+      const end = maxLength - ellipsis.length;
+      return `${value.substring(0, end)}${ellipsis}`;
+    }
+    return value;
+  }
 
-test('it toggle open and can select item', () => {
-  let toggle = () => {};
-  const component = render(
-    <ThumbnailSelector
-      thumbnails={thumbnails}
-      toggle={func => (toggle = func)}
-      onSelect={item => {
-        console.log(item.caption);
-      }}
-    />,
-  );
-  toggle();
+  const thumbnails = [
+    {
+      caption: 'react-native',
+      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    },
+    {
+      caption: 'New York City',
+      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    },
+    {
+      caption:
+        'Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.',
+      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    },
+    {
+      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+    },
+  ];
 
-  const {getByText} = screen;
-  const item = getByText('react-native');
-  expect(item).toBeDefined();
-  fireEvent.press(item);
+  test('it renders', () => {
+    const component = render(<ThumbnailSelector thumbnails={thumbnails} />);
+    thumbnails.forEach(thumbnail => {
+      if (thumbnail.caption) {
+        const item = screen.getByText(_truncate(thumbnail.caption));
+        expect(item).toBeDefined();
+        fireEvent.press(item);
+      }
+    });
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 
-  expect(component.toJSON()).toMatchSnapshot();
-});
+  test('onSelect prop', async () => {
+    let toggle = () => {};
+    let onSelect = jest.fn();
+    const component = render(
+      <ThumbnailSelector
+        thumbnails={thumbnails}
+        toggle={func => (toggle = func)}
+        onSelect={onSelect}
+      />,
+    );
+    await act(() => toggle());
+    thumbnails.forEach((thumbnail, index) => {
+      if (thumbnail.caption) {
+        const item = screen.getByText(_truncate(thumbnail.caption));
+        expect(item).toBeDefined();
+        fireEvent.press(item);
+        expect(onSelect).toHaveBeenCalledTimes(index + 1);
+      }
+    });
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 
-test('it toggle open and close', () => {
-  let toggle = () => {};
-  const component = render(
-    <ThumbnailSelector
-      thumbnails={thumbnails}
-      toggle={func => (toggle = func)}
-    />,
-  );
-  toggle();
-  toggle();
-  expect(component.toJSON()).toMatchSnapshot();
-});
+  test('renderThumbnail prop', async () => {
+    let toggle = () => {};
+    render(
+      <ThumbnailSelector
+        thumbnails={thumbnails}
+        toggle={func => (toggle = func)}
+        renderThumbnail={(item, index) => {
+          return <Text testID={`${index}`}>{item.caption}</Text>;
+        }}
+      />,
+    );
+    await act(() => toggle());
+    thumbnails.forEach((thumbnail, index) => {
+      if (thumbnail.caption) {
+        const itemText = screen.getByText(thumbnail.caption);
+        expect(itemText).toBeDefined();
+      }
+      const itemTestId = screen.getByTestId(`${index}`);
+      expect(itemTestId).toBeDefined();
+    });
+    await act(() => toggle());
+  });
 
-test('it toggle open and renderThumbnail', () => {
-  let toggle = () => {};
-  const component = render(
-    <ThumbnailSelector
-      thumbnails={thumbnails}
-      toggle={func => (toggle = func)}
-      renderThumbnail={item => {
-        return <Text>{item.caption}</Text>;
-      }}
-    />,
-  );
-  toggle();
-  expect(component.toJSON()).toMatchSnapshot();
+  test('onLayout', () => {
+    render(<ThumbnailSelector thumbnails={thumbnails} />);
+
+    const selector = screen.getByTestId('ThumbnailSelector');
+    expect(selector).toBeDefined();
+
+    fireEvent(selector, 'layout', {
+      nativeEvent: {layout: {height: 0}},
+    });
+
+    fireEvent(selector, 'layout', {
+      nativeEvent: {layout: {height: 100}},
+    });
+  });
+
+  test('no thumbnails', () => {
+    const component = render(<ThumbnailSelector thumbnails={[]} />);
+    thumbnails.forEach(thumbnail => {
+      if (thumbnail.caption) {
+        const text = _truncate(thumbnail.caption);
+        try {
+          screen.getByText(text);
+        } catch (error: unknown) {
+          expect(error).toBeDefined();
+          if (error instanceof Error) {
+            expect(error).toBeInstanceOf(Error);
+            const partialErrorMessage = `Unable to find an element with text: ${text}`;
+            expect(error.message).toContain(partialErrorMessage);
+          }
+        }
+      }
+    });
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

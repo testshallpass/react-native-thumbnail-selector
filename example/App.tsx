@@ -1,133 +1,131 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   Text,
-  Switch,
   View,
-  FlatList,
+  ImageSize,
   Image,
+  Animated,
+  TouchableOpacity,
 } from 'react-native';
-import ThumbnailSelector, {
-  ThumbnailItem,
-} from 'react-native-thumbnail-selector';
+import ThumbnailSelector, {ThumbnailItem} from 'react-native-thumbnail-selector';
 
-const captions = [
-  'David',
-  'Brian',
-  'Gene',
-  'Jose',
-  'Jon',
-  'Craig',
-  'Sean',
-  'Anim cillum voluptate mollit esse reprehenderit anim enim elit veniam duis cupidatat irure.',
-  'Enim incididunt',
-  undefined,
-  '',
-];
-
-function getRandomRemoteImageSrc(): object {
-  const low = 1;
-  const high = 99;
-  const random = Math.floor(Math.random() * (high - low) + low);
-  if (random % 2 === 0) {
-    return {uri: 'https://reactnative.dev/img/tiny_logo.png'};
+export default function App(): React.JSX.Element {
+  function getThumbnails(): ThumbnailItem[] {
+    return [
+      {
+        caption: 'react-native',
+        imageSrc: {
+          uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png',
+        },
+      },
+      {
+        caption: 'jest testing',
+        imageSrc: {
+          uri: 'https://jestjs.io/img/opengraph.png',
+        },
+      },
+      {
+        caption: 'prettier',
+        imageSrc: {
+          uri: 'https://prettier.io/icon.png',
+        },
+      },
+      {
+        caption: 'Visual Studio Code',
+        imageSrc: {
+          uri: 'https://code.visualstudio.com/apple-touch-icon.png',
+        },
+      },
+      {
+        caption: 'eslint tool',
+        imageSrc: {
+          uri: 'https://eslint.org/icon-512.png',
+        },
+      },
+      {
+        imageSrc: {
+          uri: 'https://randomuser.me/api/portraits/women/44.jpg',
+        },
+      },
+      {
+        caption: 'Do mollit sit nisi elit velit proident pariatur eu occaecat.',
+        imageSrc: {
+          uri: 'https://randomuser.me/api/portraits/women/79.jpg',
+        },
+      },
+      {caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png')},
+      {caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png')},
+      {caption: 'New York Mets', imageSrc: require('./assets/nym.png')},
+      {caption: 'New York Yankees', imageSrc: require('./assets/nyy.png')},
+      {caption: "Oakland A's", imageSrc: require('./assets/oa.png')},
+      {caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png')},
+      {caption: '', imageSrc: require('./assets/nyy.png')},
+      {
+        caption:
+          'Excepteur amet veniam enim sint dolor consequat dolor deserunt.',
+        imageSrc: require('./assets/nym.png'),
+      },
+    ];
   }
-  return {uri: `https://randomuser.me/api/portraits/women/${random}.jpg`};
-}
+  const thumbnails = React.useMemo(() => getThumbnails(), []);
+  const [thumbnail, setThumbnail] = React.useState<ThumbnailItem>(
+    thumbnails[0],
+  );
+  const [isThumbnailSelectorOpen, setIsThumbnailSelectorOpen] =
+    React.useState<boolean>(false);
+  const defaultImageSize = {width: 136, height: 136};
+  const [imageSize, setImageSize] = React.useState<ImageSize>(defaultImageSize);
+  let toggle = () => new Promise<Animated.EndResult | unknown>(res => res);
 
-const locals = [
-  {caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png')},
-  {caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png')},
-  {caption: 'New York Mets', imageSrc: require('./assets/nym.png')},
-  {caption: 'New York Yankees', imageSrc: require('./assets/nyy.png')},
-  {caption: "Oakland A's", imageSrc: require('./assets/oa.png')},
-  {caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png')},
-];
-
-function getThumbnails(): ThumbnailItem[] {
-  const remotes = captions.map(caption => {
-    return {caption, imageSrc: getRandomRemoteImageSrc()};
-  });
-  return remotes.concat(locals);
-}
-
-const thumbnails = getThumbnails();
-
-type Detail = {
-  item: {
-    key: string;
-    value: string | undefined;
-  };
-  index: number;
-};
-
-function App(): React.JSX.Element {
-  const initialIndex = 0;
-  const [thumbnailIndex, setThumbnailIndex] = useState(initialIndex);
-  const [thumbnail, setThumbnail] = useState(thumbnails[initialIndex]);
-  const [status, setStatus] = useState(false);
-  let toggle = () => new Promise<unknown>(res => res);
-
-  let src = thumbnail.imageSrc.toString();
-  if (typeof thumbnail.imageSrc === 'object') {
-    src = JSON.stringify(thumbnail.imageSrc);
-  }
-
-  function _renderDetail(detail: Detail): React.JSX.Element {
-    const {item} = detail;
-    const {key, value} = item;
-    return (
-      <View style={styles.item}>
-        <Text style={styles.key}>{key}</Text>
-        <Text style={styles.value}>{value}</Text>
-      </View>
-    );
+  function _onButtonPress(): void {
+    toggle();
+    setIsThumbnailSelectorOpen(!isThumbnailSelectorOpen);
   }
 
-  function _renderSwitch(): React.JSX.Element {
-    return (
-      <View style={styles.switch}>
-        <Text style={styles.status}>{status ? 'ON' : 'OFF'}</Text>
-        <Switch
-          value={status}
-          onChange={() => {
-            toggle();
-            setStatus(!status);
-          }}
-        />
-      </View>
-    );
+  async function _onThumbnailSelect(item: ThumbnailItem): Promise<void> {
+    const resolvedSrc = Image.resolveAssetSource(item.imageSrc);
+    let size = defaultImageSize;
+    if (resolvedSrc.uri) {
+      size = await Image.getSize(resolvedSrc.uri);
+    }
+    setImageSize({width: size.width, height: defaultImageSize.height});
+    setThumbnail(item);
   }
 
-  const details = [
-    {key: 'index', value: `${thumbnailIndex}`},
-    {key: 'caption', value: thumbnail.caption},
-    {key: 'imageSrc', value: src},
-  ];
+  const src = Image.resolveAssetSource(thumbnail.imageSrc);
+  const buttonText = isThumbnailSelectorOpen
+    ? 'Close ThumbnailSelector'
+    : 'Open ThumbnailSelector';
+  const buttonColor = isThumbnailSelectorOpen ? '#61896C' : '#5571F6';
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.card}>
-        <Image style={styles.image} source={thumbnail.imageSrc} />
-        <FlatList
-          style={styles.details}
-          data={details}
-          initialNumToRender={details.length}
-          renderItem={_renderDetail}
-          keyExtractor={(_item, index) => `${index}`}
-          scrollEnabled={false}
-          ListHeaderComponent={_renderSwitch}
+      <View style={styles.content}>
+        <Image
+          style={[styles.image, {...imageSize}]}
+          source={thumbnail.imageSrc}
+          resizeMode={'contain'}
         />
+        <View style={styles.item}>
+          <Text style={styles.key}>{'caption'}</Text>
+          <Text style={styles.value}>{thumbnail.caption}</Text>
+        </View>
+        <View style={styles.item}>
+          <Text style={styles.key}>{'imageSrc'}</Text>
+          <Text style={styles.value}>{JSON.stringify(src)}</Text>
+        </View>
+        <TouchableOpacity
+          style={[styles.button, {backgroundColor: buttonColor}]}
+          onPress={_onButtonPress}>
+          <Text style={styles.buttonText}>{buttonText}</Text>
+        </TouchableOpacity>
       </View>
       <ThumbnailSelector
         thumbnails={thumbnails}
         toggle={func => (toggle = func)}
-        initialIndex={initialIndex}
-        onSelect={(item, index) => {
-          setThumbnail(item);
-          setThumbnailIndex(index);
-        }}
+        onSelect={_onThumbnailSelect}
       />
     </SafeAreaView>
   );
@@ -136,22 +134,18 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
-    backgroundColor: '#001C34',
-    justifyContent: 'center',
+    backgroundColor: '#32302F',
+  },
+  content: {
+    margin: 12,
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: '#3C3B3A',
   },
   image: {
-    width: '100%',
-    height: '50%',
-    borderTopRightRadius: 8,
-    borderTopLeftRadius: 8,
-  },
-  card: {
-    marginHorizontal: 8,
-  },
-  details: {
-    backgroundColor: '#2D2C52',
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
+    width: 136,
+    height: 136,
+    alignSelf: 'center',
   },
   item: {
     flexDirection: 'column',
@@ -159,23 +153,22 @@ const styles = StyleSheet.create({
   },
   key: {
     fontSize: 16,
-    color: 'white',
+    color: 'whitesmoke',
     fontWeight: 'bold',
   },
   value: {
-    fontSize: 14,
-    color: 'white',
+    fontSize: 16,
+    color: 'whitesmoke',
   },
-  switch: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  button: {
+    borderRadius: 8,
     padding: 8,
+    marginTop: 8,
   },
-  status: {
-    color: 'white',
-    fontWeight: '700',
-    marginRight: 4,
+  buttonText: {
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'whitesmoke',
   },
 });
-
-export default App;

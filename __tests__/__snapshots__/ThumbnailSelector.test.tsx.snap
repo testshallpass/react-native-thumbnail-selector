@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it renders 1`] = `
+exports[`ThumbnailSelector it renders 1`] = `
 <View
   collapsable={false}
   onLayout={[Function]}
@@ -19,6 +19,7 @@ exports[`it renders 1`] = `
       "zIndex": 1,
     }
   }
+  testID="ThumbnailSelector"
 >
   <RCTScrollView
     data={
@@ -30,18 +31,29 @@ exports[`it renders 1`] = `
           },
         },
         {
-          "caption": "Dolore do magna ullamco nisi quis.",
+          "caption": "New York City",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
+          "caption": "Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
           "imageSrc": {
             "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
       ]
     }
-    extraData={-1}
+    extraData={2}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={true}
-    initialNumToRender={2}
+    initialNumToRender={4}
     keyExtractor={[Function]}
     onContentSizeChange={[Function]}
     onLayout={[Function]}
@@ -229,78 +241,10 @@ exports[`it renders 1`] = `
               ]
             }
           >
-            Dolore do ma...
+            New York City
           </Text>
         </View>
       </View>
-    </View>
-  </RCTScrollView>
-</View>
-`;
-
-exports[`it toggle open and can select item 1`] = `
-<View
-  collapsable={false}
-  onLayout={[Function]}
-  style={
-    {
-      "elevation": 1,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
-      "transform": [
-        {
-          "translateY": 1334,
-        },
-      ],
-      "zIndex": 1,
-    }
-  }
->
-  <RCTScrollView
-    data={
-      [
-        {
-          "caption": "react-native",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-        {
-          "caption": "Dolore do magna ullamco nisi quis.",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-      ]
-    }
-    extraData={0}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    horizontal={true}
-    initialNumToRender={2}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={0.0001}
-    stickyHeaderIndices={[]}
-    style={
-      {
-        "backgroundColor": "grey",
-        "padding": 8,
-      }
-    }
-    viewabilityConfigCallbackPairs={[]}
-  >
-    <View>
       <View
         onFocusCapture={[Function]}
         onLayout={[Function]}
@@ -382,7 +326,7 @@ exports[`it toggle open and can select item 1`] = `
               ]
             }
           >
-            react-native
+            Elit cupidat...
           </Text>
         </View>
       </View>
@@ -452,23 +396,6 @@ exports[`it toggle open and can select item 1`] = `
               ]
             }
           />
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "black",
-                },
-                {
-                  "fontSize": 16,
-                  "fontWeight": "bold",
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Dolore do ma...
-          </Text>
         </View>
       </View>
     </View>
@@ -476,7 +403,7 @@ exports[`it toggle open and can select item 1`] = `
 </View>
 `;
 
-exports[`it toggle open and close 1`] = `
+exports[`ThumbnailSelector no thumbnails 1`] = `
 <View
   collapsable={false}
   onLayout={[Function]}
@@ -495,6 +422,60 @@ exports[`it toggle open and close 1`] = `
       "zIndex": 1,
     }
   }
+  testID="ThumbnailSelector"
+>
+  <RCTScrollView
+    data={[]}
+    extraData={-1}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={0}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.0001}
+    stickyHeaderIndices={[]}
+    style={
+      {
+        "backgroundColor": "grey",
+        "padding": 8,
+      }
+    }
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;
+
+exports[`ThumbnailSelector onSelect prop 1`] = `
+<View
+  collapsable={false}
+  onLayout={[Function]}
+  style={
+    {
+      "elevation": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+      "transform": [
+        {
+          "translateY": 1334,
+        },
+      ],
+      "zIndex": 1,
+    }
+  }
+  testID="ThumbnailSelector"
 >
   <RCTScrollView
     data={
@@ -506,18 +487,29 @@ exports[`it toggle open and close 1`] = `
           },
         },
         {
-          "caption": "Dolore do magna ullamco nisi quis.",
+          "caption": "New York City",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
+          "caption": "Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
           "imageSrc": {
             "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
       ]
     }
-    extraData={-1}
+    extraData={2}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={true}
-    initialNumToRender={2}
+    initialNumToRender={4}
     keyExtractor={[Function]}
     onContentSizeChange={[Function]}
     onLayout={[Function]}
@@ -705,78 +697,10 @@ exports[`it toggle open and close 1`] = `
               ]
             }
           >
-            Dolore do ma...
+            New York City
           </Text>
         </View>
       </View>
-    </View>
-  </RCTScrollView>
-</View>
-`;
-
-exports[`it toggle open and renderThumbnail 1`] = `
-<View
-  collapsable={false}
-  onLayout={[Function]}
-  style={
-    {
-      "elevation": 1,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
-      "transform": [
-        {
-          "translateY": 1334,
-        },
-      ],
-      "zIndex": 1,
-    }
-  }
->
-  <RCTScrollView
-    data={
-      [
-        {
-          "caption": "react-native",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-        {
-          "caption": "Dolore do magna ullamco nisi quis.",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-      ]
-    }
-    extraData={-1}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    horizontal={true}
-    initialNumToRender={2}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={0.0001}
-    stickyHeaderIndices={[]}
-    style={
-      {
-        "backgroundColor": "grey",
-        "padding": 8,
-      }
-    }
-    viewabilityConfigCallbackPairs={[]}
-  >
-    <View>
       <View
         onFocusCapture={[Function]}
         onLayout={[Function]}
@@ -789,9 +713,78 @@ exports[`it toggle open and renderThumbnail 1`] = `
           ]
         }
       >
-        <Text>
-          react-native
-        </Text>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "white",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "white",
+                },
+                {
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Elit cupidat...
+          </Text>
+        </View>
       </View>
       <View
         onFocusCapture={[Function]}
@@ -805,9 +798,61 @@ exports[`it toggle open and renderThumbnail 1`] = `
           ]
         }
       >
-        <Text>
-          Dolore do magna ullamco nisi quis.
-        </Text>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "black",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
     </View>
   </RCTScrollView>
