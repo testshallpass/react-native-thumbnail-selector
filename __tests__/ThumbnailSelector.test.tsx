@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {act} from 'react';
 import {Text} from 'react-native';
 import {
   render,
   fireEvent,
   screen,
   cleanup,
-  act,
 } from '@testing-library/react-native';
-import ThumbnailSelector from '../ThumbnailSelector';
+import ThumbnailSelector, {ThumbnailItem} from '../ThumbnailSelector';
 
 describe('ThumbnailSelector', () => {
   afterEach(cleanup);
@@ -65,7 +64,7 @@ describe('ThumbnailSelector', () => {
         onSelect={onSelect}
       />,
     );
-    await act(() => toggle());
+    await act(async () => toggle());
     thumbnails.forEach((thumbnail, index) => {
       if (thumbnail.caption) {
         const item = screen.getByText(_truncate(thumbnail.caption));
@@ -79,16 +78,17 @@ describe('ThumbnailSelector', () => {
 
   test('renderThumbnail prop', async () => {
     let toggle = () => {};
+    const renderThumbnail = (item: ThumbnailItem, index: number) => {
+      return <Text testID={`${index}`}>{item.caption}</Text>;
+    };
     render(
       <ThumbnailSelector
         thumbnails={thumbnails}
         toggle={func => (toggle = func)}
-        renderThumbnail={(item, index) => {
-          return <Text testID={`${index}`}>{item.caption}</Text>;
-        }}
+        renderThumbnail={renderThumbnail}
       />,
     );
-    await act(() => toggle());
+    await act(async () => toggle());
     thumbnails.forEach((thumbnail, index) => {
       if (thumbnail.caption) {
         const itemText = screen.getByText(thumbnail.caption);
@@ -97,7 +97,7 @@ describe('ThumbnailSelector', () => {
       const itemTestId = screen.getByTestId(`${index}`);
       expect(itemTestId).toBeDefined();
     });
-    await act(() => toggle());
+    await act(async () => toggle());
   });
 
   test('onLayout', () => {
