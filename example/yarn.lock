@@ -5816,10 +5816,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-thumbnail-selector@npm:5.2.2":
-  version: 5.2.2
-  resolution: "react-native-thumbnail-selector@npm:5.2.2"
-  checksum: 10c0/63162d5e03e41b49cf417a06ad378d34f3518655dd9a5d9f0568fc7480a04d5c7536b2e0e9ead21a8ddf0a5b7b8ce8b4f210cc3a152e7626cdc1ca548641b057
+"react-native-thumbnail-selector@npm:5.3.0":
+  version: 5.3.0
+  resolution: "react-native-thumbnail-selector@npm:5.3.0"
+  checksum: 10c0/89c8d9fe6625e90e5684f811d46b41ed199760752f98a5d82e3fe9e12f244c97ca1da5115b2270f8310a8af38f1dae5b77903fb8facadd1f628c3b93bbbb7ec0
   languageName: node
   linkType: hard
 
@@ -6685,7 +6685,7 @@ __metadata:
     expo: "npm:^53.0.9"
     react: "npm:19.0.0"
     react-native: "npm:0.79.2"
-    react-native-thumbnail-selector: "npm:5.2.2"
+    react-native-thumbnail-selector: "npm:5.3.0"
     typescript: "npm:~5.8.3"
   languageName: unknown
   linkType: soft
