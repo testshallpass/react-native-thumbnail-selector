@@ -1,5 +1,4 @@
 node_modules/
-example/
 assets/
 coverage/
 .github/
@@ -7,6 +6,5 @@ yarn.lock
 LICENSE
 .gitignore
 .npmignore
-.eslintignore
 tsconfig.json
 .yarnrc.yml

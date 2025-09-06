@@ -1,12 +1,12 @@
-import React, {act} from 'react';
-import {Text} from 'react-native';
+import React, { act } from 'react';
+import { Text } from 'react-native';
 import {
   render,
   fireEvent,
   screen,
   cleanup,
 } from '@testing-library/react-native';
-import ThumbnailSelector, {ThumbnailItem} from '../ThumbnailSelector';
+import ThumbnailSelector, { ThumbnailItem } from '../ThumbnailSelector';
 
 describe('ThumbnailSelector', () => {
   afterEach(cleanup);
@@ -26,19 +26,19 @@ describe('ThumbnailSelector', () => {
   const thumbnails = [
     {
       caption: 'react-native',
-      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
     },
     {
       caption: 'New York City',
-      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
     },
     {
       caption:
         'Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.',
-      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
     },
     {
-      imageSrc: {uri: 'https://reactnative.dev/img/tiny_logo.png'},
+      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
     },
   ];
 
@@ -56,7 +56,7 @@ describe('ThumbnailSelector', () => {
 
   test('onSelect prop', async () => {
     let toggle = () => {};
-    let onSelect = jest.fn();
+    const onSelect = jest.fn();
     const component = render(
       <ThumbnailSelector
         thumbnails={thumbnails}
@@ -107,11 +107,11 @@ describe('ThumbnailSelector', () => {
     expect(selector).toBeDefined();
 
     fireEvent(selector, 'layout', {
-      nativeEvent: {layout: {height: 0}},
+      nativeEvent: { layout: { height: 0 } },
     });
 
     fireEvent(selector, 'layout', {
-      nativeEvent: {layout: {height: 100}},
+      nativeEvent: { layout: { height: 100 } },
     });
   });
 

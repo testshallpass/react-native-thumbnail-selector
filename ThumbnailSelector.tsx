@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import {
   Text,
   FlatList,
@@ -58,14 +58,14 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   activeColor = 'white',
   inactiveColor = 'black',
   imageProps = {
-    style: {width: 136, height: 136, borderWidth: 1},
+    style: { width: 136, height: 136, borderWidth: 1 },
   },
   textProps = {
-    style: {fontSize: 16, textAlign: 'center', fontWeight: 'bold'},
+    style: { fontSize: 16, textAlign: 'center', fontWeight: 'bold' },
     numberOfLines: 1,
   },
   touchableOpacityProps = {
-    style: {padding: 8},
+    style: { padding: 8 },
   },
   animatedViewStyle = {
     elevation: 1,
@@ -80,14 +80,14 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
     friction: 9,
     useNativeDriver: false,
   },
-  flatListViewStyle = {backgroundColor: 'grey', padding: 8},
+  flatListViewStyle = { backgroundColor: 'grey', padding: 8 },
   animatedViewTestID = 'ThumbnailSelector',
 }) => {
   const window = useWindowDimensions();
-  const [itemIndex, setItemIndex] = useState(initialIndex);
-  const [animViewHeight, setAnimViewHeight] = useState(0);
-  const animatedValue = useRef(new Animated.Value(0));
-  const toValue = useRef(animationConfig.toValue);
+  const [itemIndex, setItemIndex] = React.useState(initialIndex);
+  const [animViewHeight, setAnimViewHeight] = React.useState(0);
+  const animatedValue = React.useRef(new Animated.Value(0));
+  const toValue = React.useRef(animationConfig.toValue);
 
   function _toggle(): Promise<Animated.EndResult> {
     if (toValue.current) {
@@ -106,7 +106,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   }
 
   function _renderItem(obj: ThumbnailItemIndex): React.JSX.Element {
-    const {item, index} = obj;
+    const { item, index } = obj;
     if (renderThumbnail) {
       return renderThumbnail(item, index, onSelect);
     }
@@ -127,14 +127,15 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
           if (onSelect) {
             onSelect(item, index);
           }
-        }}>
+        }}
+      >
         <Image
           {...imageProps}
-          style={[{borderColor: color}, imageProps.style]}
+          style={[{ borderColor: color }, imageProps.style]}
           source={item.imageSrc}
         />
         {caption && (
-          <Text {...textProps} style={[{color}, textProps.style]}>
+          <Text {...textProps} style={[{ color }, textProps.style]}>
             {caption}
           </Text>
         )}
@@ -143,7 +144,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   }
 
   function _onLayout(event: LayoutChangeEvent): void {
-    const {height} = event.nativeEvent.layout;
+    const { height } = event.nativeEvent.layout;
     if (animViewHeight !== height) {
       setAnimViewHeight(height);
     }
@@ -171,7 +172,8 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
     <Animated.View
       testID={animatedViewTestID}
       style={_getAnimViewStyle()}
-      onLayout={_onLayout}>
+      onLayout={_onLayout}
+    >
       <FlatList
         style={flatListViewStyle}
         data={thumbnails}

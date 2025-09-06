@@ -60,12 +60,12 @@ coverage/
 
 # Yarn
 example/.yarn/*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+.yarn/install-state.gz
+.yarn/patches
+.yarn/plugins
+.yarn/releases
+.yarn/sdks
+.yarn/versions
 
 # Expo
 example/.expo/
