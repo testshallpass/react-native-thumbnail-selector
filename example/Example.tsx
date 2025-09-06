@@ -1,15 +1,15 @@
 import React from 'react';
-import {Animated} from 'react-native';
+import { Animated } from 'react-native';
 import ThumbnailSelector from 'react-native-thumbnail-selector';
 
 const thumbnails = [
   {
     caption: 'react-native',
-    imageSrc: {uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png'},
+    imageSrc: { uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png' },
   },
   {
     caption: 'Dolore do magna ullamco nisi quis.',
-    imageSrc: {uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png'},
+    imageSrc: { uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png' },
   },
 ];
 

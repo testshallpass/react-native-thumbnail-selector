@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -9,7 +9,10 @@ import {
   Animated,
   TouchableOpacity,
 } from 'react-native';
-import ThumbnailSelector, {ThumbnailItem} from 'react-native-thumbnail-selector';
+import ThumbnailSelector, {
+  ThumbnailItem,
+} from 'react-native-thumbnail-selector';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App(): React.JSX.Element {
   function getThumbnails(): ThumbnailItem[] {
@@ -55,13 +58,13 @@ export default function App(): React.JSX.Element {
           uri: 'https://randomuser.me/api/portraits/women/79.jpg',
         },
       },
-      {caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png')},
-      {caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png')},
-      {caption: 'New York Mets', imageSrc: require('./assets/nym.png')},
-      {caption: 'New York Yankees', imageSrc: require('./assets/nyy.png')},
-      {caption: "Oakland A's", imageSrc: require('./assets/oa.png')},
-      {caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png')},
-      {caption: '', imageSrc: require('./assets/nyy.png')},
+      { caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png') },
+      { caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png') },
+      { caption: 'New York Mets', imageSrc: require('./assets/nym.png') },
+      { caption: 'New York Yankees', imageSrc: require('./assets/nyy.png') },
+      { caption: "Oakland A's", imageSrc: require('./assets/oa.png') },
+      { caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png') },
+      { caption: '', imageSrc: require('./assets/nyy.png') },
       {
         caption:
           'Excepteur amet veniam enim sint dolor consequat dolor deserunt.',
@@ -75,7 +78,7 @@ export default function App(): React.JSX.Element {
   );
   const [isThumbnailSelectorOpen, setIsThumbnailSelectorOpen] =
     React.useState<boolean>(false);
-  const defaultImageSize = {width: 136, height: 136};
+  const defaultImageSize = { width: 136, height: 136 };
   const [imageSize, setImageSize] = React.useState<ImageSize>(defaultImageSize);
   let toggle = () => new Promise<Animated.EndResult | unknown>(res => res);
 
@@ -90,7 +93,7 @@ export default function App(): React.JSX.Element {
     if (resolvedSrc.uri) {
       size = await Image.getSize(resolvedSrc.uri);
     }
-    setImageSize({width: size.width, height: defaultImageSize.height});
+    setImageSize({ width: size.width, height: defaultImageSize.height });
     setThumbnail(item);
   }
 
@@ -104,7 +107,7 @@ export default function App(): React.JSX.Element {
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.content}>
         <Image
-          style={[styles.image, {...imageSize}]}
+          style={[styles.image, { ...imageSize }]}
           source={thumbnail.imageSrc}
           resizeMode={'contain'}
         />
@@ -117,8 +120,9 @@ export default function App(): React.JSX.Element {
           <Text style={styles.value}>{JSON.stringify(src)}</Text>
         </View>
         <TouchableOpacity
-          style={[styles.button, {backgroundColor: buttonColor}]}
-          onPress={_onButtonPress}>
+          style={[styles.button, { backgroundColor: buttonColor }]}
+          onPress={_onButtonPress}
+        >
           <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
