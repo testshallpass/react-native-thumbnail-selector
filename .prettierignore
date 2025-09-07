@@ -1,10 +1,12 @@
 node_modules/
 assets/
 coverage/
-.github/
+.yarn/
+.expo/
 yarn.lock
 LICENSE
 .gitignore
 .npmignore
+.prettierignore
 tsconfig.json
 .yarnrc.yml

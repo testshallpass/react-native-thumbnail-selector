@@ -1,27 +1,43 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import markdown from '@eslint/markdown';
+import ts from 'typescript-eslint';
+import yml from 'eslint-plugin-yml';
+import json from '@eslint/json';
 
 export default defineConfig([
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    plugins: { js },
-    extends: ['js/recommended'],
-    languageOptions: { globals: globals.browser },
+    files: ['**/*.{ts,tsx}'],
+    plugins: { ts },
+    extends: [ts.configs.recommended],
   },
-  tseslint.configs.recommended,
+  {
+    files: ['**/*.md'],
+    plugins: { markdown },
+    processor: 'markdown/markdown',
+  },
+  {
+    files: ['**/*.yml'],
+    plugins: { yml },
+    extends: [yml.configs['flat/recommended']],
+  },
+  {
+    files: ['**/*.json'],
+    plugins: { json },
+    language: 'json/jsonc',
+  },
   globalIgnores([
     'node_modules/*',
     'assets/*',
     'coverage/*',
+    'example/node_modules/*',
+    'example/.expo/*',
+    'example/.yarn/*',
+    '.expo/*',
+    '.yarn/*',
     'yarn.lock',
     'LICENSE',
     '.gitignore',
     '.npmignore',
-    '.prettierrc.js',
-    'yarnrc.yml',
-    'jest.config.js',
-    'babel.config.js',
+    '.yarnrc.yml',
   ]),
 ]);

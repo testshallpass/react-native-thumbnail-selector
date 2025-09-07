@@ -33,7 +33,7 @@
 
 ## Usage
 
-```javascript
+```tsx
 import React from 'react';
 import { Animated } from 'react-native';
 import ThumbnailSelector from 'react-native-thumbnail-selector';
@@ -49,9 +49,10 @@ const thumbnails = [
   },
 ];
 
-function Example() {
+export default function App(): React.JSX.Element {
   // use toggle to show and hide ThumbnailSelector
-  let toggle = () => new Promise() < Animated.EndResult > (res => res);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let toggle = () => new Promise<Animated.EndResult>(res => res);
 
   return (
     <ThumbnailSelector
@@ -60,6 +61,4 @@ function Example() {
     />
   );
 }
-
-export default Example;
 ```

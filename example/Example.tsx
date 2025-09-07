@@ -13,7 +13,7 @@ const thumbnails = [
   },
 ];
 
-function Example(): React.JSX.Element {
+export default function App(): React.JSX.Element {
   // use toggle to show and hide ThumbnailSelector
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let toggle = () => new Promise<Animated.EndResult>(res => res);
@@ -25,5 +25,3 @@ function Example(): React.JSX.Element {
     />
   );
 }
-
-export default Example;
