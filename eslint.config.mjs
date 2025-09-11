@@ -3,12 +3,18 @@ import markdown from '@eslint/markdown';
 import ts from 'typescript-eslint';
 import yml from 'eslint-plugin-yml';
 import json from '@eslint/json';
+import js from '@eslint/js';
 
 export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     plugins: { ts },
     extends: [ts.configs.recommended],
+  },
+  {
+    files: ['**/*.{mjs}'],
+    plugins: { js },
+    extends: ['js/recommended'],
   },
   {
     files: ['**/*.md'],
