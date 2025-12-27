@@ -1,178 +1,216 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  ImageSize,
   Image,
-  Animated,
   TouchableOpacity,
+  useWindowDimensions,
 } from 'react-native';
 import ThumbnailSelector, {
-  ThumbnailItem,
+  type ThumbnailItem,
 } from 'react-native-thumbnail-selector';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+const ThumbnailItems: ThumbnailItem[] = [
+  {
+    caption: 'Arizona Diamondbacks',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/109.jpg',
+    },
+  },
+  { caption: 'Athletics', imageSrc: require('./assets/oa.png') },
+  {
+    caption: 'Atlanta Braves',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/144.jpg',
+    },
+  },
+  {
+    caption: 'Baltimore Orioles',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/110.jpg',
+    },
+  },
+  {
+    caption: 'Boston Red Sox',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/111.jpg',
+    },
+  },
+  {
+    caption: 'Chicago Cubs',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/112.jpg',
+    },
+  },
+  {
+    caption: 'Cincinnati Reds',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/113.jpg',
+    },
+  },
+  { caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png') },
+  {
+    caption: 'Colorado Rockies',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/115.jpg',
+    },
+  },
+  {
+    caption: 'Detroit Tigers',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/116.jpg',
+    },
+  },
+  {
+    caption: 'Houston Astros',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/117.jpg',
+    },
+  },
+  {
+    caption: 'Kansas City Royals',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/118.jpg',
+    },
+  },
+  {
+    caption: 'Los Angeles Angels',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/108.jpg',
+    },
+  },
+  {
+    caption: 'Los Angeles Dodgers',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/119.jpg',
+    },
+  },
+  {
+    caption: 'Miami Marlins',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/146.jpg',
+    },
+  },
+  {
+    caption: 'Milwaukee Brewers',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/158.jpg',
+    },
+  },
+  {
+    caption: 'Minnesota Twins',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/142.jpg',
+    },
+  },
+  { caption: 'New York Mets', imageSrc: require('./assets/nym.png') },
+  { caption: 'New York Yankees', imageSrc: require('./assets/nyy.png') },
+  {
+    caption: 'Philadelphia Phillies',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/143.jpg',
+    },
+  },
+  {
+    caption: 'Pittsburgh Pirates',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/134.jpg',
+    },
+  },
+  {
+    caption: 'San Diego Padres',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/135.jpg',
+    },
+  },
+  {
+    caption: 'San Francisco Giants',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/137.jpg',
+    },
+  },
+  {
+    caption: 'St. Louis Cardinals',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/138.jpg',
+    },
+  },
+  {
+    caption: 'Tampa Bay Rays',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/139.jpg',
+    },
+  },
+  {
+    caption: 'Texas Rangers',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/140.jpg',
+    },
+  },
+  {
+    caption: 'Toronto Blue Jays',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/141.jpg',
+    },
+  },
+  {
+    caption: 'Washington Nationals',
+    imageSrc: {
+      uri: 'https://www.mlbstatic.com/team-logos/share/120.jpg',
+    },
+  },
+];
+
 export default function App(): React.JSX.Element {
-  function getThumbnails(): ThumbnailItem[] {
-    return [
-      {
-        caption: 'react-native',
-        imageSrc: {
-          uri: 'https://reactnative.dev/img/pwa/manifest-icon-512.png',
-        },
-      },
-      {
-        caption: 'jest testing',
-        imageSrc: {
-          uri: 'https://jestjs.io/img/opengraph.png',
-        },
-      },
-      {
-        caption: 'prettier',
-        imageSrc: {
-          uri: 'https://prettier.io/icon.png',
-        },
-      },
-      {
-        caption: 'Visual Studio Code',
-        imageSrc: {
-          uri: 'https://code.visualstudio.com/apple-touch-icon.png',
-        },
-      },
-      {
-        caption: 'eslint tool',
-        imageSrc: {
-          uri: 'https://eslint.org/icon-512.png',
-        },
-      },
-      {
-        imageSrc: {
-          uri: 'https://randomuser.me/api/portraits/women/44.jpg',
-        },
-      },
-      {
-        caption: 'Do mollit sit nisi elit velit proident pariatur eu occaecat.',
-        imageSrc: {
-          uri: 'https://randomuser.me/api/portraits/women/79.jpg',
-        },
-      },
-      { caption: 'Cleveland Guardians', imageSrc: require('./assets/cg.png') },
-      { caption: 'Milwaukee Brewers', imageSrc: require('./assets/mb.png') },
-      { caption: 'New York Mets', imageSrc: require('./assets/nym.png') },
-      { caption: 'New York Yankees', imageSrc: require('./assets/nyy.png') },
-      { caption: "Oakland A's", imageSrc: require('./assets/oa.png') },
-      { caption: 'San Diego Padres', imageSrc: require('./assets/sdp.png') },
-      { caption: '', imageSrc: require('./assets/nyy.png') },
-      {
-        caption:
-          'Excepteur amet veniam enim sint dolor consequat dolor deserunt.',
-        imageSrc: require('./assets/nym.png'),
-      },
-    ];
-  }
-  const thumbnails = React.useMemo(() => getThumbnails(), []);
-  const [thumbnail, setThumbnail] = React.useState<ThumbnailItem>(
-    thumbnails[0],
+  const [selected, setSelected] = React.useState<ThumbnailItem>(
+    ThumbnailItems[0],
   );
-  const [isThumbnailSelectorOpen, setIsThumbnailSelectorOpen] =
-    React.useState<boolean>(false);
-  const defaultImageSize = { width: 136, height: 136 };
-  const [imageSize, setImageSize] = React.useState<ImageSize>(defaultImageSize);
-  let toggle = () => new Promise<Animated.EndResult | unknown>(res => res);
-
-  function _onButtonPress(): void {
-    toggle();
-    setIsThumbnailSelectorOpen(!isThumbnailSelectorOpen);
-  }
-
-  async function _onThumbnailSelect(item: ThumbnailItem): Promise<void> {
-    const resolvedSrc = Image.resolveAssetSource(item.imageSrc);
-    let size = defaultImageSize;
-    if (resolvedSrc.uri) {
-      size = await Image.getSize(resolvedSrc.uri);
-    }
-    setImageSize({ width: size.width, height: defaultImageSize.height });
-    setThumbnail(item);
-  }
-
-  const src = Image.resolveAssetSource(thumbnail.imageSrc);
-  const buttonText = isThumbnailSelectorOpen
-    ? 'Close ThumbnailSelector'
-    : 'Open ThumbnailSelector';
-  const buttonColor = isThumbnailSelectorOpen ? '#61896C' : '#5571F6';
+  const toggleRef = React.useRef(() => {});
+  const window = useWindowDimensions();
+  const imageStyle = { width: window.width, height: window.height - 300 };
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.content}>
-        <Image
-          style={[styles.image, { ...imageSize }]}
-          source={thumbnail.imageSrc}
-          resizeMode={'contain'}
-        />
-        <View style={styles.item}>
-          <Text style={styles.key}>{'caption'}</Text>
-          <Text style={styles.value}>{thumbnail.caption}</Text>
-        </View>
-        <View style={styles.item}>
-          <Text style={styles.key}>{'imageSrc'}</Text>
-          <Text style={styles.value}>{JSON.stringify(src)}</Text>
-        </View>
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: buttonColor }]}
-          onPress={_onButtonPress}
-        >
-          <Text style={styles.buttonText}>{buttonText}</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => toggleRef.current()}
+      >
+        <Text style={styles.buttonText}>{'Toggle ThumbnailSelector'}</Text>
+      </TouchableOpacity>
+      <Image
+        style={imageStyle}
+        source={selected.imageSrc}
+        resizeMode={'contain'}
+      />
       <ThumbnailSelector
-        thumbnails={thumbnails}
-        toggle={func => (toggle = func)}
-        onSelect={_onThumbnailSelect}
+        thumbnails={ThumbnailItems}
+        toggle={func => (toggleRef.current = func)}
+        onSelect={item => setSelected(item)}
       />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
-    backgroundColor: '#32302F',
-  },
-  content: {
-    margin: 12,
-    padding: 12,
-    borderRadius: 8,
-    backgroundColor: '#3C3B3A',
-  },
-  image: {
-    width: 136,
-    height: 136,
-    alignSelf: 'center',
-  },
-  item: {
-    flexDirection: 'column',
-    padding: 4,
-  },
-  key: {
-    fontSize: 16,
-    color: 'whitesmoke',
-    fontWeight: 'bold',
-  },
-  value: {
-    fontSize: 16,
-    color: 'whitesmoke',
-  },
+  // eslint-disable-next-line react-native/no-color-literals
   button: {
-    borderRadius: 8,
-    padding: 8,
-    marginTop: 8,
+    backgroundColor: 'black',
+    borderRadius: 6,
+    borderWidth: 1,
+    margin: 16,
+    padding: 16,
   },
+  // eslint-disable-next-line react-native/no-color-literals
   buttonText: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: 'bold',
     color: 'whitesmoke',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  // eslint-disable-next-line react-native/no-color-literals
+  safeAreaView: {
+    backgroundColor: 'whitesmoke',
+    flex: 1,
   },
 });
