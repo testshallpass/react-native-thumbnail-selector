@@ -197,7 +197,7 @@ const color = {
   black: 'black',
   red: 'red',
   whitesmoke: 'whitesmoke',
-}
+};
 
 const styles = StyleSheet.create({
   button: {
