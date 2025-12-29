@@ -187,30 +187,34 @@ export default function App(): React.JSX.Element {
         thumbnails={ThumbnailItems}
         toggle={func => (toggleRef.current = func)}
         onSelect={item => setSelected(item)}
+        activeColor={color.red}
       />
     </SafeAreaView>
   );
 }
 
+const color = {
+  black: 'black',
+  red: 'red',
+  whitesmoke: 'whitesmoke',
+}
+
 const styles = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-color-literals
   button: {
-    backgroundColor: 'black',
+    backgroundColor: color.black,
     borderRadius: 6,
     borderWidth: 1,
     margin: 16,
     padding: 16,
   },
-  // eslint-disable-next-line react-native/no-color-literals
   buttonText: {
-    color: 'whitesmoke',
+    color: color.whitesmoke,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  // eslint-disable-next-line react-native/no-color-literals
   safeAreaView: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: color.whitesmoke,
     flex: 1,
   },
 });

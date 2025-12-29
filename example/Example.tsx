@@ -4,7 +4,7 @@ import { Button } from 'react-native';
 // Step 1: Import ThumbnailSelector.
 import ThumbnailSelector from 'react-native-thumbnail-selector';
 
-// Step 2: Define one or more thumbnails.
+// Step 2: Define one or more thumbnails like below.
 const Thumbnails = [
   {
     caption: 'Caption 1',
@@ -22,9 +22,10 @@ export default function App(): React.JSX.Element {
 
   return (
     <>
-      {/* Step 4: Depending on your use case, use toggleRef to open and close ThumbnailSelector. */}
+      {/* Step 4: Depending on your use case, use toggleRef to open and close the ThumbnailSelector. */}
       <Button title={'Toggle'} onPress={() => toggleRef.current()} />
-      {/* Step 5: Add ThumbnailSelector at last position in document tree so it overlaps other elements. */}
+      {/* Step 5: Add ThumbnailSelector at last position in document tree so it overlaps other components. */}
+      {/* Step 6: Define the thumbnails and toggle props like below. */}
       <ThumbnailSelector
         thumbnails={Thumbnails}
         toggle={func => (toggleRef.current = func)}
