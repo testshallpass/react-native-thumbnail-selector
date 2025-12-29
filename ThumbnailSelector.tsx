@@ -12,6 +12,7 @@ import {
   TouchableOpacityProps,
   ViewStyle,
   LayoutChangeEvent,
+  useAnimatedValue,
 } from 'react-native';
 
 export type ThumbnailItem = {
@@ -26,7 +27,7 @@ export type ThumbnailItemIndex = {
 
 export type ThumbnailSelectorProps = {
   thumbnails: ThumbnailItem[];
-  toggle?: (func: () => Promise<Animated.EndResult>) => void;
+  toggle?: (func: () => void) => void;
   renderThumbnail?: (
     item: ThumbnailItem,
     index: number,
@@ -84,25 +85,26 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   animatedViewTestID = 'ThumbnailSelector',
 }) => {
   const window = useWindowDimensions();
-  const [itemIndex, setItemIndex] = React.useState(initialIndex);
-  const [animViewHeight, setAnimViewHeight] = React.useState(0);
-  const animatedValue = React.useRef(new Animated.Value(0));
-  const toValue = React.useRef(animationConfig.toValue);
+  const animatedValue = useAnimatedValue(
+    Number(animationConfig.toValue),
+    animationConfig,
+  );
+  const [itemIndex, setItemIndex] = React.useState<number>(initialIndex);
+  const [animViewHeight, setAnimViewHeight] = React.useState<number>(0);
+  const [hasCalledToggle, setHasCalledToggle] = React.useState<boolean>(false);
 
-  function _toggle(): Promise<Animated.EndResult> {
-    if (toValue.current) {
-      animationConfig.toValue = 0;
-    } else {
-      animationConfig.toValue = 1;
-    }
-    toValue.current = animationConfig.toValue;
-    return new Promise<Animated.EndResult>(resolve => {
-      Animated.spring(animatedValue.current, animationConfig).start(resolve);
-    });
+  function _toggle(): void {
+    const value = Number(JSON.stringify(animatedValue));
+    const config: Animated.SpringAnimationConfig = {
+      ...animationConfig,
+      toValue: value == 1 ? 0 : 1,
+    };
+    Animated.spring(animatedValue, config).start();
   }
 
-  if (toggle) {
+  if (toggle != undefined && !hasCalledToggle) {
     toggle(_toggle);
+    setHasCalledToggle(true);
   }
 
   function _renderItem(obj: ThumbnailItemIndex): React.JSX.Element {
@@ -158,7 +160,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
       {
         transform: [
           {
-            translateY: animatedValue.current.interpolate({
+            translateY: animatedValue.interpolate({
               inputRange: [0, 1],
               outputRange: [start, end],
             }),
