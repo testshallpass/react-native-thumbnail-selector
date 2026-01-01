@@ -1,408 +1,5 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ThumbnailSelector it renders 1`] = `
-<View
-  collapsable={false}
-  onLayout={[Function]}
-  style={
-    {
-      "elevation": 1,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
-      "transform": [
-        {
-          "translateY": 1334,
-        },
-      ],
-      "zIndex": 1,
-    }
-  }
-  testID="ThumbnailSelector"
->
-  <RCTScrollView
-    data={
-      [
-        {
-          "caption": "react-native",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-        {
-          "caption": "New York City",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-        {
-          "caption": "Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.",
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-        {
-          "imageSrc": {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          },
-        },
-      ]
-    }
-    extraData={2}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    horizontal={true}
-    initialNumToRender={4}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={0.0001}
-    stickyHeaderIndices={[]}
-    style={
-      {
-        "backgroundColor": "grey",
-        "padding": 8,
-      }
-    }
-    viewabilityConfigCallbackPairs={[]}
-  >
-    <View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={
-          [
-            {
-              "flexDirection": "row",
-            },
-            null,
-          ]
-        }
-      >
-        <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "opacity": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              {
-                "uri": "https://reactnative.dev/img/tiny_logo.png",
-              }
-            }
-            style={
-              [
-                {
-                  "borderColor": "black",
-                },
-                {
-                  "borderWidth": 1,
-                  "height": 136,
-                  "width": 136,
-                },
-              ]
-            }
-          />
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "black",
-                },
-                {
-                  "fontSize": 16,
-                  "fontWeight": "bold",
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            react-native
-          </Text>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={
-          [
-            {
-              "flexDirection": "row",
-            },
-            null,
-          ]
-        }
-      >
-        <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "opacity": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              {
-                "uri": "https://reactnative.dev/img/tiny_logo.png",
-              }
-            }
-            style={
-              [
-                {
-                  "borderColor": "black",
-                },
-                {
-                  "borderWidth": 1,
-                  "height": 136,
-                  "width": 136,
-                },
-              ]
-            }
-          />
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "black",
-                },
-                {
-                  "fontSize": 16,
-                  "fontWeight": "bold",
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            New York City
-          </Text>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={
-          [
-            {
-              "flexDirection": "row",
-            },
-            null,
-          ]
-        }
-      >
-        <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "opacity": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              {
-                "uri": "https://reactnative.dev/img/tiny_logo.png",
-              }
-            }
-            style={
-              [
-                {
-                  "borderColor": "white",
-                },
-                {
-                  "borderWidth": 1,
-                  "height": 136,
-                  "width": 136,
-                },
-              ]
-            }
-          />
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "white",
-                },
-                {
-                  "fontSize": 16,
-                  "fontWeight": "bold",
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Elit cupidat...
-          </Text>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={
-          [
-            {
-              "flexDirection": "row",
-            },
-            null,
-          ]
-        }
-      >
-        <View
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "opacity": 1,
-              "padding": 8,
-            }
-          }
-        >
-          <Image
-            source={
-              {
-                "uri": "https://reactnative.dev/img/tiny_logo.png",
-              }
-            }
-            style={
-              [
-                {
-                  "borderColor": "black",
-                },
-                {
-                  "borderWidth": 1,
-                  "height": 136,
-                  "width": 136,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </View>
-  </RCTScrollView>
-</View>
-`;
-
 exports[`ThumbnailSelector no thumbnails 1`] = `
 <View
   collapsable={false}
@@ -449,6 +46,7 @@ exports[`ThumbnailSelector no thumbnails 1`] = `
         "padding": 8,
       }
     }
+    testID="thumbnail-selector-flatlist"
     viewabilityConfigCallbackPairs={[]}
   >
     <View />
@@ -456,7 +54,7 @@ exports[`ThumbnailSelector no thumbnails 1`] = `
 </View>
 `;
 
-exports[`ThumbnailSelector onSelect prop 1`] = `
+exports[`ThumbnailSelector with onSelect prop 1`] = `
 <View
   collapsable={false}
   onLayout={[Function]}
@@ -481,19 +79,19 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
     data={
       [
         {
-          "caption": "react-native",
+          "caption": "Caption 1",
           "imageSrc": {
             "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
-          "caption": "New York City",
+          "caption": "Caption 2",
           "imageSrc": {
             "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
         },
         {
-          "caption": "Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.",
+          "caption": "Caption 3: this is a really long caption",
           "imageSrc": {
             "uri": "https://reactnative.dev/img/tiny_logo.png",
           },
@@ -505,7 +103,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
         },
       ]
     }
-    extraData={2}
+    extraData={3}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={true}
@@ -528,6 +126,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
         "padding": 8,
       }
     }
+    testID="thumbnail-selector-flatlist"
     viewabilityConfigCallbackPairs={[]}
   >
     <View>
@@ -577,6 +176,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
               "padding": 8,
             }
           }
+          testID="thumbnail-item-button-0"
         >
           <Image
             source={
@@ -596,6 +196,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-image-0"
           />
           <Text
             numberOfLines={1}
@@ -611,8 +212,9 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-text-0"
           >
-            react-native
+            Caption 1
           </Text>
         </View>
       </View>
@@ -662,6 +264,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
               "padding": 8,
             }
           }
+          testID="thumbnail-item-button-1"
         >
           <Image
             source={
@@ -681,6 +284,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-image-1"
           />
           <Text
             numberOfLines={1}
@@ -696,8 +300,9 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-text-1"
           >
-            New York City
+            Caption 2
           </Text>
         </View>
       </View>
@@ -747,6 +352,95 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
               "padding": 8,
             }
           }
+          testID="thumbnail-item-button-2"
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "black",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+            testID="thumbnail-item-image-2"
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "black",
+                },
+                {
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="thumbnail-item-text-2"
+          >
+            Caption 3: t...
+          </Text>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+          testID="thumbnail-item-button-3"
         >
           <Image
             source={
@@ -766,13 +460,165 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-image-3"
+          />
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`ThumbnailSelector without onSelect prop 1`] = `
+<View
+  collapsable={false}
+  onLayout={[Function]}
+  style={
+    {
+      "elevation": 1,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+      "transform": [
+        {
+          "translateY": 1334,
+        },
+      ],
+      "zIndex": 1,
+    }
+  }
+  testID="ThumbnailSelector"
+>
+  <RCTScrollView
+    data={
+      [
+        {
+          "caption": "Caption 1",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
+          "caption": "Caption 2",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
+          "caption": "Caption 3: this is a really long caption",
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+        {
+          "imageSrc": {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          },
+        },
+      ]
+    }
+    extraData={3}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={4}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.0001}
+    stickyHeaderIndices={[]}
+    style={
+      {
+        "backgroundColor": "grey",
+        "padding": 8,
+      }
+    }
+    testID="thumbnail-selector-flatlist"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+          testID="thumbnail-item-button-0"
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "black",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+            testID="thumbnail-item-image-0"
           />
           <Text
             numberOfLines={1}
             style={
               [
                 {
-                  "color": "white",
+                  "color": "black",
                 },
                 {
                   "fontSize": 16,
@@ -781,8 +627,9 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-text-0"
           >
-            Elit cupidat...
+            Caption 1
           </Text>
         </View>
       </View>
@@ -832,6 +679,7 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
               "padding": 8,
             }
           }
+          testID="thumbnail-item-button-1"
         >
           <Image
             source={
@@ -851,6 +699,183 @@ exports[`ThumbnailSelector onSelect prop 1`] = `
                 },
               ]
             }
+            testID="thumbnail-item-image-1"
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "black",
+                },
+                {
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="thumbnail-item-text-1"
+          >
+            Caption 2
+          </Text>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+          testID="thumbnail-item-button-2"
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "black",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+            testID="thumbnail-item-image-2"
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "black",
+                },
+                {
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="thumbnail-item-text-2"
+          >
+            Caption 3: t...
+          </Text>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "padding": 8,
+            }
+          }
+          testID="thumbnail-item-button-3"
+        >
+          <Image
+            source={
+              {
+                "uri": "https://reactnative.dev/img/tiny_logo.png",
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "white",
+                },
+                {
+                  "borderWidth": 1,
+                  "height": 136,
+                  "width": 136,
+                },
+              ]
+            }
+            testID="thumbnail-item-image-3"
           />
         </View>
       </View>

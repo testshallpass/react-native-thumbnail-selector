@@ -46,6 +46,7 @@ export type ThumbnailSelectorProps = {
   animationConfig?: Animated.SpringAnimationConfig;
   flatListViewStyle?: ViewStyle;
   animatedViewTestID?: string;
+  flatListTestID?: string;
 };
 
 const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
@@ -83,6 +84,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
   },
   flatListViewStyle = { backgroundColor: 'grey', padding: 8 },
   animatedViewTestID = 'ThumbnailSelector',
+  flatListTestID = 'thumbnail-selector-flatlist',
 }) => {
   const window = useWindowDimensions();
   const animatedValue = useAnimatedValue(
@@ -124,6 +126,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
     return (
       <TouchableOpacity
         {...touchableOpacityProps}
+        testID={`thumbnail-item-button-${index}`}
         onPress={() => {
           setItemIndex(index);
           if (onSelect) {
@@ -133,11 +136,16 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
       >
         <Image
           {...imageProps}
+          testID={`thumbnail-item-image-${index}`}
           style={[{ borderColor: color }, imageProps.style]}
           source={item.imageSrc}
         />
         {caption && (
-          <Text {...textProps} style={[{ color }, textProps.style]}>
+          <Text
+            {...textProps}
+            testID={`thumbnail-item-text-${index}`}
+            style={[{ color }, textProps.style]}
+          >
             {caption}
           </Text>
         )}
@@ -177,6 +185,7 @@ const ThumbnailSelector: React.FunctionComponent<ThumbnailSelectorProps> = ({
       onLayout={_onLayout}
     >
       <FlatList
+        testID={flatListTestID}
         style={flatListViewStyle}
         data={thumbnails}
         initialNumToRender={thumbnails.length}

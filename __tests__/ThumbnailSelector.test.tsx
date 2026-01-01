@@ -1,109 +1,147 @@
 import React, { act } from 'react';
-import { Text } from 'react-native';
-import {
-  render,
-  fireEvent,
-  screen,
-  cleanup,
-} from '@testing-library/react-native';
-import ThumbnailSelector, { ThumbnailItem } from '../ThumbnailSelector';
+import { View, Image, Text } from 'react-native';
+import { render, fireEvent, cleanup } from '@testing-library/react-native';
+import ThumbnailSelector, { type ThumbnailItem } from '../ThumbnailSelector';
 
 describe('ThumbnailSelector', () => {
   afterEach(cleanup);
 
-  function _truncate(
-    value: string,
-    maxLength: number = 15,
-    ellipsis: string = '...',
+  function _getThumbnailItemTestId(
+    type: 'button' | 'image' | 'text',
+    index: number,
   ): string {
-    if (value.length > maxLength) {
-      const end = maxLength - ellipsis.length;
-      return `${value.substring(0, end)}${ellipsis}`;
-    }
-    return value;
+    return `thumbnail-item-${type}-${index}`;
   }
 
-  const thumbnails = [
+  const imageSrc = { uri: 'https://reactnative.dev/img/tiny_logo.png' };
+  const thumbnails: ThumbnailItem[] = [
     {
-      caption: 'react-native',
-      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
+      caption: 'Caption 1',
+      imageSrc,
     },
     {
-      caption: 'New York City',
-      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
+      caption: 'Caption 2',
+      imageSrc,
     },
     {
-      caption:
-        'Elit cupidatat qui ea deserunt reprehenderit sit velit eu aliqua incididunt sit elit reprehenderit.',
-      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
+      caption: 'Caption 3: this is a really long caption',
+      imageSrc,
     },
     {
-      imageSrc: { uri: 'https://reactnative.dev/img/tiny_logo.png' },
+      imageSrc,
     },
   ];
 
-  test('it renders', () => {
-    const component = render(<ThumbnailSelector thumbnails={thumbnails} />);
-    thumbnails.forEach(thumbnail => {
+  function _testOnSelect(onSelect?: jest.Mock): void {
+    const component = render(
+      <ThumbnailSelector thumbnails={thumbnails} onSelect={onSelect} />,
+    );
+    const selector = component.getByTestId('ThumbnailSelector');
+    expect(selector).toBeDefined();
+    const flatlist = component.getByTestId('thumbnail-selector-flatlist');
+    expect(flatlist).toBeDefined();
+
+    thumbnails.forEach((thumbnail, index) => {
+      const button = component.getByTestId(
+        _getThumbnailItemTestId('button', index),
+      );
+      expect(button).toBeDefined();
+      expect(button).toBeOnTheScreen();
+
+      const image = component.getByTestId(
+        _getThumbnailItemTestId('image', index),
+      );
+      expect(image).toBeDefined();
+      expect(image).toBeOnTheScreen();
+      expect(image).toHaveStyle({ borderColor: 'black' });
+
+      let text;
       if (thumbnail.caption) {
-        const item = screen.getByText(_truncate(thumbnail.caption));
-        expect(item).toBeDefined();
-        fireEvent.press(item);
+        text = component.getByTestId(_getThumbnailItemTestId('text', index));
+        expect(text).toBeDefined();
+        expect(text).toBeOnTheScreen();
+        expect(text).toHaveStyle({ color: 'black' });
+      }
+
+      fireEvent.press(button);
+      expect(image).toHaveStyle({ borderColor: 'white' });
+      if (text) {
+        expect(text).toHaveStyle({ color: 'white' });
       }
     });
+    if (onSelect) {
+      expect(onSelect).toBeDefined();
+      expect(onSelect).toHaveBeenCalledTimes(thumbnails.length);
+    }
     expect(component.toJSON()).toMatchSnapshot();
+  }
+
+  test('without onSelect prop', () => {
+    _testOnSelect();
   });
 
-  test('onSelect prop', async () => {
-    let toggle = () => {};
-    const onSelect = jest.fn();
+  test('with onSelect prop', () => {
+    _testOnSelect(jest.fn());
+  });
+
+  test('renderThumbnail prop', () => {
+    const renderThumbnail = (item: ThumbnailItem, index: number) => {
+      return (
+        <View testID={`my-view-${index}`}>
+          <Image testID={`my-image-${index}`} source={item.imageSrc} />
+          <Text testID={`my-text-${index}`}>{item.caption}</Text>
+        </View>
+      );
+    };
     const component = render(
       <ThumbnailSelector
         thumbnails={thumbnails}
-        toggle={func => (toggle = func)}
-        onSelect={onSelect}
+        renderThumbnail={renderThumbnail}
       />,
     );
-    await act(async () => toggle());
-    thumbnails.forEach((thumbnail, index) => {
-      if (thumbnail.caption) {
-        const item = screen.getByText(_truncate(thumbnail.caption));
-        expect(item).toBeDefined();
-        fireEvent.press(item);
-        expect(onSelect).toHaveBeenCalledTimes(index + 1);
-      }
+    thumbnails.forEach((_thumbnail, index) => {
+      const elements = [
+        `my-view-${index}`,
+        `my-image-${index}`,
+        `my-text-${index}`,
+      ];
+      elements.forEach(element => {
+        const elementTestId = component.getByTestId(element);
+        expect(elementTestId).toBeDefined();
+        expect(elementTestId).toBeOnTheScreen();
+      });
     });
-    expect(component.toJSON()).toMatchSnapshot();
   });
 
-  test('renderThumbnail prop', async () => {
+  test('toggle toValue 1', () => {
     let toggle = () => {};
-    const renderThumbnail = (item: ThumbnailItem, index: number) => {
-      return <Text testID={`${index}`}>{item.caption}</Text>;
-    };
     render(
       <ThumbnailSelector
         thumbnails={thumbnails}
         toggle={func => (toggle = func)}
-        renderThumbnail={renderThumbnail}
+        animationConfig={{
+          toValue: 1,
+          useNativeDriver: false,
+        }}
       />,
     );
-    await act(async () => toggle());
-    thumbnails.forEach((thumbnail, index) => {
-      if (thumbnail.caption) {
-        const itemText = screen.getByText(thumbnail.caption);
-        expect(itemText).toBeDefined();
-      }
-      const itemTestId = screen.getByTestId(`${index}`);
-      expect(itemTestId).toBeDefined();
-    });
-    await act(async () => toggle());
+    act(() => toggle());
+  });
+
+  test('toggle toValue 0', () => {
+    let toggle = () => {};
+    render(
+      <ThumbnailSelector
+        thumbnails={thumbnails}
+        toggle={func => (toggle = func)}
+      />,
+    );
+    act(() => toggle());
   });
 
   test('onLayout', () => {
-    render(<ThumbnailSelector thumbnails={thumbnails} />);
-
-    const selector = screen.getByTestId('ThumbnailSelector');
+    const component = render(<ThumbnailSelector thumbnails={thumbnails} />);
+    const selector = component.getByTestId('ThumbnailSelector');
     expect(selector).toBeDefined();
 
     fireEvent(selector, 'layout', {
@@ -117,21 +155,14 @@ describe('ThumbnailSelector', () => {
 
   test('no thumbnails', () => {
     const component = render(<ThumbnailSelector thumbnails={[]} />);
-    thumbnails.forEach(thumbnail => {
-      if (thumbnail.caption) {
-        const text = _truncate(thumbnail.caption);
-        try {
-          screen.getByText(text);
-        } catch (error: unknown) {
-          expect(error).toBeDefined();
-          if (error instanceof Error) {
-            expect(error).toBeInstanceOf(Error);
-            const partialErrorMessage = `Unable to find an element with text: ${text}`;
-            expect(error.message).toContain(partialErrorMessage);
-          }
-        }
-      }
-    });
+    const selector = component.getByTestId('ThumbnailSelector');
+    expect(selector).toBeDefined();
+
+    const flatlist = component.getByTestId('thumbnail-selector-flatlist');
+    expect(flatlist).toBeDefined();
+    expect(flatlist.props.data).toStrictEqual([]);
+    expect(flatlist.props.initialNumToRender).toStrictEqual(0);
+
     expect(component.toJSON()).toMatchSnapshot();
   });
 });
