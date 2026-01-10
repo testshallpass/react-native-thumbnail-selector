@@ -33,10 +33,10 @@
     "@eslint/js": "9.35.0",
     "@eslint/json": "0.13.2",
     "@eslint/markdown": "7.2.0",
-    "@react-native/babel-preset": "0.81.4",
-    "@react-native/eslint-config": "0.81.4",
-    "@react-native/metro-config": "0.81.4",
-    "@react-native/typescript-config": "0.81.4",
+    "@react-native/babel-preset": "0.81.5",
+    "@react-native/eslint-config": "0.81.5",
+    "@react-native/metro-config": "0.81.5",
+    "@react-native/typescript-config": "0.81.5",
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "30.0.0",
     "@types/react": "19.1.0",
@@ -50,7 +50,7 @@
     "jest": "30.1.3",
     "prettier": "3.6.2",
     "react": "19.1.0",
-    "react-native": "0.81.4",
+    "react-native": "0.81.5",
     "react-test-renderer": "19.1.0",
     "ts-jest": "29.4.1",
     "typescript": "5.8.3",
@@ -59,5 +59,5 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "yarn@4.9.4"
+  "packageManager": "yarn@4.12.0"
 }
