@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx jest --collectCoverage",
     "eslint": "npx eslint .",
-    "prettier": "npx prettier --check ."
+    "prettier": "npx prettier --check .",
+    "fix:dedupe": "yarn dedupe"
   },
   "repository": {
     "type": "git",
