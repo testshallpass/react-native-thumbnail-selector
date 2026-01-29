@@ -5793,10 +5793,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-thumbnail-selector@npm:5.3.0":
-  version: 5.3.0
-  resolution: "react-native-thumbnail-selector@npm:5.3.0"
-  checksum: 10c0/89c8d9fe6625e90e5684f811d46b41ed199760752f98a5d82e3fe9e12f244c97ca1da5115b2270f8310a8af38f1dae5b77903fb8facadd1f628c3b93bbbb7ec0
+"react-native-thumbnail-selector@npm:6.0.0":
+  version: 6.0.0
+  resolution: "react-native-thumbnail-selector@npm:6.0.0"
+  checksum: 10c0/64bf7c2289cc6cb7e14dc69ad632c01d576c8be841dd7fb8bee28192cfaa787a92c358a0023d7fd6843061c8c4af5e6d7a55b5817f34e46602f8cc983b13765c
   languageName: node
   linkType: hard
 
@@ -6696,7 +6696,7 @@ __metadata:
     react-dom: "npm:19.1.0"
     react-native: "npm:0.81.5"
     react-native-safe-area-context: "npm:5.6.2"
-    react-native-thumbnail-selector: "npm:5.3.0"
+    react-native-thumbnail-selector: "npm:6.0.0"
     react-native-web: "npm:^0.21.0"
     typescript: "npm:5.9.3"
   languageName: unknown

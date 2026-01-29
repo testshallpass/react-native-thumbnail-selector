@@ -32,7 +32,7 @@ export type ThumbnailSelectorProps = {
     item: ThumbnailItem,
     index: number,
     onSelect?: (item: ThumbnailItem, index: number) => void,
-  ) => JSX.Element;
+  ) => React.JSX.Element;
   onSelect?: (item: ThumbnailItem, index: number) => void;
   initialIndex?: number;
   captionCharacterMaxLimit?: number;
